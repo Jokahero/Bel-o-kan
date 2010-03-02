@@ -1,6 +1,10 @@
 #include "position.h"
 
-Position::Position(int pAbcisse, int pOrdonnee) : m_abcisse(pAbcisse), m_ordonnee(pOrdonnee) {
+#include <QtGlobal>
+
+Position::Position(int pAbcisseMax, int pOrdonneeMax) {
+    m_abcisse = qrand() % pAbcisseMax;
+    m_ordonnee = qrand() % pOrdonneeMax;
 }
 
 void Position::setAbcisse(int pAbcisse) {
