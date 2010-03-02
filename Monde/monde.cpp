@@ -15,12 +15,11 @@ Monde::Monde(const ParamsMonde& pParams) {
 
     for (int i = 0; i < pParams.nbFemelles; i++) {
         Position pos(pParams.largeur, pParams.hauteur);
-        //QMap<Position, int>::const_iterator it = m_infos->find(pos);
-        //while (it != m_infos->end()) {
-        //    pos = Position(pParams.largeur, pParams.hauteur);
-        //    it = m_infos->find(pos);
-        //}
+        while (m_infos->contains(pos)) {
+            pos = Position(pParams.largeur, pParams.hauteur);
+        }
         m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
     }
 
     for (int i = 0; i < pParams.nbMales; i++) {

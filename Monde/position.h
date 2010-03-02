@@ -11,7 +11,7 @@ public:
     inline int getOrdonnee() const {return m_ordonnee;};
     void setOrdonnee(int pOrdonnee);
     
-    bool operator<(const Position& p) {
+    bool operator<(const Position& p) const {
         return (getAbcisse() < p.getAbcisse() ||
                 (getAbcisse() == p.getAbcisse() &&
                  getOrdonnee() < p.getOrdonnee()));
