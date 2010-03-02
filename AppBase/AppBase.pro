@@ -6,4 +6,4 @@ DESTDIR = ../
 HEADERS += ParamsMonde.h
 SOURCES += main.cpp
 
-LIBS += -L.. -lMonde
+LIBS += -L.. -lMonde -lGUI

@@ -7,6 +7,7 @@
 #include <time.h>
 #include "ParamsMonde.h"
 #include "../Monde/monde.h"
+#include "../GUI/carte.h"
 
 int main(int argc, char** argv) {
     // Initialisation de la graîne aléatoire
@@ -44,6 +45,9 @@ int main(int argc, char** argv) {
     p.nbMales = 3;
     p.nbPetits = 2;
     //Monde* monde = new Monde(p);
+
+    Carte *carte = new Carte();
+    carte->show();
 
     //delete monde;
     return a.exec();
