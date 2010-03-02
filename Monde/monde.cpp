@@ -9,26 +9,36 @@
 #include <QtCore/QMap>
 #include <QtCore/QVector>
 
+#include <QtCore/QDebug>
+
 Monde::Monde(const ParamsMonde& pParams) {
     m_infos = new QMap<Position, int>;
     m_elements = new QVector<Elements*>;
 
     for (int i = 0; i < pParams.nbFemelles; i++) {
-        Position pos(pParams.largeur, pParams.hauteur);
-        while (m_infos->contains(pos)) {
-            pos = Position(pParams.largeur, pParams.hauteur);
-        }
+        Position pos(10, 15);
+        while (m_infos->contains(pos))
+            pos = Position(10, 15);
         m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+        qDebug() << "Fin FOR";
+    }/*
+
+    for (int i = 0; i < pParams.nbMales; i++) {
+        Position pos(pParams.largeur, pParams.hauteur);
+        while (m_infos->contains(pos))
+            pos = Position(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Male(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
     }
 
-    for (int i = 0; i < pParams.nbMales; i++) {
-        m_elements->append(new Male(this, 0, 0));
-    }
-
     for (int i = 0; i < pParams.nbPetits; i++) {
-        m_elements->append(new Petits(this, 0, 0));
-    }
+        Position pos(pParams.largeur, pParams.hauteur);
+        while (m_infos->contains(pos))
+            pos = Position(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Petits(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+    }*/
 }
 
 Monde::~Monde() {
