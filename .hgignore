@@ -1,2 +1,7 @@
-bel-o-kan.pro.user
-Monde/Monde.pro.user
+syntax: glob
+*.pro.user
+*.o
+*~
+*.so*
+Makefile
+Bel-O-Kan
