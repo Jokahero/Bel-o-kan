@@ -1,4 +1,6 @@
 #include "ressources.h"
 
-Ressources::Ressources() {
+#include "monde.h"
+
+Ressources::Ressources(Monde *pMonde, int pAbcisse, int pOrdonnee) : Elements(pMonde, pAbcisse, pOrdonnee) {
 }

@@ -1,11 +1,13 @@
 #ifndef FEMELLE_H
 #define FEMELLE_H
 
+class Monde;
+
 #include "peuple.h"
 
 class Femelle : public Peuple {
 public:
-    Femelle();
+    Femelle(Monde* pMonde, int pAbcisse, int pOrdonnee);
 };
 
 #endif // FEMELLE_H

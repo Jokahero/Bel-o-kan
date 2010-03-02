@@ -1,4 +1,4 @@
 #include "male.h"
 
-Male::Male() {
+Male::Male(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pAbcisse, pOrdonnee) {
 }

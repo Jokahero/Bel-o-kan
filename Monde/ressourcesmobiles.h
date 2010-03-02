@@ -6,7 +6,7 @@
 
 class RessourcesMobiles : public Mobiles, public Ressources {
 public:
-    RessourcesMobiles();
+    RessourcesMobiles(Monde* pMonde, int pAbcisse, int pOrdonnee);
 };
 
 #endif // RESSOURCESMOBILES_H

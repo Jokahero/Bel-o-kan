@@ -5,7 +5,7 @@
 
 class Ressources : public Elements {
 public:
-    Ressources();
+    Ressources(Monde* pMonde, int pAbcisse, int pOrdonnee);
 };
 
 #endif // RESSOURCES_H
