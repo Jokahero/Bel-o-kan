@@ -1,3 +1,7 @@
+#include "fenconfig.h"
+#include "../Monde/monde.h"
+#include "../GUI/carte.h"
+
 #include <QtCore/QLibraryInfo>
 #include <QtCore/QLocale>
 #include <QtCore/QTextCodec>
@@ -5,9 +9,6 @@
 #include <QtGlobal>
 #include <QtGui/QApplication>
 #include <time.h>
-#include "ParamsMonde.h"
-#include "../Monde/monde.h"
-#include "../GUI/carte.h"
 
 int main(int argc, char** argv) {
     // Initialisation de la graîne aléatoire
@@ -38,17 +39,10 @@ int main(int argc, char** argv) {
     }
 
     // Initialisation des modules
-    ParamsMonde p;
-    p.hauteur = 5;
-    p.largeur = 11;
-    p.nbFemelles = 3;
-    p.nbMales = 3;
-    p.nbPetits = 2;
-    Monde* monde = new Monde(p);
+    Monde *monde = new Monde();
+    Carte *carte = new Carte();
 
-    Carte *carte = new Carte(p.hauteur, p.largeur);
-    carte->show();
-
-    delete monde;
+    FenConfig *fen = new FenConfig(carte, monde);
+    fen->show();
     return a.exec();
 }

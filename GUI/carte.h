@@ -7,12 +7,11 @@ class QGraphicsScene;
 class Hexagone;
 template <typename T> class QVector;
 
-class Carte : public QGraphicsView
-{
+class Carte : public QGraphicsView {
     Q_OBJECT
 
 public:
-    Carte(int pHauteur, int pLargeur);
+    Carte();
     ~Carte();
 
 private:

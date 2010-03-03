@@ -9,29 +9,9 @@
 #include <QtCore/QMap>
 #include <QtCore/QVector>
 
-#include <QtCore/QDebug>
-
-Monde::Monde(const ParamsMonde& pParams) {
+Monde::Monde() {
     m_infos = new QMap<Position, int>;
     m_elements = new QVector<Elements*>;
-
-    for (int i = 0; i < pParams.nbFemelles; i++) {
-        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
-        m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
-        m_infos->insert(pos, m_elements->size() - 1);
-    }
-
-    for (int i = 0; i < pParams.nbFemelles; i++) {
-        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
-        m_elements->append(new Male(this, pos.getAbcisse(), pos.getOrdonnee()));
-        m_infos->insert(pos, m_elements->size() - 1);
-    }
-
-    for (int i = 0; i < pParams.nbFemelles; i++) {
-        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
-        m_elements->append(new Petits(this, pos.getAbcisse(), pos.getOrdonnee()));
-        m_infos->insert(pos, m_elements->size() - 1);
-    }
 }
 
 Monde::~Monde() {
@@ -50,4 +30,24 @@ Position Monde::posAleatoire(int pAbcisseMax, int pOrdonneeMax) {
         pos = new Position(abcisse, ordonnee);
     }
     return *pos;
+}
+
+void Monde::init(const ParamsMonde &pParams) {
+    for (int i = 0; i < pParams.nbFemelles; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+    }
+
+    for (int i = 0; i < pParams.nbFemelles; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Male(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+    }
+
+    for (int i = 0; i < pParams.nbFemelles; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Petits(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+    }
 }

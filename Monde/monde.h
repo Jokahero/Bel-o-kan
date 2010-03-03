@@ -2,17 +2,22 @@
 #define MONDE_H
 
 #include "../AppBase/ParamsMonde.h"
+#include <QtCore/QObject>
 
 class Elements;
 class Position;
 template<typename Key, typename T> class QMap;
 template<typename T> class QVector;
 
-class Monde {
+class Monde : public QObject{
+    Q_OBJECT
 public:
-    Monde(const ParamsMonde& pParams);
+    Monde();
     ~Monde();
     Position posAleatoire(int pAbcisseMax,int pOrdonneeMax);
+
+public slots:
+    void init(const ParamsMonde& pParams);
 
 private:
     QMap<Position, int>* m_infos;

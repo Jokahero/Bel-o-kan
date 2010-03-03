@@ -5,3 +5,4 @@ syntax: glob
 *.so*
 Makefile
 Bel-O-Kan
+moc_*
