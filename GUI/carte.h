@@ -18,7 +18,7 @@ private:
     QVector<Hexagone*> *m_listeHexagones;
     QGraphicsScene *m_scene;
 
-    // QVector<QVector*><Hexagone*> *m_carte;
+    QVector<QVector<Hexagone*>*> *m_carte;
 
 public slots:
     void construireCarte(int pHauteur, int pLargeur);
