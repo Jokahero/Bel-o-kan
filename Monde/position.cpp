@@ -19,7 +19,7 @@ void Position::setOrdonnee(int pOrdonnee) {
     m_ordonnee = pOrdonnee;
 }
 
-QList<Position> Position::getPositionsAdjacentes() const {
+QList<Position> Position::getPositionsAdjacentes(int pDistance) const {
     QList<Position> liste;
     int hauteur = Monde::instance()->getParams().hauteur - 1;
     int largeur = Monde::instance()->getParams().largeur - 1;
@@ -39,6 +39,18 @@ QList<Position> Position::getPositionsAdjacentes() const {
         liste.append(Position(m_abcisse - 1, m_ordonnee - 1));
     if (m_abcisse % 2 == 1 && m_ordonnee > 0 && m_abcisse < largeur)
         liste.append(Position(m_abcisse + 1, m_ordonnee + 1));
+
+    if (pDistance > 1) {
+        pDistance--;
+        QList<Position> listeOrig = liste;
+        for (int i = 0; i < listeOrig.size(); i++) {
+            QList<Position> tmp = listeOrig.at(i).getPositionsAdjacentes(pDistance);
+            for (int j = 0; j < tmp.size(); j++) {
+                if (!liste.contains(tmp.at(j)) && tmp.at(j) != *this)
+                    liste.append(tmp.at(j));
+            }
+        }
+    }
 
     return liste;
 }

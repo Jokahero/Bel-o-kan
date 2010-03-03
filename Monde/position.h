@@ -19,7 +19,16 @@ public:
                  getOrdonnee() < p.getOrdonnee()));
     }
 
-    QList<Position> getPositionsAdjacentes() const;
+    bool operator==(const Position& p) const {
+        return (getAbcisse() == p.getAbcisse() &&
+                getOrdonnee() == p.getOrdonnee());
+    }
+
+    bool operator!=(const Position& p) const {
+        return !(p == *this);
+    }
+
+    QList<Position> getPositionsAdjacentes(int pDistance = 1) const;
     
 private:
     int m_abcisse;
