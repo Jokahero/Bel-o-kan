@@ -12,6 +12,7 @@ class Monde {
 public:
     Monde(const ParamsMonde& pParams);
     ~Monde();
+    Position posAleatoire(int pAbcisseMax,int pOrdonneeMax);
 
 private:
     QMap<Position, int>* m_infos;

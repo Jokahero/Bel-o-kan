@@ -16,29 +16,22 @@ Monde::Monde(const ParamsMonde& pParams) {
     m_elements = new QVector<Elements*>;
 
     for (int i = 0; i < pParams.nbFemelles; i++) {
-        Position pos(10, 15);
-        while (m_infos->contains(pos))
-            pos = Position(10, 15);
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
-        qDebug() << "Fin FOR";
-    }/*
+    }
 
-    for (int i = 0; i < pParams.nbMales; i++) {
-        Position pos(pParams.largeur, pParams.hauteur);
-        while (m_infos->contains(pos))
-            pos = Position(pParams.largeur, pParams.hauteur);
+    for (int i = 0; i < pParams.nbFemelles; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Male(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
     }
 
-    for (int i = 0; i < pParams.nbPetits; i++) {
-        Position pos(pParams.largeur, pParams.hauteur);
-        while (m_infos->contains(pos))
-            pos = Position(pParams.largeur, pParams.hauteur);
+    for (int i = 0; i < pParams.nbFemelles; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Petits(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
-    }*/
+    }
 }
 
 Monde::~Monde() {
@@ -46,4 +39,15 @@ Monde::~Monde() {
         delete m_elements->at(i);
     delete m_infos;
     delete m_elements;
+}
+
+Position Monde::posAleatoire(int pAbcisseMax, int pOrdonneeMax) {
+    int abcisse = qrand() % pAbcisseMax;
+    int ordonnee = qrand() % pOrdonneeMax;
+    Position *pos = new Position(abcisse, ordonnee);
+    while (m_infos->contains(*pos)) {
+        delete pos;
+        pos = new Position(abcisse, ordonnee);
+    }
+    return *pos;
 }
