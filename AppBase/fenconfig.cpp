@@ -3,10 +3,13 @@
 #include "ParamsMonde.h"
 #include "../GUI/carte.h"
 #include "../Monde/monde.h"
+
+#include <QtCore/QCoreApplication>
 #include <QtGui/QDialogButtonBox>
 #include <QtGui/QHBoxLayout>
 
 FenConfig::FenConfig(Carte* pCarte, Monde* pMonde, QWidget* pParent) : QWidget(pParent), m_carte(pCarte), m_monde(pMonde) {
+    setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle(tr("Bel-O-Kan - Initialisation du monde"));
     QHBoxLayout* layout = new QHBoxLayout;
     m_bbox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -14,6 +17,7 @@ FenConfig::FenConfig(Carte* pCarte, Monde* pMonde, QWidget* pParent) : QWidget(p
     setLayout(layout);
 
     connect(m_bbox, SIGNAL(accepted()), this, SLOT(lancer()));
+    connect(m_bbox, SIGNAL(rejected()), qApp, SLOT(quit()));
 }
 
 FenConfig::~FenConfig() {
@@ -30,4 +34,5 @@ void FenConfig::lancer() {
     m_monde->init(p);
     m_carte->construireCarte(p.hauteur, p.largeur);
     m_carte->show();
+    close();
 }
