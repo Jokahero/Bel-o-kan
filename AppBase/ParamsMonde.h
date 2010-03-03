@@ -7,6 +7,7 @@ typedef struct {
     int nbMales;
     int nbFemelles;
     int nbPetits;
+    int mycelium;
 } ParamsMonde;
 
 #endif // PARAMSMONDE_H

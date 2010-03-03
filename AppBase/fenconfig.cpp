@@ -40,10 +40,18 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     peuple->addRow(tr("Mâles"), m_nbMales);
     peuple->addRow(tr("Petits"), m_nbPetits);
 
+    QGroupBox *resGroupBox = new QGroupBox(tr("Ressources"));
+    QFormLayout *res= new QFormLayout;
+    resGroupBox->setLayout(res);
+    m_nbMyceliums = new QSpinBox(resGroupBox);
+    m_nbMyceliums->setRange(0, 50);
+    res->addRow(tr("Mycéliums"), m_nbMyceliums);
+
     m_bbox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 
     layout->addWidget(carteGroupBox);
     layout->addWidget(peupleGroupBox);
+    layout->addWidget(resGroupBox);
     layout->addWidget(m_bbox);
     setLayout(layout);
 
@@ -64,6 +72,7 @@ FenConfig::~FenConfig() {
     delete m_nbFemelles;
     delete m_nbMales;
     delete m_nbPetits;
+    delete m_nbMyceliums;
     delete m_bbox;
 }
 
@@ -74,6 +83,7 @@ void FenConfig::lancer() {
     p.nbFemelles = m_nbFemelles->value();
     p.nbMales = m_nbMales->value();
     p.nbPetits = m_nbPetits->value();
+    p.mycelium = m_nbMyceliums->value();
     m_monde->init(p);
     m_fenCarte->show(p.hauteur, p.largeur);
     close();
@@ -85,6 +95,7 @@ void FenConfig::verifCoherence() {
     nbElements += m_nbFemelles->value();
     nbElements += m_nbMales->value();
     nbElements += m_nbPetits->value();
+    nbElements += m_nbMyceliums->value();
 
     m_bbox->button(QDialogButtonBox::Ok)->setEnabled(nbElements <= nbCellules);
 }
