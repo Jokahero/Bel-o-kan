@@ -27,6 +27,8 @@ Position Monde::posAleatoire(int pAbcisseMax, int pOrdonneeMax) {
     Position *pos = new Position(abcisse, ordonnee);
     while (m_infos->contains(*pos)) {
         delete pos;
+        abcisse = qrand() % pAbcisseMax;
+        ordonnee = qrand() % pOrdonneeMax;
         pos = new Position(abcisse, ordonnee);
     }
     return *pos;
