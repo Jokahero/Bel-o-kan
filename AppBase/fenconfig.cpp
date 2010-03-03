@@ -8,8 +8,9 @@
 #include <QtGui/QDialogButtonBox>
 #include <QtGui/QFormLayout>
 #include <QtGui/QGroupBox>
-#include <QtGui/QVBoxLayout>
+#include <QtGui/QPushButton>
 #include <QtGui/QSpinBox>
+#include <QtGui/QVBoxLayout>
 
 FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWidget(pParent), m_fenCarte(pFenCarte), m_monde(pMonde) {
     setAttribute(Qt::WA_DeleteOnClose);
@@ -46,8 +47,15 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     layout->addWidget(m_bbox);
     setLayout(layout);
 
+    verifCoherence();
+
     connect(m_bbox, SIGNAL(accepted()), this, SLOT(lancer()));
     connect(m_bbox, SIGNAL(rejected()), qApp, SLOT(quit()));
+    connect(m_largeurCarte, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
+    connect(m_hauteurCarte, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
+    connect(m_nbFemelles, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
+    connect(m_nbMales, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
+    connect(m_nbPetits, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
 }
 
 FenConfig::~FenConfig() {
@@ -69,4 +77,14 @@ void FenConfig::lancer() {
     m_monde->init(p);
     m_fenCarte->show(p.hauteur, p.largeur);
     close();
+}
+
+void FenConfig::verifCoherence() {
+    int nbCellules = m_hauteurCarte->value() * m_largeurCarte->value();
+    int nbElements = 0;
+    nbElements += m_nbFemelles->value();
+    nbElements += m_nbMales->value();
+    nbElements += m_nbPetits->value();
+
+    m_bbox->button(QDialogButtonBox::Ok)->setEnabled(nbElements <= nbCellules);
 }

@@ -15,8 +15,9 @@ public:
     FenConfig(FenCarte* pCarte, Monde* pMonde, QWidget* pParent = 0);
     ~FenConfig();
 
-public slots:
+private slots:
     void lancer();
+    void verifCoherence();
 
 private:
     FenCarte* m_fenCarte;
