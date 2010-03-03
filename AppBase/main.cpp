@@ -39,14 +39,14 @@ int main(int argc, char** argv) {
 
     // Initialisation des modules
     ParamsMonde p;
-    p.hauteur = 15;
-    p.largeur = 15;
+    p.hauteur = 5;
+    p.largeur = 11;
     p.nbFemelles = 3;
     p.nbMales = 3;
     p.nbPetits = 2;
     Monde* monde = new Monde(p);
 
-    Carte *carte = new Carte();
+    Carte *carte = new Carte(p.hauteur, p.largeur);
     carte->show();
 
     delete monde;
