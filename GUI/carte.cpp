@@ -6,11 +6,11 @@
 #include <QtGui/QPolygon>
 #include <QtCore/QDebug>
 
-Carte::Carte() {
+Carte::Carte(int pHauteur, int pLargeur) {
     m_scene = new QGraphicsScene();
     m_listeHexagones = new QVector<Hexagone*>;
 
-    construireCarte(5,11);
+    construireCarte(pHauteur,pLargeur);
 
     setScene(m_scene);
 }

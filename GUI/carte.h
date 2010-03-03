@@ -10,7 +10,7 @@ template <typename T> class QVector;
 class Carte : public QGraphicsView
 {
 public:
-    Carte();
+    Carte(int pHauteur, int pLargeur);
     ~Carte();
 
 private:
