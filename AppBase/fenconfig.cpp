@@ -1,14 +1,14 @@
 #include "fenconfig.h"
 
 #include "ParamsMonde.h"
-#include "../GUI/carte.h"
+#include "../GUI/fencarte.h"
 #include "../Monde/monde.h"
 
 #include <QtCore/QCoreApplication>
 #include <QtGui/QDialogButtonBox>
 #include <QtGui/QHBoxLayout>
 
-FenConfig::FenConfig(Carte* pCarte, Monde* pMonde, QWidget* pParent) : QWidget(pParent), m_carte(pCarte), m_monde(pMonde) {
+FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWidget(pParent), m_fenCarte(pFenCarte), m_monde(pMonde) {
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle(tr("Bel-O-Kan - Initialisation du monde"));
     QHBoxLayout* layout = new QHBoxLayout;
@@ -32,7 +32,6 @@ void FenConfig::lancer() {
     p.nbMales = 3;
     p.nbPetits = 2;
     m_monde->init(p);
-    m_carte->construireCarte(p.hauteur, p.largeur);
-    m_carte->show();
+    m_fenCarte->show(p.hauteur, p.largeur);
     close();
 }

@@ -1,6 +1,6 @@
 #include "fenconfig.h"
 #include "../Monde/monde.h"
-#include "../GUI/carte.h"
+#include "../GUI/fencarte.h"
 
 #include <QtCore/QLibraryInfo>
 #include <QtCore/QLocale>
@@ -40,9 +40,9 @@ int main(int argc, char** argv) {
 
     // Initialisation des modules
     Monde *monde = new Monde();
-    Carte *carte = new Carte();
+    FenCarte *fenCarte = new FenCarte();
 
-    FenConfig *fen = new FenConfig(carte, monde);
+    FenConfig *fen = new FenConfig(fenCarte, monde);
     fen->show();
     return a.exec();
 }

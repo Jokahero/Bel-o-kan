@@ -3,7 +3,7 @@
 
 #include <QtGui/QWidget>
 
-class Carte;
+class FenCarte;
 class Monde;
 class QDialogButtonBox;
 
@@ -11,14 +11,14 @@ class FenConfig : public QWidget {
     Q_OBJECT
 
 public:
-    FenConfig(Carte* pCarte, Monde* pMonde, QWidget* pParent = 0);
+    FenConfig(FenCarte* pCarte, Monde* pMonde, QWidget* pParent = 0);
     ~FenConfig();
 
 public slots:
     void lancer();
 
 private:
-    Carte* m_carte;
+    FenCarte* m_fenCarte;
     Monde* m_monde;
     QDialogButtonBox* m_bbox;
 };
