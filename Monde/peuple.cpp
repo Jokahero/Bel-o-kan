@@ -7,6 +7,7 @@
 bool Peuple::init = false;
 int Peuple::m_brindilles = 0;
 int Peuple::m_nourriture = 0;
+int Peuple::m_pop = 0;
 
 Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee) : Mobiles(pMonde, pAbcisse, pOrdonnee) {
     if (!init) {
@@ -34,4 +35,11 @@ void Peuple::tour() {
 
 void Peuple::mort() {
     qDebug() << "Un membre du peuple est mort";
+    setPopulation(getPopulation() - 1);
+    if (getPopulation() <= 0)
+        getMonde()->fin();
+}
+
+void Peuple::setPopulation(int pPopulation) {
+    m_pop = pPopulation;
 }

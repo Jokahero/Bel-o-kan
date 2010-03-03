@@ -14,12 +14,16 @@ public:
     inline static int getNourriture() {return m_nourriture;};
     void setNourriture(int pNourriture);
 
+    inline static int getPopulation() {return m_pop;};
+    void setPopulation(int pPopulation);
+
     virtual void tour();
 
 private:
     static bool init;
     static int m_brindilles;
     static int m_nourriture;
+    static int m_pop;
 
     void mort();
 };
