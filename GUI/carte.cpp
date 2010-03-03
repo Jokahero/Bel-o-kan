@@ -9,6 +9,7 @@
 Carte::Carte() {
     m_scene = new QGraphicsScene();
     m_listeHexagones = new QVector<Hexagone*>;
+    m_carte = new QVector<QVector<Hexagone*>*>;
 
     setScene(m_scene);
 }
@@ -25,7 +26,9 @@ void Carte::construireCarte(int pHauteur, int pLargeur) {
     bool basse = false;
 
     for(int i=0; i < taille; i++) {
+        m_carte->append(new QVector<Hexagone*>);
         m_listeHexagones->append(new Hexagone());
+        m_carte->at(i)->append(m_listeHexagones->at(i));
     }
 
     int x=75, y=80;
@@ -47,11 +50,11 @@ void Carte::construireCarte(int pHauteur, int pLargeur) {
             y += 90;
     }
 
-        QPen pen(Qt::black, 1, Qt::SolidLine);
-        QBrush brush(Qt::green);
+    QPen pen(Qt::black, 1, Qt::SolidLine);
+    QBrush brush(Qt::green);
 
-        for (int i=0; i < m_listeHexagones->size(); i++) {
-            m_listeHexagones->at(i)->construire();
-            m_scene->addPolygon(*m_listeHexagones->at(i), pen, brush);
-        }
+    for (int i=0; i < m_listeHexagones->size(); i++) {
+        m_listeHexagones->at(i)->construire();
+        m_scene->addPolygon(*m_listeHexagones->at(i), pen, brush);
     }
+}
