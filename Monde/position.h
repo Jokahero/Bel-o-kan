@@ -3,7 +3,7 @@
 
 class Position {
 public:
-    Position(int pAbcisseMax, int pOrdonneeMax);
+    Position(int pAbcisse, int pOrdonnee);
     
     inline int getAbcisse() const {return m_abcisse;};
     void setAbcisse(int pAbcisse);

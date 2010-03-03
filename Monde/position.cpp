@@ -4,17 +4,9 @@
 
 #include <QtCore/QDebug>
 
-Position::Position(int pAbcisseMax, int pOrdonneeMax) {
-    qDebug() << "Debut";
-    qDebug() << "pAbcisseMax : " << pAbcisseMax;
-    qDebug() << "pOrdonneeMax : " << pOrdonneeMax;
-    m_abcisse = qrand() % pAbcisseMax;
-    m_ordonnee = qrand() % pOrdonneeMax;
-    qDebug() << "m_abcisse : " << m_abcisse;
-    qDebug() << "m_ordonnee : " << m_ordonnee;
-    qDebug() << "pAbcisseMax : " << pAbcisseMax;
-    qDebug() << "pOrdonneeMax : " << pOrdonneeMax;
-    qDebug() << "Fin";
+Position::Position(int pAbcisse, int pOrdonnee) {
+    m_abcisse = pAbcisse;
+    m_ordonnee = pOrdonnee;
 }
 
 void Position::setAbcisse(int pAbcisse) {
