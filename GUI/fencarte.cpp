@@ -4,9 +4,14 @@
 #include <QtGui/QMenuBar>
 #include <QtGui/QMenu>
 #include <QtGui/QAction>
+#include <QtGui/QIcon>
 
 FenCarte::FenCarte()
 {
+    setWindowTitle(tr("Bel-O-Kan - Simulation"));
+    QIcon *icone = new QIcon("Ant-icon.png");
+    setWindowIcon(*icone);
+
     m_barreMenu = new QMenuBar(this);
     m_menuPrinc = new QMenu("Menu", this);
     m_quitter = new QAction("&Quitter", this);

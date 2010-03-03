@@ -15,6 +15,10 @@
 FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWidget(pParent), m_fenCarte(pFenCarte), m_monde(pMonde) {
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle(tr("Bel-O-Kan - Initialisation du monde"));
+
+    QIcon *icone = new QIcon("Ant-icon.png");
+    setWindowIcon(*icone);
+
     QVBoxLayout* layout = new QVBoxLayout;
 
     QGroupBox *carteGroupBox = new QGroupBox(tr("Carte"));
