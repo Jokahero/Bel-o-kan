@@ -31,11 +31,11 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     QFormLayout *peuple = new QFormLayout;
     peupleGroupBox->setLayout(peuple);
     m_nbFemelles = new QSpinBox(peupleGroupBox);
-    m_nbFemelles->setRange(1, 50);
+    m_nbFemelles->setRange(0, 50);
     m_nbMales = new QSpinBox(peupleGroupBox);
-    m_nbMales->setRange(1, 50);
+    m_nbMales->setRange(0, 50);
     m_nbPetits = new QSpinBox(peupleGroupBox);
-    m_nbPetits->setRange(1, 50);
+    m_nbPetits->setRange(0, 50);
     peuple->addRow(tr("Femelles"), m_nbFemelles);
     peuple->addRow(tr("Mâles"), m_nbMales);
     peuple->addRow(tr("Petits"), m_nbPetits);

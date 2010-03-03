@@ -6,12 +6,28 @@
 #include "male.h"
 #include "position.h"
 
+#include <QtCore/QCoreApplication>
 #include <QtCore/QMap>
 #include <QtCore/QVector>
+
+Monde *Monde::_instance = 0;
+
+Monde *Monde::instance() {
+        if (_instance == 0)
+                _instance = new Monde;
+        return _instance;
+}
+
+void Monde::destroy() {
+    delete _instance;
+    _instance = 0;
+}
 
 Monde::Monde() {
     m_infos = new QMap<Position, int>;
     m_elements = new QVector<Elements*>;
+
+    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(destroy()));
 }
 
 Monde::~Monde() {
@@ -35,19 +51,21 @@ Position Monde::posAleatoire(int pAbcisseMax, int pOrdonneeMax) {
 }
 
 void Monde::init(const ParamsMonde &pParams) {
+    m_params = pParams;
+
     for (int i = 0; i < pParams.nbFemelles; i++) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
     }
 
-    for (int i = 0; i < pParams.nbFemelles; i++) {
+    for (int i = 0; i < pParams.nbMales; i++) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Male(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
     }
 
-    for (int i = 0; i < pParams.nbFemelles; i++) {
+    for (int i = 0; i < pParams.nbPetits; i++) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Petits(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);

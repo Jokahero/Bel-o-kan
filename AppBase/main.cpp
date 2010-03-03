@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
     }
 
     // Initialisation des modules
-    Monde *monde = new Monde();
+    Monde *monde = Monde::instance();
     FenCarte *fenCarte = new FenCarte();
 
     FenConfig *fen = new FenConfig(fenCarte, monde);

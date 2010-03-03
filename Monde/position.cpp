@@ -1,6 +1,8 @@
 #include "position.h"
 
-#include <QtGlobal>
+#include "monde.h"
+
+#include <QtCore/QList>
 
 #include <QtCore/QDebug>
 
@@ -15,4 +17,28 @@ void Position::setAbcisse(int pAbcisse) {
 
 void Position::setOrdonnee(int pOrdonnee) {
     m_ordonnee = pOrdonnee;
+}
+
+QList<Position> Position::getPositionsAdjacentes() const {
+    QList<Position> liste;
+    int hauteur = Monde::instance()->getParams().hauteur - 1;
+    int largeur = Monde::instance()->getParams().largeur - 1;
+    if (m_abcisse > 0)
+        liste.append(Position(m_abcisse - 1, m_ordonnee));
+    if (m_ordonnee > 0)
+        liste.append(Position(m_abcisse, m_ordonnee - 1));
+    if (m_abcisse < largeur)
+        liste.append(Position(m_abcisse + 1, m_ordonnee));
+    if (m_ordonnee < hauteur)
+        liste.append(Position(m_abcisse, m_ordonnee + 1));
+    if (m_abcisse % 2 == 0 && m_ordonnee < hauteur && m_abcisse > 0)
+        liste.append(Position(m_abcisse - 1, m_ordonnee + 1));
+    if (m_abcisse % 2 == 0 && m_ordonnee < hauteur && m_abcisse < largeur)
+        liste.append(Position(m_abcisse + 1, m_ordonnee + 1));
+    if (m_abcisse % 2 == 1 && m_ordonnee > 0 && m_abcisse > 0)
+        liste.append(Position(m_abcisse - 1, m_ordonnee - 1));
+    if (m_abcisse % 2 == 1 && m_ordonnee > 0 && m_abcisse < largeur)
+        liste.append(Position(m_abcisse + 1, m_ordonnee + 1));
+
+    return liste;
 }

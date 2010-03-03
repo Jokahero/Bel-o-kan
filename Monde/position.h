@@ -1,6 +1,8 @@
 #ifndef POSITION_H
 #define POSITION_H
 
+template <typename T> class QList;
+
 class Position {
 public:
     Position(int pAbcisse, int pOrdonnee);
@@ -16,6 +18,8 @@ public:
                 (getAbcisse() == p.getAbcisse() &&
                  getOrdonnee() < p.getOrdonnee()));
     }
+
+    QList<Position> getPositionsAdjacentes() const;
     
 private:
     int m_abcisse;
