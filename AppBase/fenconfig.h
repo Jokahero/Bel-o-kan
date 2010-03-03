@@ -6,6 +6,7 @@
 class FenCarte;
 class Monde;
 class QDialogButtonBox;
+class QSpinBox;
 
 class FenConfig : public QWidget {
     Q_OBJECT
@@ -21,6 +22,12 @@ private:
     FenCarte* m_fenCarte;
     Monde* m_monde;
     QDialogButtonBox* m_bbox;
+    QSpinBox* m_largeurCarte;
+    QSpinBox* m_hauteurCarte;
+
+    QSpinBox* m_nbFemelles;
+    QSpinBox* m_nbMales;
+    QSpinBox* m_nbPetits;
 };
 
 #endif // FENCONFIG_H
