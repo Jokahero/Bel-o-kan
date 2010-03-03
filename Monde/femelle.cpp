@@ -6,5 +6,5 @@ Femelle::Femelle(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pA
 }
 
 void Femelle::tour() {
-
+    Peuple::tour();
 }
