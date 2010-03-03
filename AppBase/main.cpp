@@ -44,5 +44,8 @@ int main(int argc, char** argv) {
 
     FenConfig *fen = new FenConfig(fenCarte, monde);
     fen->show();
+
+    QObject::connect(fenCarte, SIGNAL(signalQuitter()), qApp, SLOT(quit()));
+
     return a.exec();
 }

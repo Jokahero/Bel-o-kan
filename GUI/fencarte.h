@@ -24,6 +24,12 @@ private:
 
 public slots:
     void show(int pHauteur, int pLargeur);
+
+private slots:
+    void emmettreSignalQuitter();
+
+signals:
+    void signalQuitter();
 };
 
 #endif // FENCARTE_H
