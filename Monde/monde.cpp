@@ -10,9 +10,6 @@
 #include <QtCore/QMap>
 #include <QtCore/QVector>
 
-#include <QtCore/QDebug>
-#include <QtCore/QList>
-
 Monde *Monde::_instance = 0;
 
 Monde *Monde::instance() {
@@ -51,10 +48,6 @@ Position Monde::posAleatoire(int pAbcisseMax, int pOrdonneeMax) {
         pos = new Position(abcisse, ordonnee);
     }
 
-    qDebug() << "position adjacentes, 2, (" + QString::number(pos->getAbcisse()) + ", " + QString::number(pos->getOrdonnee()) + ")";
-    QList<Position> tmp = pos->getPositionsAdjacentes(2);
-    for (int i = 0; i < tmp.size(); i++)
-        qDebug() << "(" + QString::number(tmp.at(i).getAbcisse()) + ", " + QString::number(tmp.at(i).getOrdonnee()) + ")";
     return *pos;
 }
 

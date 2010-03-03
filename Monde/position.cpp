@@ -23,6 +23,7 @@ QList<Position> Position::getPositionsAdjacentes(int pDistance) const {
     QList<Position> liste;
     int hauteur = Monde::instance()->getParams().hauteur - 1;
     int largeur = Monde::instance()->getParams().largeur - 1;
+
     if (m_abcisse > 0)
         liste.append(Position(m_abcisse - 1, m_ordonnee));
     if (m_ordonnee > 0)
@@ -31,13 +32,13 @@ QList<Position> Position::getPositionsAdjacentes(int pDistance) const {
         liste.append(Position(m_abcisse + 1, m_ordonnee));
     if (m_ordonnee < hauteur)
         liste.append(Position(m_abcisse, m_ordonnee + 1));
-    if (m_abcisse % 2 == 0 && m_ordonnee < hauteur && m_abcisse > 0)
-        liste.append(Position(m_abcisse - 1, m_ordonnee + 1));
-    if (m_abcisse % 2 == 0 && m_ordonnee < hauteur && m_abcisse < largeur)
-        liste.append(Position(m_abcisse + 1, m_ordonnee + 1));
     if (m_abcisse % 2 == 1 && m_ordonnee > 0 && m_abcisse > 0)
         liste.append(Position(m_abcisse - 1, m_ordonnee - 1));
     if (m_abcisse % 2 == 1 && m_ordonnee > 0 && m_abcisse < largeur)
+        liste.append(Position(m_abcisse + 1, m_ordonnee - 1));
+    if (m_abcisse % 2 == 0 && m_abcisse > 0 && m_ordonnee < hauteur)
+        liste.append(Position(m_abcisse - 1, m_ordonnee + 1));
+    if (m_abcisse % 2 == 0 && m_abcisse < largeur && m_ordonnee < hauteur)
         liste.append(Position(m_abcisse + 1, m_ordonnee + 1));
 
     if (pDistance > 1) {
