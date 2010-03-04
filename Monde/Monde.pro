@@ -1,6 +1,5 @@
 TARGET = Monde
 TEMPLATE = lib
-
 HEADERS += monde.h \
     elements.h \
     position.h \
@@ -10,7 +9,8 @@ HEADERS += monde.h \
     ressourcesmobiles.h \
     male.h \
     femelle.h \
-    petits.h
+    petits.h \
+    mycelium.h
 SOURCES += monde.cpp \
     elements.cpp \
     position.cpp \
@@ -20,6 +20,6 @@ SOURCES += monde.cpp \
     ressourcesmobiles.cpp \
     male.cpp \
     femelle.cpp \
-    petits.cpp
-
+    petits.cpp \
+    mycelium.cpp
 DESTDIR = ../

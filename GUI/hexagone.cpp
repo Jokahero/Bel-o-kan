@@ -23,6 +23,15 @@ void Hexagone::setCoord(int pX, int pY) {
     m_Y = pY;
 }
 
+void Hexagone::setIcon(ParametresMonde::typeElement pTypeElement) {
+    // Instruction d'ajout d'un icône superposé sur un Hexagone
+    /*************************/
+    //QGraphicsPixmapItem *GPI = new QGraphicsPixmapItem((new QPixmap("icon.png"))->scaled(50,50)); // scaled() redimmensionnement
+    //GPI->setPos(m_X,m_Y+20); // Soit Hexagone(X,Y) → Icône(X,Y+20)
+    //GPI->setZValue(1); // Positionnement selon Z par defaut 0 → définition a 1 pour mettre l'icône au premier plan
+    //m_scene->addItem(GPI); // ajout de l'icone a la scène
+    /*************************/
+}
 /* Calculs pour l'hexagone:
    Construction droite
        Point de départ "en haut a gauche" → X, Y

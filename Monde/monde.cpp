@@ -51,8 +51,9 @@ Position Monde::posAleatoire(int pAbcisseMax, int pOrdonneeMax) {
     return *pos;
 }
 
-void Monde::init(const ParamsMonde &pParams) {
+void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
     m_params = pParams;
+    m_nbTours = 0;
 
     for (int i = 0; i < pParams.nbFemelles; i++) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
@@ -71,4 +72,15 @@ void Monde::init(const ParamsMonde &pParams) {
         m_elements->append(new Petits(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
     }
+}
+
+void Monde::tour() {
+    for (int i = 0; i < m_elements->size(); i++) {
+        m_elements->at(i)->tour();
+    }
+    m_nbTours++;
+}
+
+void Monde::fin() {
+    emit finDuMonde(m_nbTours);
 }

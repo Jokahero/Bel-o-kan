@@ -7,3 +7,4 @@ SOURCES += hexagone.cpp \
     carte.cpp \
     fencarte.cpp
 DESTDIR = ../
+RESOURCES += Images.qrc

@@ -11,14 +11,18 @@ template<typename T> class QVector;
 
 class Monde : public QObject{
     Q_OBJECT
+
 public:
     static Monde* instance();
     Position posAleatoire(int pAbcisseMax,int pOrdonneeMax);
-    inline ParamsMonde getParams() const {return m_params;};
+    inline ParametresMonde::ParamsMonde getParams() const {return m_params;}
 
 public slots:
-    void init(const ParamsMonde& pParams);
+    void init(const ParametresMonde::ParamsMonde& pParams);
     void destroy();
+
+    void tour();
+    void fin();
 
 private:
     static Monde*_instance;
@@ -26,7 +30,12 @@ private:
     ~Monde();
     QMap<Position, int>* m_infos;
     QVector<Elements*>* m_elements;
-    ParamsMonde m_params;
+    ParametresMonde::ParamsMonde m_params;
+
+    int m_nbTours;
+
+signals:
+    void finDuMonde(int pNbTours);
 };
 
 #endif // MONDE_H

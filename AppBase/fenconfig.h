@@ -29,6 +29,11 @@ private:
     QSpinBox* m_nbFemelles;
     QSpinBox* m_nbMales;
     QSpinBox* m_nbPetits;
+
+    QSpinBox* m_nbMyceliums;
+
+    QSpinBox* m_nbBrindilles;
+    QSpinBox* m_nbNourriture;
 };
 
 #endif // FENCONFIG_H

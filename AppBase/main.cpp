@@ -46,6 +46,7 @@ int main(int argc, char** argv) {
     fen->show();
 
     QObject::connect(fenCarte, SIGNAL(signalQuitter()), qApp, SLOT(quit()));
+    QObject::connect(fenCarte, SIGNAL(tourSuivant()), monde, SLOT(tour()));
 
     return a.exec();
 }

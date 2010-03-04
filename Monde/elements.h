@@ -10,6 +10,9 @@ public:
     ~Elements();
     void setPos(Position* pPos);
     Position getPos() const;
+    inline Monde* getMonde() const {return m_monde;};
+
+    virtual void tour() = 0;
 
 private:
     Position* m_pos;
