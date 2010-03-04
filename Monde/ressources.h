@@ -13,6 +13,8 @@ public:
     inline int getNourriture() const {return m_nourriture;};
     void setNourriture(int pNourriture);
 
+    virtual void tour() {};
+
 private:
     int m_brindilles;
     int m_nourriture;
