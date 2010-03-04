@@ -24,6 +24,8 @@ public slots:
     void tour();
     void fin();
 
+    void mort(Elements* pElement);
+
 private:
     static Monde*_instance;
     Monde();

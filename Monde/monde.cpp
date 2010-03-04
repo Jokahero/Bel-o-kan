@@ -84,3 +84,14 @@ void Monde::tour() {
 void Monde::fin() {
     emit finDuMonde(m_nbTours);
 }
+
+void Monde::mort(Elements *pElement) {
+    m_infos->remove(pElement->getPos());
+    bool sup = false;
+    int max = m_elements->size();
+    for (int i = 0; i < max && !sup; i++)
+        if (m_elements->at(i) == pElement) {
+            m_elements->remove(i);
+            sup = true;
+        }
+}

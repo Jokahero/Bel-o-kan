@@ -6,5 +6,5 @@ Petits::Petits(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pAbc
 }
 
 void Petits::tour() {
-
+    Peuple::tour();
 }

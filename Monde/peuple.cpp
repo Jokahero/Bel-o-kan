@@ -13,8 +13,10 @@ Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee) : Mobiles(pMonde, pAb
     if (!init) {
         m_brindilles = getMonde()->getParams().nbBrindilles;
         m_nourriture = getMonde()->getParams().nbNourriture;
+        m_pop = 0;
         init = true;
     }
+    setPopulation(getPopulation() + 1);
 }
 
 void Peuple::setBrindilles(int pBrindilles) {
@@ -35,8 +37,9 @@ void Peuple::tour() {
 }
 
 void Peuple::mort() {
-    qDebug() << "Un membre du peuple est mort, population restante : " << getPopulation();
     setPopulation(getPopulation() - 1);
+    getMonde()->mort(this);
+    qDebug() << "Un membre du peuple est mort, population restante : " << getPopulation();
     if (getPopulation() <= 0)
         getMonde()->fin();
 }
