@@ -7,7 +7,7 @@ class Monde;
 
 class Mobiles : public Elements {
 public:
-    Mobiles(Monde* pMonde, int pAbcisse, int pOrdonnee);
+    Mobiles(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType);
 
     inline int getVitesse() const {return m_vitesse;}
     void setVitesse(int pVitesse);

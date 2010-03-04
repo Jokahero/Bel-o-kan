@@ -4,7 +4,7 @@
 
 #include <QtCore/QDebug>
 
-Mobiles::Mobiles(Monde* pMonde, int pAbcisse, int pOrdonnee) : Elements(pMonde, pAbcisse, pOrdonnee) {
+Mobiles::Mobiles(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType) : Elements(pMonde, pAbcisse, pOrdonnee, pType) {
     setVitesse((qrand() % 3) + 1);
     setVue((qrand() % 3) + 1);
 }

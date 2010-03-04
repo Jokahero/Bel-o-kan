@@ -2,7 +2,7 @@
 
 #include "monde.h"
 
-Ressources::Ressources(Monde *pMonde, int pAbcisse, int pOrdonnee, int pBrindilles, int pNourriture) : Elements(pMonde, pAbcisse, pOrdonnee), m_brindilles(pBrindilles), m_nourriture(pNourriture) {
+Ressources::Ressources(Monde *pMonde, int pAbcisse, int pOrdonnee, int pBrindilles, int pNourriture, ParametresMonde::typeElement pType) : Elements(pMonde, pAbcisse, pOrdonnee, pType), m_brindilles(pBrindilles), m_nourriture(pNourriture) {
 }
 
 void Ressources::setBrindilles(int pBrindilles) {

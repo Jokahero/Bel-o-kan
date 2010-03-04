@@ -3,9 +3,10 @@
 #include "monde.h"
 #include "position.h"
 
-Elements::Elements(Monde* pMonde, int pAbcisse, int pOrdonnee) : m_monde(pMonde) {
+Elements::Elements(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType) : m_monde(pMonde) {
     m_pos = new Position(pAbcisse, pOrdonnee);
     m_mort = false;
+    m_type = pType;
 }
 
 Elements::~Elements() {

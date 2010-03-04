@@ -7,7 +7,7 @@ class Monde;
 
 class Peuple : public Mobiles {
 public:
-    Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee);
+    Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType);
     inline static int getBrindilles() {return m_brindilles;};
     void setBrindilles(int pBrindilles);
 

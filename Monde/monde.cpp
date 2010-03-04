@@ -5,6 +5,7 @@
 #include "petits.h"
 #include "femelle.h"
 #include "male.h"
+#include "mycelium.h"
 #include "position.h"
 
 #include <QtCore/QCoreApplication>
@@ -83,6 +84,13 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
         m_elements->append(new Brindille(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
         emit afficherElement(ParametresMonde::Brindille, pos.getAbcisse(), pos.getOrdonnee());
+    }
+
+    for (int i = 0; i < pParams.mycelium; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Mycelium(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+        emit afficherElement(ParametresMonde::Mycelium, pos.getAbcisse(), pos.getOrdonnee());
     }
 }
 

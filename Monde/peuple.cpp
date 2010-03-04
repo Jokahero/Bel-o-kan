@@ -9,7 +9,7 @@ int Peuple::m_brindilles = 0;
 int Peuple::m_nourriture = 0;
 int Peuple::m_pop = 0;
 
-Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee) : Mobiles(pMonde, pAbcisse, pOrdonnee) {
+Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType) : Mobiles(pMonde, pAbcisse, pOrdonnee, pType) {
     if (!init) {
         m_brindilles = getMonde()->getParams().nbBrindilles;
         m_nourriture = getMonde()->getParams().nbNourriture;

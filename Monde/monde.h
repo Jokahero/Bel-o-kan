@@ -16,6 +16,8 @@ public:
     static Monde* instance();
     Position posAleatoire(int pAbcisseMax,int pOrdonneeMax);
     inline ParametresMonde::ParamsMonde getParams() const {return m_params;}
+    inline QMap<Position, int>* getInfos() const {return m_infos;}
+    inline QVector<Elements*>* getElements() const {return m_elements;}
 
 public slots:
     void init(const ParametresMonde::ParamsMonde& pParams);

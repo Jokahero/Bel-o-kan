@@ -5,7 +5,7 @@
 
 class Ressources : public Elements {
 public:
-    Ressources(Monde* pMonde, int pAbcisse, int pOrdonnee, int pBrindilles, int pNourriture);
+    Ressources(Monde* pMonde, int pAbcisse, int pOrdonnee, int pBrindilles, int pNourriture, ParametresMonde::typeElement pType);
 
     inline int getBrindilles() const {return m_brindilles;};
     void setBrindilles(int pBrindilles);

@@ -6,7 +6,7 @@
 
 class RessourcesMobiles : public Mobiles, public Ressources {
 public:
-    RessourcesMobiles(Monde* pMonde, int pAbcisse, int pOrdonnee, int pBrindilles, int pNourriture);
+    RessourcesMobiles(Monde* pMonde, int pAbcisse, int pOrdonnee, int pBrindilles, int pNourriture, ParametresMonde::typeElement pType);
 };
 
 #endif // RESSOURCESMOBILES_H
