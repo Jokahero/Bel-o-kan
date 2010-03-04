@@ -38,7 +38,8 @@ private:
 
 signals:
     void finDuMonde(int pNbTours);
-    void afficherElement(ParametresMonde::typeElement pPM, int pX, int pY);
+    void afficherElement(ParametresMonde::typeElement pTE, int pX, int pY);
+    void supprimerElement(ParametresMonde::typeElement pTE, int pX, int pY);
 };
 
 #endif // MONDE_H

@@ -61,9 +61,7 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
-        qDebug() << "Monde emit Femelle Av";
         emit afficherElement(ParametresMonde::Femelle, pos.getAbcisse(), pos.getOrdonnee());
-        qDebug() << "Monde emit Femelle Ap";
     }
 
     for (int i = 0; i < pParams.nbMales; i++) {
@@ -99,7 +97,12 @@ void Monde::fin() {
     emit finDuMonde(m_nbTours);
 }
 
+
+/*!
+  \todo : Corriger le type envoyé
+  */
 void Monde::mort(Elements *pElement) {
+    emit supprimerElement(ParametresMonde::Brindille, pElement->getPos().getAbcisse(), pElement->getPos().getOrdonnee());
     m_infos->remove(pElement->getPos());
     bool sup = false;
     int max = m_elements->size();
