@@ -6,3 +6,4 @@ syntax: glob
 Makefile
 Bel-O-Kan
 moc_*
+qrc_*.cpp
