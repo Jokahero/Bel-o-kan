@@ -10,7 +10,8 @@ HEADERS += monde.h \
     male.h \
     femelle.h \
     petits.h \
-    mycelium.h
+    mycelium.h \
+    brindille.h
 SOURCES += monde.cpp \
     elements.cpp \
     position.cpp \
@@ -21,5 +22,6 @@ SOURCES += monde.cpp \
     male.cpp \
     femelle.cpp \
     petits.cpp \
-    mycelium.cpp
+    mycelium.cpp \
+    brindille.cpp
 DESTDIR = ../
