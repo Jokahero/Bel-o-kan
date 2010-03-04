@@ -19,7 +19,7 @@ namespace ParametresMonde {
     enum typeElement {
         Male,
         Femelle,
-        Petit,
+        Petits,
         Brindille,
         Mycelium,
     };

@@ -59,18 +59,21 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
+        emit afficherElement(ParametresMonde::Femelle, pos.getAbcisse(), pos.getOrdonnee());
     }
 
     for (int i = 0; i < pParams.nbMales; i++) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Male(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
+        emit afficherElement(ParametresMonde::Male, pos.getAbcisse(), pos.getOrdonnee());
     }
 
     for (int i = 0; i < pParams.nbPetits; i++) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Petits(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
+        emit afficherElement(ParametresMonde::Petits, pos.getAbcisse(), pos.getOrdonnee());
     }
 }
 
