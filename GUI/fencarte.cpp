@@ -1,5 +1,6 @@
 #include "fencarte.h"
 #include "carte.h"
+#include "../AppBase/ParamsMonde.h"
 
 #include <QtGui/QMenuBar>
 #include <QtGui/QMenu>
@@ -29,6 +30,7 @@ FenCarte::FenCarte() {
 
     connect(m_quitter, SIGNAL(triggered()), this, SIGNAL(signalQuitter()));
     connect(m_tourSuivant, SIGNAL(triggered()), this, SIGNAL(tourSuivant()));
+    connect(this, SIGNAL(afficherElement(ParametresMonde::typeElement,int,int)), m_carte, SLOT(afficherIcone(ParametresMonde::typeElement,int,int)));
 }
 
 void FenCarte::show(int pHauteur, int pLargeur) {

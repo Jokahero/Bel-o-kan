@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "../AppBase/ParamsMonde.h"
+
 class Carte;
 class QMenuBar;
 class QMenu;
@@ -28,6 +30,7 @@ public slots:
 signals:
     void signalQuitter();
     void tourSuivant();
+    void afficherElement(ParametresMonde::typeElement,int,int);
 };
 
 #endif // FENCARTE_H

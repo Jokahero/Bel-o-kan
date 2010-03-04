@@ -6,6 +6,7 @@
 
 #include "../AppBase/ParamsMonde.h"
 
+class QGraphicsPixmapItem;
 class QPoint;
 template <typename Key, typename T> class QMap;
 
@@ -19,9 +20,12 @@ public:
     void construire();
     void setCoord(int pX, int pY);
 
+    QGraphicsPixmapItem* getIcon();
+
 private:
     int m_X, m_Y;
-    QMap<ParametresMonde::typeElement, QString>* m_infos;
+    QGraphicsPixmapItem *m_icone;
+    QMap<ParametresMonde::typeElement, QString>* m_mapIcones;
 
 public slots:
     void setIcon(ParametresMonde::typeElement pTypeElement);

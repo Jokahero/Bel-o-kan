@@ -9,6 +9,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QMap>
 #include <QtCore/QVector>
+#include <QtCore/QDebug>
 
 Monde *Monde::_instance = 0;
 
@@ -59,7 +60,9 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Femelle(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
+        qDebug() << "Monde emit Femelle Av";
         emit afficherElement(ParametresMonde::Femelle, pos.getAbcisse(), pos.getOrdonnee());
+        qDebug() << "Monde emit Femelle Ap";
     }
 
     for (int i = 0; i < pParams.nbMales; i++) {

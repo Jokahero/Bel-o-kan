@@ -1,12 +1,17 @@
 #include "hexagone.h"
 #include "math.h"
 
+#include <QtGui/QGraphicsPixmapItem>
 #include <QtCore/QPoint>
 #include <QtCore/QDebug>
 
 Hexagone::Hexagone() {
     m_X = 0;
     m_Y = 0;
+
+    m_mapIcones = new QMap<ParametresMonde::typeElement, QString>;
+    m_mapIcones->insert(ParametresMonde::Brindille, "Icônes/brindille-icon1.png");
+    m_mapIcones->insert(ParametresMonde::Femelle, "Icônes/fourmis-icon1.jpg");
 }
 
 Hexagone::Hexagone(int pX, int pY) : QPolygon(6) {
@@ -25,12 +30,13 @@ void Hexagone::setCoord(int pX, int pY) {
 
 void Hexagone::setIcon(ParametresMonde::typeElement pTypeElement) {
     // Instruction d'ajout d'un icône superposé sur un Hexagone
-    /*************************/
-    //QGraphicsPixmapItem *GPI = new QGraphicsPixmapItem((new QPixmap("icon.png"))->scaled(50,50)); // scaled() redimmensionnement
-    //GPI->setPos(m_X,m_Y+20); // Soit Hexagone(X,Y) → Icône(X,Y+20)
-    //GPI->setZValue(1); // Positionnement selon Z par defaut 0 → définition a 1 pour mettre l'icône au premier plan
-    //m_scene->addItem(GPI); // ajout de l'icone a la scène
-    /*************************/
+    QGraphicsPixmapItem *GPI = new QGraphicsPixmapItem((new QPixmap(m_mapIcones->value(pTypeElement)))->scaled(50,50)); // scaled() redimmensionnement
+    GPI->setPos(m_X,m_Y+20); // Soit Hexagone(X,Y) → Icône(X,Y+20)
+    GPI->setZValue(1); // Positionnement selon Z par defaut 0 → définition a 1 pour mettre l'icône au premier plan
+}
+
+QGraphicsPixmapItem* Hexagone::getIcon() {
+    return m_icone;
 }
 /* Calculs pour l'hexagone:
    Construction droite

@@ -1,3 +1,5 @@
 <RCC>
-    <qresource prefix="/Icônes" />
+    <qresource prefix="/Icônes" >
+        <file>brindille-icon1.png</file>
+    </qresource>
 </RCC>

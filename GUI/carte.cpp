@@ -15,10 +15,10 @@ Carte::Carte() {
 
     // Instruction d'ajout d'un icône superposé sur un Hexagone
     /*************************/
-    QGraphicsPixmapItem *testQGPI = new QGraphicsPixmapItem((new QPixmap("brindille-icon1.png"))->scaled(50,50)); // scaled() redimmensionnement
-    testQGPI->setPos(75,100); // Soit Hexagone(X,Y) → Icône(X,Y+20)
-    testQGPI->setZValue(1); // Positionnement selon Z par defaut 0 → définition a 1 pour mettre l'icône au premier plan
-    m_scene->addItem(testQGPI); // ajout de l'icone a la scène
+    //QGraphicsPixmapItem *testQGPI = new QGraphicsPixmapItem((new QPixmap("brindille-icon1.png"))->scaled(50,50)); // scaled() redimmensionnement
+    //testQGPI->setPos(75,100); // Soit Hexagone(X,Y) → Icône(X,Y+20)
+    //testQGPI->setZValue(1); // Positionnement selon Z par defaut 0 → définition a 1 pour mettre l'icône au premier plan
+    //m_scene->addItem(testQGPI); // ajout de l'icone a la scène
     /*************************/
 
     setScene(m_scene);
@@ -71,4 +71,14 @@ void Carte::construireCarte(int pHauteur, int pLargeur) {
     /*QGraphicsPixmapItem *testQGPI = new QGraphicsPixmapItem(QPixmap("Hexa-ant-test.png"));
     testQGPI->setPos(75,80);
     m_scene->addItem(testQGPI);*/
+}
+
+void Carte::afficherIcone(ParametresMonde::typeElement pTypeElement, int pX, int pY) {
+    qDebug() << "Carte avant setIcon";
+    qDebug() << m_carte->at(pX)->size();
+    qDebug() << "***";
+    m_carte->at(pX)->at(pX)->setIcon(pTypeElement);
+    qDebug() << "Carte après setIcon <> avant addItem et getIcon ";
+    m_scene->addItem(m_carte->at(pX)->at(pY)->getIcon());
+    qDebug() << "Carte après tout";
 }
