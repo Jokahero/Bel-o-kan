@@ -2,6 +2,8 @@
 #include "hexagone.h"
 
 #include <QtGui/QGraphicsScene>
+#include <QtGui/QGraphicsPixmapItem>
+#include <QtGui/QPixmap>
 #include <QtCore/QPoint>
 #include <QtGui/QPolygon>
 #include <QtCore/QDebug>
@@ -10,6 +12,10 @@ Carte::Carte() {
     m_scene = new QGraphicsScene();
     m_listeHexagones = new QVector<Hexagone*>;
     m_carte = new QVector<QVector<Hexagone*>*>;
+
+    /*QGraphicsPixmapItem *testQGPI = new QGraphicsPixmapItem((new QPixmap("3.jpg"))->scaled(50,50));
+    testQGPI->setPos(100,105);
+    m_scene->addItem(testQGPI);*/
 
     setScene(m_scene);
 }
@@ -57,4 +63,8 @@ void Carte::construireCarte(int pHauteur, int pLargeur) {
         m_listeHexagones->at(i)->construire();
         m_scene->addPolygon(*m_listeHexagones->at(i), pen, brush);
     }
+
+    QGraphicsPixmapItem *testQGPI = new QGraphicsPixmapItem(QPixmap("Hexa-ant-test.png"));
+    testQGPI->setPos(75,80);
+    m_scene->addItem(testQGPI);
 }
