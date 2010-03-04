@@ -35,16 +35,18 @@ void Carte::construireCarte(int pHauteur, int pLargeur) {
     int taille = pHauteur * pLargeur;
     bool basse = false;
 
-    for(int i=0; i < taille; i++) {
-        m_carte->append(new QVector<Hexagone*>);
+    for (int i=0; i < taille; i++)
         m_listeHexagones->append(new Hexagone());
-        m_carte->at(i)->append(m_listeHexagones->at(i));
-    }
+
+    m_carte->append(new QVector<Hexagone*>);
 
     int x=75, y=80;
-    for (int i=0, j=1; i < taille; i++, j++) {
+    for (int i=0, j=1, col = 0; i < taille; i++, j++) {
         m_listeHexagones->at(i)->setCoord(x, y);
+        m_carte->at(col)->append(m_listeHexagones->at(i));
         if (j == pHauteur) {
+            col++;
+            m_carte->append(new QVector<Hexagone*>);
             if (basse == false) {
                 x += 75;
                 y = 125;
@@ -75,8 +77,10 @@ void Carte::construireCarte(int pHauteur, int pLargeur) {
 
 void Carte::afficherIcone(ParametresMonde::typeElement pTypeElement, int pX, int pY) {
     qDebug() << "Carte avant setIcon";
+    qDebug() << m_carte->size();
     qDebug() << m_carte->at(pX)->size();
     qDebug() << "***";
+    qDebug() << "pX : " << pX << " pY : " << pY;
     m_carte->at(pX)->at(pX)->setIcon(pTypeElement);
     qDebug() << "Carte après setIcon <> avant addItem et getIcon ";
     m_scene->addItem(m_carte->at(pX)->at(pY)->getIcon());

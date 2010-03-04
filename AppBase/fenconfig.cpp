@@ -104,8 +104,8 @@ void FenConfig::lancer() {
     p.mycelium = m_nbMyceliums->value();
     p.nbBrindilles = m_nbBrindilles->value();
     p.nbNourriture = m_nbNourriture->value();
-    m_monde->init(p);
     m_fenCarte->show(p.hauteur, p.largeur);
+    m_monde->init(p);
     close();
 }
 
