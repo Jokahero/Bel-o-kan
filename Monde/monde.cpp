@@ -87,8 +87,9 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
 }
 
 void Monde::tour() {
-    for (int i = 0; i < m_elements->size(); i++) {
-        m_elements->at(i)->tour();
+    QVector<Elements*> tmp = *m_elements;
+    for (int i = 0; i < tmp.size(); i++) {
+        tmp.at(i)->tour();
     }
     m_nbTours++;
 }
