@@ -5,6 +5,7 @@
 
 Elements::Elements(Monde* pMonde, int pAbcisse, int pOrdonnee) : m_monde(pMonde) {
     m_pos = new Position(pAbcisse, pOrdonnee);
+    m_mort = false;
 }
 
 Elements::~Elements() {
@@ -17,4 +18,8 @@ void Elements::setPos(Position *pPos) {
 
 Position Elements::getPos() const {
     return *m_pos;
+}
+
+void Elements::setMort(bool pMort) {
+    m_mort = pMort;
 }

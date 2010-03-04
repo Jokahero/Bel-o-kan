@@ -24,7 +24,7 @@ public slots:
     void tour();
     void fin();
 
-    void mort(Elements* pElement);
+    void bringOutYourDeads();
 
 private:
     static Monde*_instance;

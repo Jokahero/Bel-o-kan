@@ -10,11 +10,15 @@ public:
     ~Elements();
     void setPos(Position* pPos);
     Position getPos() const;
-    inline Monde* getMonde() const {return m_monde;};
+    inline Monde* getMonde() const {return m_monde;}
+
+    inline bool isMort() const {return m_mort;}
+    void setMort(bool pMort);
 
     virtual void tour() = 0;
 
 private:
+    bool m_mort;
     Position* m_pos;
     Monde* m_monde;
 };

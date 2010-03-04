@@ -87,10 +87,10 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
 }
 
 void Monde::tour() {
-    QVector<Elements*> tmp = *m_elements;
-    for (int i = 0; i < tmp.size(); i++) {
-        tmp.at(i)->tour();
-    }
+    for (int i = 0; i < m_elements->size(); i++)
+        m_elements->at(i)->tour();
+
+    bringOutYourDeads();
     m_nbTours++;
 }
 
@@ -102,14 +102,14 @@ void Monde::fin() {
 /*!
   \todo : Corriger le type envoyé
   */
-void Monde::mort(Elements *pElement) {
-    emit supprimerElement(ParametresMonde::Brindille, pElement->getPos().getAbcisse(), pElement->getPos().getOrdonnee());
-    m_infos->remove(pElement->getPos());
-    bool sup = false;
-    int max = m_elements->size();
-    for (int i = 0; i < max && !sup; i++)
-        if (m_elements->at(i) == pElement) {
-            m_elements->remove(i);
-            sup = true;
+void Monde::bringOutYourDeads() {
+    QVector<Elements*> tmp = *m_elements;
+    for (int i = 0, sup = 0; i < tmp.size(); i++) {
+        if (tmp.at(i)->isMort()) {
+            emit supprimerElement(ParametresMonde::Brindille, tmp.at(i)->getPos().getAbcisse(), tmp.at(i)->getPos().getOrdonnee());
+            m_infos->remove(tmp.at(i)->getPos());
+            m_elements->remove(i - sup);
+            sup++;
         }
+    }
 }

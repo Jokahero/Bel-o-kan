@@ -33,12 +33,11 @@ void Peuple::tour() {
         setNourriture(getNourriture() - 1);
     else
         mort();
-    qDebug() << "Nourriture restante : " << getNourriture();
 }
 
 void Peuple::mort() {
     setPopulation(getPopulation() - 1);
-    getMonde()->mort(this);
+    setMort(true);
     qDebug() << "Un membre du peuple est mort, population restante : " << getPopulation();
     if (getPopulation() <= 0)
         getMonde()->fin();
