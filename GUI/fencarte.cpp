@@ -1,6 +1,5 @@
 #include "fencarte.h"
 #include "carte.h"
-#include "../AppBase/ParamsMonde.h"
 
 #include <QtGui/QMenuBar>
 #include <QtGui/QMenu>

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/Icônes" >
         <file>brindille-icon1.png</file>
+        <file>fourmis-icon1.jpg</file>
     </qresource>
 </RCC>
