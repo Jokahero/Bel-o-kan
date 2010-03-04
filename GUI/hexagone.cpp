@@ -28,6 +28,10 @@ void Hexagone::setCoord(int pX, int pY) {
     m_Y = pY;
 }
 
+void Hexagone::setIcon() {
+    m_icone = NULL;
+}
+
 void Hexagone::setIcon(ParametresMonde::typeElement pTypeElement) {
     // Instruction d'ajout d'un icône superposé sur un Hexagone
     m_icone = new QGraphicsPixmapItem((new QPixmap(m_mapIcones->value(pTypeElement)))->scaled(50,50)); // scaled() redimmensionnement

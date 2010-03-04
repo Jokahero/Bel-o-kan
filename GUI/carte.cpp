@@ -79,3 +79,9 @@ void Carte::afficherIcone(ParametresMonde::typeElement pTypeElement, int pX, int
     m_carte->at(pX)->at(pY)->setIcon(pTypeElement);
     m_scene->addItem(m_carte->at(pX)->at(pY)->getIcon());
 }
+
+void Carte::supprimerIcone(ParametresMonde::typeElement pTE, int pX, int pY) {
+    qDebug() << m_carte->at(pX)->at(pY)->getIcon();
+    m_scene->removeItem(m_scene->itemAt(m_carte->at(pX)->at(pY)->getIcon()->pos()));
+    m_carte->at(pX)->at(pY)->setIcon();
+}

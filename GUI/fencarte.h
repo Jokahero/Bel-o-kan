@@ -31,6 +31,7 @@ signals:
     void signalQuitter();
     void tourSuivant();
     void afficherElement(ParametresMonde::typeElement,int,int);
+    void supprimerElement(ParametresMonde::typeElement,int,int);
 };
 
 #endif // FENCARTE_H

@@ -28,6 +28,7 @@ private:
     QMap<ParametresMonde::typeElement, QString>* m_mapIcones;
 
 public slots:
+    void setIcon();
     void setIcon(ParametresMonde::typeElement pTypeElement);
 
     /* Icones
