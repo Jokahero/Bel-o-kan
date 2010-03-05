@@ -13,13 +13,7 @@ Carte::Carte() {
     m_listeHexagones = new QVector<Hexagone*>;
     m_carte = new QVector<QVector<Hexagone*>*>;
 
-    // Instruction d'ajout d'un icône superposé sur un Hexagone
-    /*************************/
-    //QGraphicsPixmapItem *testQGPI = new QGraphicsPixmapItem((new QPixmap("brindille-icon1.png"))->scaled(50,50)); // scaled() redimmensionnement
-    //testQGPI->setPos(75,100); // Soit Hexagone(X,Y) → Icône(X,Y+20)
-    //testQGPI->setZValue(1); // Positionnement selon Z par defaut 0 → définition a 1 pour mettre l'icône au premier plan
-    //m_scene->addItem(testQGPI); // ajout de l'icone a la scène
-    /*************************/
+    m_scene->setBackgroundBrush(QBrush(Qt::black));
 
     setScene(m_scene);
 }
@@ -69,10 +63,6 @@ void Carte::construireCarte(int pHauteur, int pLargeur) {
         m_listeHexagones->at(i)->construire();
         m_scene->addPolygon(*m_listeHexagones->at(i), pen, brush);
     }
-
-    /*QGraphicsPixmapItem *testQGPI = new QGraphicsPixmapItem(QPixmap("Hexa-ant-test.png"));
-    testQGPI->setPos(75,80);
-    m_scene->addItem(testQGPI);*/
 }
 
 void Carte::afficherIcone(ParametresMonde::typeElement pTypeElement, int pX, int pY) {

@@ -35,5 +35,5 @@ FenCarte::FenCarte() {
 
 void FenCarte::show(int pHauteur, int pLargeur) {
     m_carte->construireCarte(pHauteur, pLargeur);
-    QMainWindow::show();
+    QMainWindow::showMaximized();
 }
