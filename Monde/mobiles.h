@@ -15,6 +15,8 @@ public:
     inline int getVue() const {return m_vue;}
     void setVue(int pVue);
 
+    void deplacement(const Position& pDest);
+
 private:
     int m_vitesse;
     int m_vue;

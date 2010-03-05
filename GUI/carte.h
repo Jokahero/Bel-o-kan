@@ -26,6 +26,7 @@ public slots:
     void construireCarte(int pHauteur, int pLargeur);
     void afficherIcone(ParametresMonde::typeElement pTypeElement, int pX, int pY);
     void supprimerIcone(ParametresMonde::typeElement pTE, int pX, int pY);
+    void deplacerElement(ParametresMonde::typeElement pTE, int pXOrig, int pYOrig, int pXDest, int pYDest);
 };
 
 #endif // CARTE_H

@@ -30,8 +30,9 @@ public slots:
 signals:
     void signalQuitter();
     void tourSuivant();
-    void afficherElement(ParametresMonde::typeElement,int,int);
-    void supprimerElement(ParametresMonde::typeElement,int,int);
+    void afficherElement(ParametresMonde::typeElement, int, int);
+    void supprimerElement(ParametresMonde::typeElement, int, int);
+    void deplacerElement(ParametresMonde::typeElement, int, int, int, int);
 };
 
 #endif // FENCARTE_H

@@ -31,6 +31,7 @@ FenCarte::FenCarte() {
     connect(m_tourSuivant, SIGNAL(triggered()), this, SIGNAL(tourSuivant()));
     connect(this, SIGNAL(afficherElement(ParametresMonde::typeElement,int,int)), m_carte, SLOT(afficherIcone(ParametresMonde::typeElement,int,int)));
     connect(this, SIGNAL(supprimerElement(ParametresMonde::typeElement,int,int)), m_carte, SLOT(supprimerIcone(ParametresMonde::typeElement,int,int)));
+    connect(this, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)), m_carte, SLOT(deplacerElement(ParametresMonde::typeElement, int, int, int, int)));
 }
 
 void FenCarte::show(int pHauteur, int pLargeur) {

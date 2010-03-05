@@ -16,3 +16,8 @@ void Mobiles::setVitesse(int pVitesse) {
 void Mobiles::setVue(int pVue) {
     m_vue = pVue;
 }
+
+void Mobiles::deplacement(const Position &pDest) {
+    getMonde()->deplacer(this, pDest);
+    setPos(pDest);
+}

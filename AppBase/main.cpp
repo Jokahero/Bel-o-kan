@@ -49,6 +49,7 @@ int main(int argc, char** argv) {
     QObject::connect(fenCarte, SIGNAL(tourSuivant()), monde, SLOT(tour()));
     QObject::connect(monde, SIGNAL(afficherElement(ParametresMonde::typeElement,int,int)), fenCarte, SIGNAL(afficherElement(ParametresMonde::typeElement,int,int)));
     QObject::connect(monde, SIGNAL(supprimerElement(ParametresMonde::typeElement,int,int)), fenCarte, SIGNAL(supprimerElement(ParametresMonde::typeElement,int,int)));
+    QObject::connect(monde, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)), fenCarte, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)));
 
     return a.exec();
 }

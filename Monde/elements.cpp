@@ -3,22 +3,20 @@
 #include "monde.h"
 #include "position.h"
 
-Elements::Elements(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType) : m_monde(pMonde) {
-    m_pos = new Position(pAbcisse, pOrdonnee);
+Elements::Elements(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType) : m_pos(pAbcisse, pOrdonnee), m_monde(pMonde) {
     m_mort = false;
     m_type = pType;
 }
 
 Elements::~Elements() {
-    delete m_pos;
 }
 
-void Elements::setPos(Position *pPos) {
-    m_pos = pPos;
+void Elements::setPos(const Position &pPos) {
+    m_pos = Position(pPos.getAbcisse(), pPos.getOrdonnee());
 }
 
 Position Elements::getPos() const {
-    return *m_pos;
+    return m_pos;
 }
 
 void Elements::setMort(bool pMort) {

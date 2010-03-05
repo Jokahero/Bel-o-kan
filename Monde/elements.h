@@ -2,15 +2,15 @@
 #define ELEMENTS_H
 
 #include "../AppBase/ParamsMonde.h"
+#include "position.h"
 
 class Monde;
-class Position;
 
 class Elements {
 public:
     Elements(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType);
     ~Elements();
-    void setPos(Position* pPos);
+    void setPos(const Position& pPos);
     Position getPos() const;
     inline Monde* getMonde() const {return m_monde;}
 
@@ -23,7 +23,7 @@ public:
 
 private:
     bool m_mort;
-    Position* m_pos;
+    Position m_pos;
     Monde* m_monde;
     ParametresMonde::typeElement m_type;
 };

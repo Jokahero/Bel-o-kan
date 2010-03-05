@@ -27,6 +27,7 @@ public slots:
     void fin();
 
     void bringOutYourDeads();
+    void deplacer(Elements* pE, const Position& pDest);
 
 private:
     static Monde*_instance;
@@ -42,6 +43,7 @@ signals:
     void finDuMonde(int pNbTours);
     void afficherElement(ParametresMonde::typeElement pTE, int pX, int pY);
     void supprimerElement(ParametresMonde::typeElement pTE, int pX, int pY);
+    void deplacerElement(ParametresMonde::typeElement, int pXOrig, int pYOrig, int pXDest, int pYDest);
 };
 
 #endif // MONDE_H

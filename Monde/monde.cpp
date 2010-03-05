@@ -117,3 +117,9 @@ void Monde::bringOutYourDeads() {
         }
     }
 }
+
+void Monde::deplacer(Elements *pE, const Position& pDest) {
+    m_infos->insert(pDest, m_infos->value(pE->getPos()));
+    m_infos->remove(pE->getPos());
+    emit deplacerElement(pE->getType(), pE->getPos().getAbcisse(), pE->getPos().getOrdonnee(), pDest.getAbcisse(), pDest.getOrdonnee());
+}
