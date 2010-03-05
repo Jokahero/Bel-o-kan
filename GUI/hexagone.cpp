@@ -10,8 +10,10 @@ Hexagone::Hexagone() {
     m_Y = 0;
 
     m_mapIcones = new QMap<ParametresMonde::typeElement, QString>;
-    m_mapIcones->insert(ParametresMonde::Brindille, ":/Icônes/brindille-icon1.png");
-    m_mapIcones->insert(ParametresMonde::Femelle, ":/Icônes/fourmis-icon1.jpg");
+    m_mapIcones->insert(ParametresMonde::Brindille, ":/Icônes/brindille-icon.png");
+    m_mapIcones->insert(ParametresMonde::Femelle, ":/Icônes/fourmis-iconF.png");
+    m_mapIcones->insert(ParametresMonde::Male, ":/Icônes/fourmis-iconM.png");
+    m_mapIcones->insert(ParametresMonde::Mycelium, ":/Icônes/mycelium-icon.png");
 }
 
 Hexagone::Hexagone(int pX, int pY) : QPolygon(6) {
