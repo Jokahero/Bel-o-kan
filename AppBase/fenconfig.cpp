@@ -47,6 +47,9 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     QGroupBox *resGroupBox = new QGroupBox(tr("Ressources"));
     QFormLayout *res= new QFormLayout;
     resGroupBox->setLayout(res);
+    m_nbBrindillesC = new QSpinBox(resGroupBox);
+    m_nbBrindillesC->setRange(0, 50);
+    res->addRow(tr("Brindilles"), m_nbBrindillesC);
     m_nbMyceliums = new QSpinBox(resGroupBox);
     m_nbMyceliums->setRange(0, 50);
     res->addRow(tr("Mycéliums"), m_nbMyceliums);
@@ -80,6 +83,7 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     connect(m_nbMales, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
     connect(m_nbPetits, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
     connect(m_nbMyceliums, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
+    connect(m_nbBrindillesC, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
 }
 
 FenConfig::~FenConfig() {
@@ -89,6 +93,7 @@ FenConfig::~FenConfig() {
     delete m_nbMales;
     delete m_nbPetits;
     delete m_nbMyceliums;
+    delete m_nbBrindillesC;
     delete m_nbBrindilles;
     delete m_nbNourriture;
     delete m_bbox;
@@ -102,6 +107,7 @@ void FenConfig::lancer() {
     p.nbMales = m_nbMales->value();
     p.nbPetits = m_nbPetits->value();
     p.mycelium = m_nbMyceliums->value();
+    p.brindilles = m_nbBrindillesC->value();
     p.nbBrindilles = m_nbBrindilles->value();
     p.nbNourriture = m_nbNourriture->value();
     m_fenCarte->show(p.hauteur, p.largeur);
@@ -116,6 +122,7 @@ void FenConfig::verifCoherence() {
     nbElements += m_nbMales->value();
     nbElements += m_nbPetits->value();
     nbElements += m_nbMyceliums->value();
+    nbElements += m_nbBrindillesC->value();
 
     m_bbox->button(QDialogButtonBox::Ok)->setEnabled(nbElements <= nbCellules);
 }

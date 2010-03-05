@@ -79,7 +79,7 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
         emit afficherElement(ParametresMonde::Petits, pos.getAbcisse(), pos.getOrdonnee());
     }
 
-    for (int i = 0; i < pParams.nbBrindilles; i++) {
+    for (int i = 0; i < pParams.brindilles; i++) {
         Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
         m_elements->append(new Brindille(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);

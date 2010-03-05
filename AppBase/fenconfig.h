@@ -31,6 +31,7 @@ private:
     QSpinBox* m_nbPetits;
 
     QSpinBox* m_nbMyceliums;
+    QSpinBox* m_nbBrindillesC;
 
     QSpinBox* m_nbBrindilles;
     QSpinBox* m_nbNourriture;

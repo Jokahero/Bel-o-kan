@@ -11,6 +11,7 @@ namespace ParametresMonde {
         int nbPetits;
         // Autres éléments
         int mycelium;
+        int brindilles;
         // Ressources
         int nbBrindilles;
         int nbNourriture;
