@@ -26,6 +26,7 @@ private:
 
 public slots:
     void show(int pHauteur, int pLargeur);
+    void finDuMonde(int pNbTours);
 
 signals:
     void signalQuitter();

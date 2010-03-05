@@ -95,15 +95,18 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
 }
 
 void Monde::tour() {
-    for (int i = 0; i < m_elements->size(); i++)
+    m_nbTours++;
+    for (int i = 0; i < m_elements->size() && m_nbTours > 0; i++)
         m_elements->at(i)->tour();
 
     bringOutYourDeads();
-    m_nbTours++;
+    if (Peuple::getPopulation() <= 0 && m_nbTours > 0)
+        fin();
 }
 
 void Monde::fin() {
     emit finDuMonde(m_nbTours);
+    m_nbTours = -1;
 }
 
 void Monde::bringOutYourDeads() {

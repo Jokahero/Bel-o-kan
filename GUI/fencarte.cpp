@@ -5,6 +5,7 @@
 #include <QtGui/QMenu>
 #include <QtGui/QAction>
 #include <QtGui/QIcon>
+#include <QtGui/QMessageBox>
 
 FenCarte::FenCarte() {
     setWindowTitle(tr("Bel-O-Kan - Simulation"));
@@ -37,4 +38,10 @@ FenCarte::FenCarte() {
 void FenCarte::show(int pHauteur, int pLargeur) {
     m_carte->construireCarte(pHauteur, pLargeur);
     QMainWindow::showMaximized();
+}
+
+void FenCarte::finDuMonde(int pNbTours) {
+    QMessageBox msgBox;
+    msgBox.setText(tr("Le peuple a été éliminé en %n tour(s).", "s", pNbTours));
+    msgBox.exec();
 }
