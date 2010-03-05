@@ -46,7 +46,7 @@ void Femelle::tour() {
             if (getPos().distance(ptmp) == 1)
                 break;
         }
-        qDebug() << "Nourriture la plus proche : " << ptmp;
         deplacement(ptmp);
-    }
+    } else        // Sinon, on se déplace aléatoirement
+        deplacement(posAdj.at(qrand() % posAdj.size()));
 }
