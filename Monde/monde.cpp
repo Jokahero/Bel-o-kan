@@ -106,15 +106,11 @@ void Monde::fin() {
     emit finDuMonde(m_nbTours);
 }
 
-
-/*!
-  \todo : Corriger le type envoyé
-  */
 void Monde::bringOutYourDeads() {
     QVector<Elements*> tmp = *m_elements;
     for (int i = 0, sup = 0; i < tmp.size(); i++) {
         if (tmp.at(i)->isMort()) {
-            emit supprimerElement(ParametresMonde::Brindille, tmp.at(i)->getPos().getAbcisse(), tmp.at(i)->getPos().getOrdonnee());
+            emit supprimerElement(tmp.at(i)->getType(), tmp.at(i)->getPos().getAbcisse(), tmp.at(i)->getPos().getOrdonnee());
             m_infos->remove(tmp.at(i)->getPos());
             m_elements->remove(i - sup);
             sup++;
