@@ -3,6 +3,7 @@
 #include "monde.h"
 
 #include <QtCore/QList>
+#include <math.h>
 
 #include <QtCore/QDebug>
 
@@ -54,4 +55,13 @@ QList<Position> Position::getPositionsAdjacentes(int pDistance) const {
     }
 
     return liste;
+}
+
+int Position::distance(const Position &p) const {
+    int decX;
+    int decY;
+    (getAbcisse() > p.getAbcisse()) ? decX = getAbcisse() - p.getAbcisse() : decX = p.getAbcisse() - getAbcisse();
+    (getOrdonnee() > p.getOrdonnee()) ? decY = getOrdonnee() - p.getOrdonnee() : decY = p.getOrdonnee() - getOrdonnee();
+
+    return sqrt((decX * decX) + (decY * decY));
 }
