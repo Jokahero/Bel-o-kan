@@ -38,12 +38,15 @@ void Femelle::tour() {
     // Déterminer un objectif
 
     // Recherche de la nourriture la plus proche
-    Position ptmp = nourriture.at(0);
-    for (int i = 1; i < nourriture.size(); i++) {
-        if (getPos().distance(ptmp) > getPos().distance(nourriture.at(i)))
-            ptmp = nourriture.at(i);
-        if (getPos().distance(ptmp) == 1)
-            break;
+    if (nourriture.size() > 0) {
+        Position ptmp = nourriture.at(0);
+        for (int i = 1; i < nourriture.size(); i++) {
+            if (getPos().distance(ptmp) > getPos().distance(nourriture.at(i)))
+                ptmp = nourriture.at(i);
+            if (getPos().distance(ptmp) == 1)
+                break;
+        }
+        qDebug() << "Nourriture la plus proche : " << ptmp;
+        deplacement(ptmp);
     }
-    qDebug() << "Nourriture la plus proche : (" + QString::number(ptmp.getAbcisse()) + ", " + QString::number(ptmp.getOrdonnee()) + ")";
 }

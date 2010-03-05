@@ -9,10 +9,10 @@ class Peuple : public Mobiles {
 public:
     Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType);
     inline static int getBrindilles() {return m_brindilles;};
-    void setBrindilles(int pBrindilles);
+    static void setBrindilles(int pBrindilles);
 
     inline static int getNourriture() {return m_nourriture;};
-    void setNourriture(int pNourriture);
+    static void setNourriture(int pNourriture);
 
     inline static int getPopulation() {return m_pop;};
     void setPopulation(int pPopulation);

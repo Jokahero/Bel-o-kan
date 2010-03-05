@@ -4,9 +4,13 @@
 #include "../AppBase/ParamsMonde.h"
 #include "position.h"
 
+#include <QtCore/QObject>
+
 class Monde;
 
-class Elements {
+class Elements : public QObject {
+    Q_OBJECT
+
 public:
     Elements(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType);
     ~Elements();

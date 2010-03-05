@@ -1,6 +1,8 @@
 #ifndef POSITION_H
 #define POSITION_H
 
+#include <QtCore/QDebug>
+
 template <typename T> class QList;
 
 class Position {
@@ -36,5 +38,7 @@ private:
     int m_abcisse;
     int m_ordonnee;
 };
+
+QDebug operator<<(QDebug dbg, const Position &pos);
 
 #endif // POSITION_H

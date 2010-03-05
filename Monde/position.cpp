@@ -5,8 +5,6 @@
 #include <QtCore/QList>
 #include <math.h>
 
-#include <QtCore/QDebug>
-
 Position::Position(int pAbcisse, int pOrdonnee) {
     m_abcisse = pAbcisse;
     m_ordonnee = pOrdonnee;
@@ -64,4 +62,9 @@ int Position::distance(const Position &p) const {
     (getOrdonnee() > p.getOrdonnee()) ? decY = getOrdonnee() - p.getOrdonnee() : decY = p.getOrdonnee() - getOrdonnee();
 
     return sqrt((decX * decX) + (decY * decY));
+}
+
+QDebug operator<<(QDebug dbg, const Position& pos) {
+    dbg.nospace() << "(" + QString::number(pos.getAbcisse()) + ", " + QString::number(pos.getOrdonnee()) + ")";
+    return dbg.maybeSpace();
 }

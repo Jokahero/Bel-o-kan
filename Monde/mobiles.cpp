@@ -18,6 +18,19 @@ void Mobiles::setVue(int pVue) {
 }
 
 void Mobiles::deplacement(const Position &pDest) {
-    getMonde()->deplacer(this, pDest);
-    setPos(pDest);
+    Position dest = pDest;
+
+    // On vérifie que la distance ne soit pas trop longue, auquel cas on va le plus loin possible en direction de la destination
+    while (getPos().distance(dest) > getVitesse()) {
+        if (getPos().getAbcisse() > dest.getAbcisse())
+            dest.setAbcisse(dest.getAbcisse() + 1);
+        else if (getPos().getAbcisse() < dest.getAbcisse())
+            dest.setAbcisse(dest.getAbcisse() - 1);
+        else if (getPos().getOrdonnee() > dest.getOrdonnee())
+            dest.setOrdonnee(dest.getOrdonnee() + 1);
+        else
+            dest.setOrdonnee(dest.getOrdonnee() - 1);
+    }
+    getMonde()->deplacer(this, dest);
+    setPos(dest);
 }

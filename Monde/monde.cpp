@@ -119,6 +119,13 @@ void Monde::bringOutYourDeads() {
 }
 
 void Monde::deplacer(Elements *pE, const Position& pDest) {
+    if (m_infos->contains(pDest)) {
+        Elements* tmp = m_elements->at(m_infos->value(pDest));
+        emit supprimerElement(tmp->getType(), tmp->getPos().getAbcisse(), tmp->getPos().getOrdonnee());
+        m_infos->remove(tmp->getPos());
+        if (tmp->getType() == ParametresMonde::Mycelium)
+            Peuple::setNourriture(Peuple::getNourriture() + qobject_cast<Mycelium*>(tmp)->getNourriture());
+    }
     m_infos->insert(pDest, m_infos->value(pE->getPos()));
     m_infos->remove(pE->getPos());
     emit deplacerElement(pE->getType(), pE->getPos().getAbcisse(), pE->getPos().getOrdonnee(), pDest.getAbcisse(), pDest.getOrdonnee());

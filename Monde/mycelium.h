@@ -6,6 +6,8 @@
 class Monde;
 
 class Mycelium : public Ressources {
+    Q_OBJECT
+
 public:
     Mycelium(Monde *pMonde, int pAbcisse, int pOrdonnee);
 };
