@@ -20,16 +20,30 @@ void Femelle::tour() {
         return;
 
     QList<Position> posAdj = getPos().getPositionsAdjacentes(getVue());
+    QList<Position> nourriture;
+    QList<Position> brindilles;
     for (int i = 0; i < posAdj.size(); i++) {
         if (getMonde()->getInfos()->contains(posAdj.at(i))) {
             switch (getMonde()->getElements()->at(getMonde()->getInfos()->value(posAdj.at(i)))->getType()) {
             case ParametresMonde::Mycelium:
-                qDebug() << "Nourriture trouvée en (" + QString::number(posAdj.at(i).getAbcisse()) + ", " + QString::number(posAdj.at(i).getOrdonnee()) + ")";
+                nourriture.append(posAdj.at(i));
                 break;
             case ParametresMonde::Brindille:
-                qDebug() << "Brindille trouvée en (" + QString::number(posAdj.at(i).getAbcisse()) + ", " + QString::number(posAdj.at(i).getOrdonnee()) + ")";
+                brindilles.append(posAdj.at(i));
                 break;
             }
         }
     }
+
+    // Déterminer un objectif
+
+    // Recherche de la nourriture la plus proche
+    Position ptmp = nourriture.at(0);
+    for (int i = 1; i < nourriture.size(); i++) {
+        if (getPos().distance(ptmp) > getPos().distance(nourriture.at(i)))
+            ptmp = nourriture.at(i);
+        if (getPos().distance(ptmp) == 1)
+            break;
+    }
+    qDebug() << "Nourriture la plus proche : (" + QString::number(ptmp.getAbcisse()) + ", " + QString::number(ptmp.getOrdonnee()) + ")";
 }
