@@ -18,29 +18,30 @@ WidgetInfos::WidgetInfos() {
     m_jours = new QLabel(tr("Age de la colonie (jours): "), this);
 
     QGroupBox *groupePopulation = new QGroupBox(tr("Population"), this);
-    QVBoxLayout *layoutPopulation = new QVBoxLayout(this);
+    QVBoxLayout *layoutPopulation = new QVBoxLayout(groupePopulation);
     layoutPopulation->addWidget(m_nbMales);
     layoutPopulation->addWidget(m_nbFemelles);
     layoutPopulation->addWidget(m_nbPetits);
     groupePopulation->setLayout(layoutPopulation);
 
     QGroupBox *groupeStocks = new QGroupBox(tr("Stocks"), this);
-    QVBoxLayout *layoutStocks = new QVBoxLayout(this);
+    QVBoxLayout *layoutStocks = new QVBoxLayout(groupeStocks);
     layoutStocks->addWidget(m_nbBrindilles);
     layoutStocks->addWidget(m_qteNourriture);
     groupeStocks->setLayout(layoutStocks);
 
     QGroupBox *groupeSimulation = new QGroupBox(tr("Simulation"), this);
-    QVBoxLayout *layoutSimulation = new QVBoxLayout(this);
+    QVBoxLayout *layoutSimulation = new QVBoxLayout(groupeSimulation);
     layoutSimulation->addWidget(m_jours);
     groupeSimulation->setLayout(layoutSimulation);
 
-    QHBoxLayout *layoutPrincipal = new QHBoxLayout(this);
+    QWidget *tmp = new QWidget(this);
+
+    QHBoxLayout *layoutPrincipal = new QHBoxLayout(tmp);
     layoutPrincipal->addWidget(groupePopulation);
     layoutPrincipal->addWidget(groupeStocks);
     layoutPrincipal->addWidget(groupeSimulation);
 
-    QWidget *tmp = new QWidget(this);
     tmp->setLayout(layoutPrincipal);
 
     setWidget(tmp);
