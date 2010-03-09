@@ -1,5 +1,6 @@
 #include "fencarte.h"
 #include "carte.h"
+#include "widgetinfos.h"
 
 #include <QtGui/QMenuBar>
 #include <QtGui/QMenu>
@@ -27,6 +28,9 @@ FenCarte::FenCarte() {
 
     m_carte = new Carte();
     setCentralWidget(m_carte);
+
+    m_WInfos = new WidgetInfos();
+    addDockWidget(Qt::BottomDockWidgetArea, m_WInfos);
 
     connect(m_quitter, SIGNAL(triggered()), this, SIGNAL(signalQuitter()));
     connect(m_tourSuivant, SIGNAL(triggered()), this, SIGNAL(tourSuivant()));

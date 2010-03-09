@@ -9,6 +9,7 @@ class Carte;
 class QMenuBar;
 class QMenu;
 class QAction;
+class WidgetInfos;
 
 class FenCarte : public QMainWindow {
     Q_OBJECT
@@ -23,6 +24,8 @@ private:
     QMenu *m_menuPrinc;
     QAction *m_quitter;
     QAction *m_tourSuivant;
+
+    WidgetInfos *m_WInfos;
 
 public slots:
     void show(int pHauteur, int pLargeur);
