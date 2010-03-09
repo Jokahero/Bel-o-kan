@@ -47,6 +47,11 @@ void Femelle::tour() {
                 break;
         }
         deplacement(ptmp);
-    } else        // Sinon, on se déplace aléatoirement
-        deplacement(posAdj.at(qrand() % posAdj.size()));
+    } else {        // Sinon, on se déplace aléatoirement
+        int pos;
+        do {
+            pos = qrand() % posAdj.size();
+        } while (getMonde()->getInfos()->contains(posAdj.at(pos)));
+        deplacement(posAdj.at(pos));
+    }
 }
