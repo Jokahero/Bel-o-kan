@@ -5,8 +5,9 @@
 
 class QLabel;
 
-class WidgetInfos : public QDockWidget
-{
+class WidgetInfos : public QDockWidget {
+    Q_OBJECT
+
 public:
     WidgetInfos();
 
