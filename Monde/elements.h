@@ -30,6 +30,10 @@ private:
     Position m_pos;
     Monde* m_monde;
     ParametresMonde::typeElement m_type;
+
+signals:
+    void ajoutBrindilles(int pQte);
+    void ajoutNourriture(int pQte);
 };
 
 #endif // ELEMENTS_H

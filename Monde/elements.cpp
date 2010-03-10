@@ -6,6 +6,9 @@
 Elements::Elements(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType) : m_pos(pAbcisse, pOrdonnee), m_monde(pMonde) {
     m_mort = false;
     m_type = pType;
+
+    connect(this, SIGNAL(ajoutBrindilles(int)), getMonde(), SIGNAL(ajoutBrindilles(int)));
+    connect(this, SIGNAL(ajoutNourriture(int)), getMonde(), SIGNAL(ajoutNourriture(int)));
 }
 
 Elements::~Elements() {

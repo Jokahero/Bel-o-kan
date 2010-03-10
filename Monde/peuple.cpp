@@ -29,9 +29,10 @@ void Peuple::setNourriture(int pNourriture) {
 
 void Peuple::tour() {
     // Consommation de nourriture
-    if (getNourriture() > 0)
+    if (getNourriture() > 0) {
         setNourriture(getNourriture() - 1);
-    else
+        emit ajoutNourriture(-1);
+    } else
         mort();
 }
 

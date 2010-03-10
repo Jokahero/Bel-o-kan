@@ -44,6 +44,8 @@ signals:
     void afficherElement(ParametresMonde::typeElement pTE, int pX, int pY);
     void supprimerElement(ParametresMonde::typeElement pTE, int pX, int pY);
     void deplacerElement(ParametresMonde::typeElement, int pXOrig, int pYOrig, int pXDest, int pYDest);
+    void ajoutBrindilles(int pQte);
+    void ajoutNourriture(int pQte);
 };
 
 #endif // MONDE_H
