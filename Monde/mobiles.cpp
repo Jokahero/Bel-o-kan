@@ -22,7 +22,7 @@ void Mobiles::deplacement(const Position &pDest) {
     Position dest = pDest;
 
     // On vérifie que la distance ne soit pas trop longue, auquel cas on va le plus loin possible en direction de la destination
-    while ((getPos().distance(dest) > getVitesse() || (getMonde()->getInfos()->contains(dest) && getMonde()->getElements()->at(getMonde()->getInfos()->value(dest))->getType() != ParametresMonde::Mycelium )) && dest != getPos()) {
+    while (getPos().distance(dest) > getVitesse() && dest != getPos()) {
         if (getPos().getAbcisse() > dest.getAbcisse())
             dest.setAbcisse(dest.getAbcisse() + 1);
         else if (getPos().getAbcisse() < dest.getAbcisse())
