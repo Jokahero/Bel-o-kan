@@ -18,11 +18,11 @@ namespace ParametresMonde {
     } ParamsMonde;
 
     enum typeElement {
-        Male,
-        Femelle,
-        Petits,
         Brindille,
+        Femelle,
+        Male,
         Mycelium,
+        Petits,
     };
 }
 #endif // PARAMSMONDE_H
