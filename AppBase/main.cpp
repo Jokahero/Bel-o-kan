@@ -52,6 +52,8 @@ int main(int argc, char** argv) {
     QObject::connect(monde, SIGNAL(afficherElement(ParametresMonde::typeElement,int,int)), fenCarte, SIGNAL(afficherElement(ParametresMonde::typeElement,int,int)));
     QObject::connect(monde, SIGNAL(supprimerElement(ParametresMonde::typeElement,int,int)), fenCarte, SIGNAL(supprimerElement(ParametresMonde::typeElement,int,int)));
     QObject::connect(monde, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)), fenCarte, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)));
+    QObject::connect(monde, SIGNAL(ajoutBrindilles(int)), fenCarte, SIGNAL(ajoutBrindilles(int)));
+    QObject::connect(monde, SIGNAL(ajoutNourriture(int)), fenCarte, SIGNAL(ajoutNourriture(int)));
 
     return a.exec();
 }

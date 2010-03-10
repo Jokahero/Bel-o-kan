@@ -90,36 +90,36 @@ void WidgetInfos::setJours(int pJours) {
     m_jours->setText(QString::number(pJours));
 }
 
-void WidgetInfos::ajoutMale() {
-    m_nbMales->setText(QString::number(m_nbMales->text().toInt() + 1));
+void WidgetInfos::ajoutMale(int pNb) {
+    m_nbMales->setText(QString::number(m_nbMales->text().toInt() + pNb));
 }
 
-void WidgetInfos::ajoutFemelle() {
-    m_nbFemelles->setText(QString::number(m_nbFemelles->text().toInt() + 1));
+void WidgetInfos::ajoutFemelle(int pNb) {
+    m_nbFemelles->setText(QString::number(m_nbFemelles->text().toInt() + pNb));
 }
 
-void WidgetInfos::ajoutPetit() {
-    m_nbPetits->setText(QString::number(m_nbPetits->text().toInt() + 1));
+void WidgetInfos::ajoutPetit(int pNb) {
+    m_nbPetits->setText(QString::number(m_nbPetits->text().toInt() + pNb));
 }
 
-void WidgetInfos::ajoutBrindilleStock() {
-    m_qteBrindillesStock->setText(QString::number(m_qteBrindillesStock->text().toInt() + 1));
+void WidgetInfos::ajoutBrindilleStock(int pNb) {
+    m_qteBrindillesStock->setText(QString::number(m_qteBrindillesStock->text().toInt() + pNb));
 }
 
-void WidgetInfos::ajoutBrindilleCarte() {
-    m_nbBrindillesCarte->setText(QString::number(m_nbBrindillesCarte->text().toInt() + 1));
+void WidgetInfos::ajoutBrindilleCarte(int pNb) {
+    m_nbBrindillesCarte->setText(QString::number(m_nbBrindillesCarte->text().toInt() + pNb));
 }
 
-void WidgetInfos::ajoutNourritureStock() {
-    m_qteNourritureStock->setText(QString::number(m_qteNourritureStock->text().toInt() + 1));
+void WidgetInfos::ajoutNourritureStock(int pNb) {
+    m_qteNourritureStock->setText(QString::number(m_qteNourritureStock->text().toInt() + pNb));
 }
 
-void WidgetInfos::ajoutMyceliumCarte() {
-    m_nbMyceliumCarte->setText(QString::number(m_nbMyceliumCarte->text().toInt() + 1));
+void WidgetInfos::ajoutMyceliumCarte(int pNb) {
+    m_nbMyceliumCarte->setText(QString::number(m_nbMyceliumCarte->text().toInt() + pNb));
 }
 
-void WidgetInfos::ajoutJour() {
-    m_jours->setText(QString::number(m_jours->text().toInt() + 1));
+void WidgetInfos::ajoutJour(int pNb) {
+    m_jours->setText(QString::number(m_jours->text().toInt() + pNb));
 }
 
 void WidgetInfos::suppressionMale() {
@@ -155,7 +155,7 @@ void WidgetInfos::suppressionMyceliumCarte() {
 
 void WidgetInfos::ajout(ParametresMonde::typeElement pType) {
     static struct { ParametresMonde::typeElement t;
-        void (WidgetInfos::*f)();
+        void (WidgetInfos::*f)(int);
     } tab[] = {
     {ParametresMonde::Brindille, &WidgetInfos::ajoutBrindilleCarte},
     {ParametresMonde::Femelle, &WidgetInfos::ajoutFemelle},
@@ -163,7 +163,7 @@ void WidgetInfos::ajout(ParametresMonde::typeElement pType) {
     {ParametresMonde::Mycelium, &WidgetInfos::ajoutMyceliumCarte},
     {ParametresMonde::Petits, &WidgetInfos::ajoutPetit}
 };
-    (this->*tab[pType].f)();
+    (this->*tab[pType].f)(1);
 }
 
 

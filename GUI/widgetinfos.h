@@ -23,14 +23,14 @@ public slots:
     void setNbMyceliumCarte(int pQteNourriture);
     void setJours(int pJours);
 
-    void ajoutMale();
-    void ajoutFemelle();
-    void ajoutPetit();
-    void ajoutBrindilleStock();
-    void ajoutBrindilleCarte();
-    void ajoutNourritureStock();
-    void ajoutMyceliumCarte();
-    void ajoutJour();
+    void ajoutMale(int pNb = 1);
+    void ajoutFemelle(int pNb = 1);
+    void ajoutPetit(int pNb = 1);
+    void ajoutBrindilleStock(int pNb = 1);
+    void ajoutBrindilleCarte(int pNb = 1);
+    void ajoutNourritureStock(int pNb = 1);
+    void ajoutMyceliumCarte(int pNb = 1);
+    void ajoutJour(int pNb = 1);
 
     void suppressionMale();
     void suppressionFemelle();

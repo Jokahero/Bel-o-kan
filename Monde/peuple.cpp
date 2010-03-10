@@ -16,6 +16,7 @@ Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::type
         m_pop = 0;
         init = true;
     }
+    setAge(0);
     setPopulation(getPopulation() + 1);
 }
 
@@ -32,6 +33,7 @@ void Peuple::tour() {
     if (getNourriture() > 0) {
         setNourriture(getNourriture() - 1);
         emit ajoutNourriture(-1);
+        setAge(getAge() + 1);
     } else
         mort();
 }
@@ -46,4 +48,8 @@ void Peuple::mort() {
 
 void Peuple::setPopulation(int pPopulation) {
     m_pop = pPopulation;
+}
+
+void Peuple::setAge(int pAge) {
+    m_age = pAge;
 }

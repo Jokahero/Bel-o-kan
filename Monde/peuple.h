@@ -19,11 +19,16 @@ public:
 
     virtual void tour();
 
+    inline int getAge() {return m_age;};
+    void setAge(int pAge);
+
 private:
     static bool init;
     static int m_brindilles;
     static int m_nourriture;
     static int m_pop;
+
+    int m_age;
 
     void mort();
 };

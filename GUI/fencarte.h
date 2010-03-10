@@ -38,6 +38,8 @@ signals:
     void afficherElement(ParametresMonde::typeElement, int, int);
     void supprimerElement(ParametresMonde::typeElement, int, int);
     void deplacerElement(ParametresMonde::typeElement, int, int, int, int);
+    void ajoutBrindilles(int pQte);
+    void ajoutNourriture(int pQte);
 };
 
 #endif // FENCARTE_H

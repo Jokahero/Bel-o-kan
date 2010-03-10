@@ -40,6 +40,8 @@ FenCarte::FenCarte() {
     connect(this, SIGNAL(afficherElement(ParametresMonde::typeElement,int,int)), m_WInfos, SLOT(ajout(ParametresMonde::typeElement)));
     connect(this, SIGNAL(supprimerElement(ParametresMonde::typeElement,int,int)), m_WInfos, SLOT(suppression(ParametresMonde::typeElement)));
     connect(this, SIGNAL(tourSuivantMonde()), m_WInfos, SLOT(ajoutJour()));
+    connect(this, SIGNAL(ajoutBrindilles(int)), m_WInfos, SLOT(ajoutBrindilleStock(int)));
+    connect(this, SIGNAL(ajoutNourriture(int)), m_WInfos, SLOT(ajoutNourritureStock(int)));
 }
 
 void FenCarte::show(int pHauteur, int pLargeur) {

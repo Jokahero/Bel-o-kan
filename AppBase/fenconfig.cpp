@@ -25,9 +25,9 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     QFormLayout *carte = new QFormLayout;
     carteGroupBox->setLayout(carte);
     m_largeurCarte = new QSpinBox(carteGroupBox);
-    m_largeurCarte->setRange(1, 50);
+    m_largeurCarte->setRange(1, 500);
     m_hauteurCarte = new QSpinBox(carteGroupBox);
-    m_hauteurCarte->setRange(1, 50);
+    m_hauteurCarte->setRange(1, 500);
     carte->addRow(tr("Largeur"), m_largeurCarte);
     carte->addRow(tr("Hauteur"), m_hauteurCarte);
 
@@ -35,11 +35,11 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     QFormLayout *peuple = new QFormLayout;
     peupleGroupBox->setLayout(peuple);
     m_nbFemelles = new QSpinBox(peupleGroupBox);
-    m_nbFemelles->setRange(0, 50);
+    m_nbFemelles->setRange(0, 500);
     m_nbMales = new QSpinBox(peupleGroupBox);
-    m_nbMales->setRange(0, 50);
+    m_nbMales->setRange(0, 500);
     m_nbPetits = new QSpinBox(peupleGroupBox);
-    m_nbPetits->setRange(0, 50);
+    m_nbPetits->setRange(0, 500);
     peuple->addRow(tr("Femelles"), m_nbFemelles);
     peuple->addRow(tr("Mâles"), m_nbMales);
     peuple->addRow(tr("Petits"), m_nbPetits);
@@ -48,20 +48,20 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     QFormLayout *res= new QFormLayout;
     resGroupBox->setLayout(res);
     m_nbBrindillesC = new QSpinBox(resGroupBox);
-    m_nbBrindillesC->setRange(0, 50);
+    m_nbBrindillesC->setRange(0, 500);
     res->addRow(tr("Brindilles"), m_nbBrindillesC);
     m_nbMyceliums = new QSpinBox(resGroupBox);
-    m_nbMyceliums->setRange(0, 50);
+    m_nbMyceliums->setRange(0, 500);
     res->addRow(tr("Mycéliums"), m_nbMyceliums);
 
     QGroupBox *stockGroupBox = new QGroupBox(tr("Stock"));
     QFormLayout *stock= new QFormLayout;
     stockGroupBox->setLayout(stock);
     m_nbBrindilles = new QSpinBox(stockGroupBox);
-    m_nbBrindilles->setRange(0, 50);
+    m_nbBrindilles->setRange(0, 500);
     stock->addRow(tr("Brindilles"), m_nbBrindilles);
     m_nbNourriture = new QSpinBox(stockGroupBox);
-    m_nbNourriture->setRange(0, 50);
+    m_nbNourriture->setRange(0, 500);
     stock->addRow(tr("Nourriture"), m_nbNourriture);
 
     m_bbox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
