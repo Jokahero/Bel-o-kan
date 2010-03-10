@@ -40,6 +40,7 @@ private:
     int m_nbTours;
 
 signals:
+    void sigTour();
     void finDuMonde(int pNbTours);
     void afficherElement(ParametresMonde::typeElement pTE, int pX, int pY);
     void supprimerElement(ParametresMonde::typeElement pTE, int pX, int pY);

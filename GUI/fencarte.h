@@ -33,6 +33,7 @@ public slots:
 
 signals:
     void signalQuitter();
+    void tourSuivantMonde();
     void tourSuivant();
     void afficherElement(ParametresMonde::typeElement, int, int);
     void supprimerElement(ParametresMonde::typeElement, int, int);

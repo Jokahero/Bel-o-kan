@@ -39,6 +39,7 @@ FenCarte::FenCarte() {
     connect(this, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)), m_carte, SLOT(deplacerElement(ParametresMonde::typeElement, int, int, int, int)));
     connect(this, SIGNAL(afficherElement(ParametresMonde::typeElement,int,int)), m_WInfos, SLOT(ajout(ParametresMonde::typeElement)));
     connect(this, SIGNAL(supprimerElement(ParametresMonde::typeElement,int,int)), m_WInfos, SLOT(suppression(ParametresMonde::typeElement)));
+    connect(this, SIGNAL(tourSuivantMonde()), m_WInfos, SLOT(ajoutJour()));
 }
 
 void FenCarte::show(int pHauteur, int pLargeur) {

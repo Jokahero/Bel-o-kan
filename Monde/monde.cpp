@@ -98,6 +98,7 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
 }
 
 void Monde::tour() {
+    emit sigTour();
     m_nbTours++;
     for (int i = 0; i < m_elements->size() && m_nbTours > 0; i++)
         m_elements->at(i)->tour();
