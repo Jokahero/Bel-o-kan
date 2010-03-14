@@ -22,6 +22,8 @@ public:
     inline int getAge() {return m_age;};
     void setAge(int pAge);
 
+    virtual void mort();
+
 private:
     static bool init;
     static int m_brindilles;
@@ -29,8 +31,6 @@ private:
     static int m_pop;
 
     int m_age;
-
-    void mort();
 };
 
 #endif // PEUPLE_H

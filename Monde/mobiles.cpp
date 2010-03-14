@@ -40,3 +40,27 @@ void Mobiles::deplacement(const Position &pDest) {
         setPos(dest);
     }
 }
+
+void Mobiles::setPv(int pPv) {
+    if (pPv >= getPvMax())
+        m_pv = pPv;
+    else
+        m_pv = getPvMax();
+}
+
+void Mobiles::setPvMax(int pPvMax) {
+    if (pPvMax < getPv())
+        m_pv = pPvMax;
+    m_pvMax = pPvMax;
+
+}
+
+void Mobiles::degats(int pQte) {
+    setPv(getPv() - pQte);
+    if (getPv() <= 0)
+        mort();
+}
+
+void Mobiles::mort() {
+    setMort(true);
+}

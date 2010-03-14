@@ -39,8 +39,8 @@ void Peuple::tour() {
 }
 
 void Peuple::mort() {
+    Mobiles::mort();
     setPopulation(getPopulation() - 1);
-    setMort(true);
     qDebug() << "Un membre du peuple est mort, population restante : " << getPopulation();
     if (getPopulation() <= 0)
         getMonde()->fin();
