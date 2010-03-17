@@ -19,7 +19,8 @@ Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::type
     }
     setAge(0);
     setPopulation(getPopulation() + 1);
-    setPv(Constantes::esperanceVie);
+    setPvMax(Constantes::pv);
+    setPv(Constantes::pv);
 }
 
 void Peuple::setBrindilles(int pBrindilles) {
@@ -35,8 +36,16 @@ void Peuple::tour() {
     if (getNourriture() > 0) {
         setNourriture(getNourriture() - 1);
         emit ajoutNourriture(-1);
-        setAge(getAge() + 1);
     } else
+        degats(1);
+
+    // Il ne sert à rien de changer l'âge d'un cadavre
+    if (isMort())
+        return;
+
+    // Augmentation de l'âge
+    setAge(getAge() + 1);
+    if (getAge() > Constantes::esperanceVie)
         degats(1);
 }
 

@@ -4,6 +4,7 @@
 class Constantes {
 public:
     static const int esperanceVie = 15;
+    static const int pv = 10;
     static const int nourritureMycelium = 10;
 };
 

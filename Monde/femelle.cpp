@@ -37,12 +37,21 @@ void Femelle::tour() {
 
     // Déterminer un objectif
 
-    // Recherche de la nourriture la plus proche
-    if (nourriture.size() > 0) {
+    // Si il n'y pas a beaucoup de nourriture, on en recherche
+    if (nourriture.size() > 0 && getNourriture() < getPopulation() * 3) {
         Position ptmp = nourriture.at(0);
         for (int i = 1; i < nourriture.size(); i++) {
             if (getPos().distance(ptmp) > getPos().distance(nourriture.at(i)))
                 ptmp = nourriture.at(i);
+            if (getPos().distance(ptmp) == 1)
+                break;
+        }
+        deplacement(ptmp);
+    } else if (brindilles.size() > 0 /* && besoin de brindilles*/) {
+        Position ptmp = brindilles.at(0);
+        for (int i = 1; i < brindilles.size(); i++) {
+            if (getPos().distance(ptmp) > getPos().distance(brindilles.at(i)))
+                ptmp = brindilles.at(i);
             if (getPos().distance(ptmp) == 1)
                 break;
         }

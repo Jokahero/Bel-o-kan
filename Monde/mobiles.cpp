@@ -42,7 +42,7 @@ void Mobiles::deplacement(const Position &pDest) {
 }
 
 void Mobiles::setPv(int pPv) {
-    if (pPv >= getPvMax())
+    if (pPv <= getPvMax())
         m_pv = pPv;
     else
         m_pv = getPvMax();

@@ -6,6 +6,8 @@
 class Monde;
 
 class Brindille : public Ressources {
+    Q_OBJECT
+
 public:
     Brindille(Monde *pMonde, int pAbcisse, int pOrdonnee);
 };

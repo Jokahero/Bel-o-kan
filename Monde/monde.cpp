@@ -130,9 +130,15 @@ void Monde::deplacer(Elements *pE, const Position& pDest) {
         Elements* tmp = m_elements->at(m_infos->value(pDest));
         emit supprimerElement(tmp->getType(), tmp->getPos().getAbcisse(), tmp->getPos().getOrdonnee());
         m_infos->remove(tmp->getPos());
-        if (tmp->getType() == ParametresMonde::Mycelium) {
+        switch (tmp->getType()) {
+        case ParametresMonde::Mycelium :
             Peuple::setNourriture(Peuple::getNourriture() + qobject_cast<Mycelium*>(tmp)->getNourriture());
             emit ajoutNourriture(qobject_cast<Mycelium*>(tmp)->getNourriture());
+            break;
+        case ParametresMonde::Brindille :
+            Peuple::setBrindilles(Peuple::getBrindilles() + qobject_cast<Brindille*>(tmp)->getBrindilles());
+            emit ajoutBrindilles(qobject_cast<Brindille*>(tmp)->getBrindilles());
+            break;
         }
     }
     m_infos->insert(pDest, m_infos->value(pE->getPos()));
