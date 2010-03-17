@@ -14,10 +14,11 @@ FenCarte::FenCarte() {
     setWindowIcon(*icone);
 
     m_barreMenu = new QMenuBar(this);
-    m_menuPrinc = new QMenu(tr("Menu"), this);
+    m_menuPrinc = new QMenu(tr("&Menu"), this);
     m_quitter = new QAction(tr("&Quitter"), this);
     m_quitter->setShortcut(tr("Ctrl+Q"));
     m_tourSuivant = new QAction(tr("Tour suivant"), this);
+    m_tourSuivant->setShortcut(tr("Ctrl+T"));
 
     m_menuPrinc->addAction(m_quitter);
     m_menuPrinc->addAction(m_tourSuivant);
