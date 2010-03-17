@@ -1,6 +1,7 @@
 #include "peuple.h"
 
 #include "monde.h"
+#include "../AppBase/Constantes.h"
 
 #include <QtCore/QDebug>
 
@@ -18,6 +19,7 @@ Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::type
     }
     setAge(0);
     setPopulation(getPopulation() + 1);
+    setPv(Constantes::esperanceVie);
 }
 
 void Peuple::setBrindilles(int pBrindilles) {
@@ -35,7 +37,7 @@ void Peuple::tour() {
         emit ajoutNourriture(-1);
         setAge(getAge() + 1);
     } else
-        mort();
+        degats(1);
 }
 
 void Peuple::mort() {
