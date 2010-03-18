@@ -12,6 +12,7 @@ namespace ParametresMonde {
         // Autres éléments
         int mycelium;
         int brindilles;
+        int pucerons;
         // Ressources
         int nbBrindilles;
         int nbNourriture;
@@ -23,6 +24,7 @@ namespace ParametresMonde {
         Male,
         Mycelium,
         Petits,
+        Puceron,
     };
 }
 #endif // PARAMSMONDE_H

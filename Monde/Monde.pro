@@ -11,7 +11,8 @@ HEADERS += monde.h \
     femelle.h \
     petits.h \
     mycelium.h \
-    brindille.h
+    brindille.h \
+    puceron.h
 SOURCES += monde.cpp \
     elements.cpp \
     position.cpp \
@@ -23,5 +24,6 @@ SOURCES += monde.cpp \
     femelle.cpp \
     petits.cpp \
     mycelium.cpp \
-    brindille.cpp
+    brindille.cpp \
+    puceron.cpp
 DESTDIR = ../

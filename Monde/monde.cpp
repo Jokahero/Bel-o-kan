@@ -7,6 +7,7 @@
 #include "male.h"
 #include "mycelium.h"
 #include "position.h"
+#include "puceron.h"
 
 #include <QtCore/QCoreApplication>
 #include <QtCore/QMap>
@@ -92,7 +93,14 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
         m_infos->insert(pos, m_elements->size() - 1);
         emit afficherElement(ParametresMonde::Mycelium, pos.getAbcisse(), pos.getOrdonnee());
     }
-
+/*
+    for (int i = 0; i < pParams.pucerons; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Puceron(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+        emit afficherElement(ParametresMonde::Puceron, pos.getAbcisse(), pos.getOrdonnee());
+    }
+*/
     emit ajoutBrindilles(m_params.nbBrindilles);
     emit ajoutNourriture(m_params.nbNourriture);
 }
