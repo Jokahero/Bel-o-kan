@@ -64,3 +64,15 @@ void Mobiles::degats(int pQte) {
 void Mobiles::mort() {
     setMort(true);
 }
+
+void Mobiles::deplacementAleatoire(int pDistanceMax) {
+    QList<Position> posAdj = getPos().getPositionsAdjacentes(pDistanceMax);
+    int pos;
+    Position tmp;
+    do {
+        pos = qrand() % posAdj.size();
+        tmp = posAdj.takeAt(pos);
+    } while (getMonde()->getInfos()->contains(tmp) && !posAdj.empty());
+    if (!getMonde()->getInfos()->contains(tmp))
+        deplacement(tmp);
+}

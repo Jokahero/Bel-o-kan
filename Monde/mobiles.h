@@ -26,6 +26,7 @@ public:
     virtual void mort();
 
     void deplacement(const Position& pDest);
+    void deplacementAleatoire(int pDistanceMax = 1);
 
 private:
     int m_vitesse;
