@@ -1,12 +1,10 @@
 #include "widgetinfos.h"
 
+#include <QtGui/QFormLayout>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
-#include <QtGui/QFormLayout>
 #include <QtGui/QWidget>
-
-#include <QtCore/QDebug>
 
 WidgetInfos::WidgetInfos() {
     setWindowTitle(tr("Informations"));

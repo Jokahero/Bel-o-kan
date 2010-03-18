@@ -3,7 +3,6 @@
 
 #include <QtGui/QGraphicsPixmapItem>
 #include <QtCore/QPoint>
-#include <QtCore/QDebug>
 
 Hexagone::Hexagone() {
     m_X = 0;

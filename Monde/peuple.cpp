@@ -21,6 +21,13 @@ Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::type
     setPopulation(getPopulation() + 1);
     setPvMax(Constantes::pv);
     setPv(Constantes::pv);
+    setVitesse((qrand() % Constantes::vitesseMaxPeuple) + 1);
+    setVue((qrand() % Constantes::vueMaxPeuple) + 1);
+    }
+
+Peuple::~Peuple() {
+    if (!isMort())
+        setPopulation(getPopulation() - 1);
 }
 
 void Peuple::setBrindilles(int pBrindilles) {

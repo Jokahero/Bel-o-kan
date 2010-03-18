@@ -6,7 +6,6 @@
 #include <QtGui/QPixmap>
 #include <QtCore/QPoint>
 #include <QtGui/QPolygon>
-#include <QtCore/QDebug>
 
 Carte::Carte() {
     m_scene = new QGraphicsScene();
@@ -73,7 +72,6 @@ void Carte::afficherIcone(ParametresMonde::typeElement pTypeElement, int pX, int
 
 void Carte::supprimerIcone(ParametresMonde::typeElement /*pTE*/, int pX, int pY) {
     pY = m_carte->at(pX)->size() - pY - 1;
-    qDebug() << m_carte->at(pX)->at(pY)->getIcon();
     delete m_carte->at(pX)->at(pY)->getIcon();
     //m_scene->removeItem(m_scene->itemAt(m_carte->at(pX)->at(pY)->getIcon()->pos()));
     m_carte->at(pX)->at(pY)->setIcon();

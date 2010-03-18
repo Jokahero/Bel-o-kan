@@ -29,6 +29,8 @@ public slots:
     void bringOutYourDeads();
     void deplacer(Elements* pE, const Position& pDest);
 
+    void evolution(const Position& pPos, int pSexe);
+
 private:
     static Monde*_instance;
     Monde();

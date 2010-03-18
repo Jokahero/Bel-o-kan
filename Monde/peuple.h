@@ -8,6 +8,7 @@ class Monde;
 class Peuple : public Mobiles {
 public:
     Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType);
+    virtual ~Peuple();
     inline static int getBrindilles() {return m_brindilles;};
     static void setBrindilles(int pBrindilles);
 
