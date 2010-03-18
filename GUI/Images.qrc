@@ -1,8 +1,9 @@
 <RCC>
-    <qresource prefix="/Icônes" >
+    <qresource prefix="/Icônes">
         <file>fourmis-iconM.png</file>
         <file>fourmis-iconF.png</file>
         <file>mycelium-icon.png</file>
         <file>brindille-icon.png</file>
+        <file>puceron-icon.png</file>
     </qresource>
 </RCC>

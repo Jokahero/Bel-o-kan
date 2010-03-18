@@ -21,6 +21,7 @@ public slots:
     void setNbBrindillesCarte(int pNbBrindilles);
     void setQteNourritureStock(int pQteNourriture);
     void setNbMyceliumCarte(int pQteNourriture);
+    void setNbPucerons(int pQteNourriture);
     void setJours(int pJours);
 
     void ajoutMale(int pNb = 1);
@@ -30,6 +31,7 @@ public slots:
     void ajoutBrindilleCarte(int pNb = 1);
     void ajoutNourritureStock(int pNb = 1);
     void ajoutMyceliumCarte(int pNb = 1);
+    void ajoutPuceron(int pNb = 1);
     void ajoutJour(int pNb = 1);
 
     void suppressionMale();
@@ -39,6 +41,7 @@ public slots:
     void suppressionBrindilleCarte();
     void suppressionNourritureStock();
     void suppressionMyceliumCarte();
+    void suppressionPuceron();
 
     void ajout(ParametresMonde::typeElement pType);
     void suppression(ParametresMonde::typeElement pType);
@@ -51,6 +54,7 @@ private:
     QLabel *m_nbBrindillesCarte;
     QLabel *m_qteNourritureStock;
     QLabel *m_nbMyceliumCarte;
+    QLabel *m_nbPucerons;
 
     QLabel *m_jours;
 };
