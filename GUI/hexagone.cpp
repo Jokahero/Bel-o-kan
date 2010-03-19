@@ -13,6 +13,7 @@ Hexagone::Hexagone() {
     m_mapIcones->insert(ParametresMonde::Femelle, ":/Icônes/fourmis-iconF.png");
     m_mapIcones->insert(ParametresMonde::Male, ":/Icônes/fourmis-iconM.png");
     m_mapIcones->insert(ParametresMonde::Mycelium, ":/Icônes/mycelium-icon.png");
+    m_mapIcones->insert(ParametresMonde::Petits, ":/Icônes/petit-icon.png");
     m_mapIcones->insert(ParametresMonde::Puceron, ":/Icônes/puceron-icon.png");
 }
 

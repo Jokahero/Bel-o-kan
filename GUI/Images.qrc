@@ -5,5 +5,6 @@
         <file>mycelium-icon.png</file>
         <file>brindille-icon.png</file>
         <file>puceron-icon.png</file>
+        <file>petit-icon.png</file>
     </qresource>
 </RCC>
