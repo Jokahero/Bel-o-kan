@@ -1,4 +1,4 @@
 QT       -= gui
 TEMPLATE = subdirs
-SUBDIRS += GUI Monde
+SUBDIRS += GUI Monde Stats
 SUBDIRS += AppBase

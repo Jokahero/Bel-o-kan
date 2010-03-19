@@ -3,6 +3,7 @@
 #include "ParamsMonde.h"
 #include "../GUI/fencarte.h"
 #include "../Monde/monde.h"
+#include "../Stats/stats.h"
 
 #include <QtCore/QCoreApplication>
 #include <QtGui/QDialogButtonBox>
@@ -12,7 +13,7 @@
 #include <QtGui/QSpinBox>
 #include <QtGui/QVBoxLayout>
 
-FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWidget(pParent), m_fenCarte(pFenCarte), m_monde(pMonde) {
+FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, Stats* pStats, QWidget* pParent) : QWidget(pParent), m_fenCarte(pFenCarte), m_monde(pMonde), m_stats(pStats) {
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle(tr("Bel-O-Kan - Initialisation du monde"));
 
@@ -87,6 +88,7 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, QWidget* pParent) : QWi
     connect(m_nbPetits, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
     connect(m_nbMyceliums, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
     connect(m_nbBrindillesC, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
+    connect(m_nbPucerons, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
 }
 
 FenConfig::~FenConfig() {
@@ -115,6 +117,7 @@ void FenConfig::lancer() {
     p.brindilles = m_nbBrindillesC->value();
     p.nbBrindilles = m_nbBrindilles->value();
     p.nbNourriture = m_nbNourriture->value();
+    m_stats->tour(p);
     m_fenCarte->show(p.hauteur, p.largeur);
     m_monde->init(p);
     close();

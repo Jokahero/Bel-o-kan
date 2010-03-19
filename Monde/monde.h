@@ -19,6 +19,8 @@ public:
     inline QMap<Position, int>* getInfos() const {return m_infos;}
     inline QVector<Elements*>* getElements() const {return m_elements;}
 
+    ParametresMonde::ParamsMonde getEtat() const;
+
 public slots:
     void init(const ParametresMonde::ParamsMonde& pParams);
     void destroy();
@@ -42,7 +44,7 @@ private:
     int m_nbTours;
 
 signals:
-    void sigTour();
+    void sigTour(const ParametresMonde::ParamsMonde& pParams);
     void finDuMonde(int pNbTours);
     void afficherElement(ParametresMonde::typeElement pTE, int pX, int pY);
     void supprimerElement(ParametresMonde::typeElement pTE, int pX, int pY);

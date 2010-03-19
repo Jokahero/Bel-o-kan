@@ -1,6 +1,7 @@
 #include "fenconfig.h"
 #include "../Monde/monde.h"
 #include "../GUI/fencarte.h"
+#include "../Stats/stats.h"
 
 #include <QtCore/QLibraryInfo>
 #include <QtCore/QLocale>
@@ -41,11 +42,12 @@ int main(int argc, char** argv) {
     // Initialisation des modules
     Monde *monde = Monde::instance();
     FenCarte *fenCarte = new FenCarte();
+    Stats *stats = new Stats();
 
-    FenConfig *fen = new FenConfig(fenCarte, monde);
+    FenConfig *fen = new FenConfig(fenCarte, monde, stats);
     fen->show();
 
-    QObject::connect(monde, SIGNAL(sigTour()), fenCarte, SIGNAL(tourSuivantMonde()));
+    QObject::connect(monde, SIGNAL(sigTour(ParametresMonde::ParamsMonde)), fenCarte, SIGNAL(tourSuivantMonde()));
     QObject::connect(monde, SIGNAL(finDuMonde(int)), fenCarte, SLOT(finDuMonde(int)));
     QObject::connect(fenCarte, SIGNAL(signalQuitter()), qApp, SLOT(quit()));
     QObject::connect(fenCarte, SIGNAL(tourSuivant()), monde, SLOT(tour()));
@@ -54,6 +56,8 @@ int main(int argc, char** argv) {
     QObject::connect(monde, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)), fenCarte, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)));
     QObject::connect(monde, SIGNAL(ajoutBrindilles(int)), fenCarte, SIGNAL(ajoutBrindilles(int)));
     QObject::connect(monde, SIGNAL(ajoutNourriture(int)), fenCarte, SIGNAL(ajoutNourriture(int)));
+    QObject::connect(monde, SIGNAL(sigTour(ParametresMonde::ParamsMonde)), stats, SLOT(tour(ParametresMonde::ParamsMonde)));
+    QObject::connect(monde, SIGNAL(finDuMonde(int)), stats, SLOT(fin()));
 
     return a.exec();
 }

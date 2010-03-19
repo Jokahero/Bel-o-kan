@@ -107,12 +107,14 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
 }
 
 void Monde::tour() {
-    emit sigTour();
     m_nbTours++;
     for (int i = 0; i < m_elements->size() && m_nbTours > 0; i++)
         m_elements->at(i)->tour();
 
     bringOutYourDeads();
+
+    emit sigTour(getEtat());
+
     if (Peuple::getPopulation() <= 0 && m_nbTours > 0)
         fin();
 }
@@ -161,4 +163,19 @@ void Monde::evolution(const Position &pPos, int pSexe) {
         emit afficherElement(ParametresMonde::Femelle, pPos.getAbcisse(), pPos.getOrdonnee());
     else
         emit afficherElement(ParametresMonde::Male, pPos.getAbcisse(), pPos.getOrdonnee());
+}
+
+ParametresMonde::ParamsMonde Monde::getEtat() const {
+    ParametresMonde::ParamsMonde p;
+    p.brindilles = 0;
+    p.hauteur = m_params.hauteur;
+    p.largeur = m_params.largeur;
+    p.mycelium = 0;
+    p.nbBrindilles = Peuple::getBrindilles();
+    p.nbFemelles = 0;
+    p.nbMales = 0;
+    p.nbNourriture = Peuple::getNourriture();
+    p.nbPetits = 0;
+    p.pucerons = 0;
+    return p;
 }

@@ -8,4 +8,5 @@ SOURCES += main.cpp \
     fenconfig.cpp
 LIBS += -L.. \
     -lMonde \
-    -lGUI
+    -lGUI \
+    -lStats

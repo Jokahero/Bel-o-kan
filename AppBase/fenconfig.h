@@ -7,12 +7,13 @@ class FenCarte;
 class Monde;
 class QDialogButtonBox;
 class QSpinBox;
+class Stats;
 
 class FenConfig : public QWidget {
     Q_OBJECT
 
 public:
-    FenConfig(FenCarte* pCarte, Monde* pMonde, QWidget* pParent = 0);
+    FenConfig(FenCarte* pCarte, Monde* pMonde, Stats* pStats, QWidget* pParent = 0);
     ~FenConfig();
 
 private slots:
@@ -22,6 +23,8 @@ private slots:
 private:
     FenCarte* m_fenCarte;
     Monde* m_monde;
+    Stats* m_stats;
+
     QDialogButtonBox* m_bbox;
     QSpinBox* m_largeurCarte;
     QSpinBox* m_hauteurCarte;
