@@ -130,6 +130,13 @@ void Monde::bringOutYourDeads() {
         if (tmp.at(i)->isMort()) {
             emit supprimerElement(tmp.at(i)->getType(), tmp.at(i)->getPos().getAbcisse(), tmp.at(i)->getPos().getOrdonnee());
             m_infos->remove(tmp.at(i)->getPos());
+            // Décalage des valeurs dans la map
+            QMapIterator<Position, int> it(*m_infos);
+            while (it.hasNext()) {
+                it.next();
+                if (it.value() > (i - sup))
+                    (*m_infos)[it.key()] = it.value() - 1;
+            }
             m_elements->remove(i - sup);
             sup++;
         }
