@@ -4,4 +4,9 @@
 #include "../AppBase/Constantes.h"
 
 Mycelium::Mycelium(Monde *pMonde, int pAbcisse, int pOrdonnee) : Ressources(pMonde, pAbcisse, pOrdonnee, 0, Constantes::nourritureMycelium, ParametresMonde::Mycelium) {
+    setMyceliumTot(getMyceliumTot() + 1);
+}
+
+Mycelium::~Mycelium() {
+    setMyceliumTot(getMyceliumTot() - 1);
 }

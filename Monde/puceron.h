@@ -7,6 +7,7 @@
 class Puceron : public RessourcesMobiles {
 public:
     Puceron(Monde* pMonde, int pAbcisse, int pOrdonnee);
+    ~Puceron();
 
     virtual void tour();
 };

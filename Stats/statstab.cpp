@@ -72,7 +72,41 @@ void StatsTab::dessinPopulation() {
 }
 
 void StatsTab::dessinRessources() {
+    delete m_scene;
+    m_scene = new QGraphicsScene;
+    m_view->setScene(m_scene);
 
+    int l = m_view->width() - 50;
+    int h = m_view->height() - 50;
+
+    QPen graphe(QColor(Qt::black));
+    QPen brindilles(QColor(Qt::red));
+    QPen mycelium(QColor(Qt::blue));
+    QPen puceron(QColor(Qt::green));
+
+    m_scene->addLine(0, 0, 0, h, graphe);
+    m_scene->addLine(0, h, l, h, graphe);
+
+    int xMax = m_parent->getListeTours()->size();
+
+    // Détermination de la valeur la plus élevée en ordonnées
+    int yMax = 0;
+    for (int i = 0; i < m_parent->getListeTours()->size(); i++) {
+        yMax = qMax(yMax, m_parent->getListeTours()->at(i).brindilles);
+        yMax = qMax(yMax, m_parent->getListeTours()->at(i).mycelium);
+        yMax = qMax(yMax, m_parent->getListeTours()->at(i).pucerons);
+    }
+
+    int pasX = l / xMax;
+    int pasY = h / yMax;
+
+    // Dessin des courbes
+    for (int i = 0; i < xMax - 1; i++)
+        m_scene->addLine(i * pasX, h - m_parent->getListeTours()->at(i).brindilles * pasY, (i + 1) * pasX, h - (m_parent->getListeTours()->at(i + 1).brindilles * pasY), brindilles);
+    for (int i = 0; i < xMax - 1; i++)
+        m_scene->addLine(i * pasX, h - m_parent->getListeTours()->at(i).mycelium * pasY, (i + 1) * pasX, h - (m_parent->getListeTours()->at(i + 1).mycelium * pasY), mycelium);
+    for (int i = 0; i < xMax - 1; i++)
+        m_scene->addLine(i * pasX, h - m_parent->getListeTours()->at(i).pucerons * pasY, (i + 1) * pasX, h - (m_parent->getListeTours()->at(i + 1).pucerons * pasY), puceron);
 }
 
 void StatsTab::dessinStock() {
@@ -84,8 +118,8 @@ void StatsTab::dessinStock() {
     int h = m_view->height() - 50;
 
     QPen graphe(QColor(Qt::black));
-    QPen nourriture(QColor(Qt::red));
-    QPen brindilles(QColor(Qt::blue));
+    QPen brindilles(QColor(Qt::red));
+    QPen nourriture(QColor(Qt::blue));
 
     m_scene->addLine(0, 0, 0, h, graphe);
     m_scene->addLine(0, h, l, h, graphe);
@@ -107,4 +141,4 @@ void StatsTab::dessinStock() {
         m_scene->addLine(i * pasX, h - m_parent->getListeTours()->at(i).nbBrindilles * pasY, (i + 1) * pasX, h - (m_parent->getListeTours()->at(i + 1).nbBrindilles * pasY), brindilles);
     for (int i = 0; i < xMax - 1; i++)
         m_scene->addLine(i * pasX, h - m_parent->getListeTours()->at(i).nbNourriture * pasY, (i + 1) * pasX, h - (m_parent->getListeTours()->at(i + 1).nbNourriture * pasY), nourriture);
-  }
+}

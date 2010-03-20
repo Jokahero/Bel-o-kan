@@ -10,6 +10,7 @@ class Brindille : public Ressources {
 
 public:
     Brindille(Monde *pMonde, int pAbcisse, int pOrdonnee);
+    ~Brindille();
 };
 
 #endif // BRINDILLE_H

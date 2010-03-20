@@ -10,6 +10,7 @@ class Mycelium : public Ressources {
 
 public:
     Mycelium(Monde *pMonde, int pAbcisse, int pOrdonnee);
+    ~Mycelium();
 };
 
 #endif // MYCELIUM_H
