@@ -9,6 +9,7 @@
 
 WidgetStats::WidgetStats(QVector<ParametresMonde::ParamsMonde> *pVect) : m_listeTours(pVect) {
     setAttribute(Qt::WA_DeleteOnClose);
+    resize(640, 480);
     QHBoxLayout *layout = new QHBoxLayout;
     m_tab = new QTabWidget;
     QStringList titres;

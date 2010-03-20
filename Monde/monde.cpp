@@ -13,7 +13,6 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QMap>
 #include <QtCore/QVector>
-#include <QtCore/QDebug>
 
 Monde *Monde::_instance = 0;
 
@@ -104,6 +103,9 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
 
     emit ajoutBrindilles(m_params.nbBrindilles);
     emit ajoutNourriture(m_params.nbNourriture);
+
+    Peuple::setBrindilles(m_params.nbBrindilles);
+    Peuple::setNourriture(m_params.nbNourriture);
 }
 
 void Monde::tour() {
