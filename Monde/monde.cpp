@@ -179,10 +179,10 @@ ParametresMonde::ParamsMonde Monde::getEtat() const {
     p.largeur = m_params.largeur;
     p.mycelium = 0;
     p.nbBrindilles = Peuple::getBrindilles();
-    p.nbFemelles = 0;
-    p.nbMales = 0;
+    p.nbFemelles = Peuple::getNbFemelles();
+    p.nbMales = Peuple::getNbMales();
     p.nbNourriture = Peuple::getNourriture();
-    p.nbPetits = 0;
+    p.nbPetits = Peuple::getNbPetits();
     p.pucerons = 0;
     return p;
 }

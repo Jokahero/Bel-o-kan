@@ -5,18 +5,14 @@
 
 #include <QtCore/QDebug>
 
-bool Peuple::init = false;
 int Peuple::m_brindilles = 0;
 int Peuple::m_nourriture = 0;
 int Peuple::m_pop = 0;
+int Peuple::m_nbFemelles = 0;
+int Peuple::m_nbMales = 0;
+int Peuple::m_nbPetits = 0;
 
 Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::typeElement pType) : Mobiles(pMonde, pAbcisse, pOrdonnee, pType) {
-    if (!init) {
-        m_brindilles = getMonde()->getParams().nbBrindilles;
-        m_nourriture = getMonde()->getParams().nbNourriture;
-        m_pop = 0;
-        init = true;
-    }
     setAge(0);
     setPopulation(getPopulation() + 1);
     setPvMax(Constantes::pv);
@@ -66,6 +62,18 @@ void Peuple::mort() {
 
 void Peuple::setPopulation(int pPopulation) {
     m_pop = pPopulation;
+}
+
+void Peuple::setNbFemelles(int pNbFemelles) {
+    m_nbFemelles = pNbFemelles;
+}
+
+void Peuple::setNbMales(int pNbMales) {
+    m_nbMales = pNbMales;
+}
+
+void Peuple::setNbPetits(int pNbPetits) {
+    m_nbPetits = pNbPetits;
 }
 
 void Peuple::setAge(int pAge) {

@@ -6,6 +6,7 @@
 #include "monde.h"
 
 Petits::Petits(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pAbcisse, pOrdonnee, ParametresMonde::Petits) {
+    setNbPetits(getNbPetits() + 1);
 }
 
 void Petits::tour() {

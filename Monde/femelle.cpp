@@ -10,6 +10,7 @@
 #include <QtCore/QDebug>
 
 Femelle::Femelle(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pAbcisse, pOrdonnee, ParametresMonde::Femelle) {
+    setNbFemelles(getNbFemelles() + 1);
 }
 
 void Femelle::tour() {

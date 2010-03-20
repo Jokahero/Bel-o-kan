@@ -21,6 +21,9 @@ void Stats::fin() {
     for (int i = 0; i < m_listeTours->size(); i++) {
         qDebug() << "Tour " << i;
         qDebug() << "Nourriture : " << m_listeTours->at(i).nbNourriture;
+        qDebug() << "Femelles : " << m_listeTours->at(i).nbFemelles;
+        qDebug() << "Males : " << m_listeTours->at(i).nbMales;
+        qDebug() << "Petits : " << m_listeTours->at(i).nbPetits;
         qDebug() << "--------------------------";
     }
 }
