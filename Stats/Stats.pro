@@ -1,5 +1,9 @@
 TARGET = Stats
 TEMPLATE = lib
 DESTDIR = ../
-HEADERS += stats.h
-SOURCES += stats.cpp
+HEADERS += stats.h \
+    widgetstats.h \
+    statstab.h
+SOURCES += stats.cpp \
+    widgetstats.cpp \
+    statstab.cpp

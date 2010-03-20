@@ -8,6 +8,7 @@ class Monde;
 class Femelle : public Peuple {
 public:
     Femelle(Monde* pMonde, int pAbcisse, int pOrdonnee);
+    ~Femelle();
 
     virtual void tour();
 };

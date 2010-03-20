@@ -137,7 +137,9 @@ void Monde::bringOutYourDeads() {
                 if (it.value() > (i - sup))
                     (*m_infos)[it.key()] = it.value() - 1;
             }
+            Elements* elmt = m_elements->at(i - sup);
             m_elements->remove(i - sup);
+            delete elmt;
             sup++;
         }
     }
@@ -145,9 +147,23 @@ void Monde::bringOutYourDeads() {
 
 void Monde::deplacer(Elements *pE, const Position& pDest) {
     if (m_infos->contains(pDest)) {
-        Elements* tmp = m_elements->at(m_infos->value(pDest));
+        int rang = m_infos->value(pDest);
+        Elements* tmp = m_elements->at(rang);
         emit supprimerElement(tmp->getType(), tmp->getPos().getAbcisse(), tmp->getPos().getOrdonnee());
         m_infos->remove(tmp->getPos());
+
+
+        // Décalage des valeurs dans la map
+        QMapIterator<Position, int> it(*m_infos);
+        while (it.hasNext()) {
+            it.next();
+            if (it.value() > rang)
+                (*m_infos)[it.key()] = it.value() - 1;
+        }
+        m_elements->remove(rang);
+
+
+
         switch (tmp->getType()) {
         case ParametresMonde::Mycelium :
             Peuple::setNourriture(Peuple::getNourriture() + qobject_cast<Mycelium*>(tmp)->getNourriture());
@@ -158,6 +174,7 @@ void Monde::deplacer(Elements *pE, const Position& pDest) {
             emit ajoutBrindilles(qobject_cast<Brindille*>(tmp)->getBrindilles());
             break;
         }
+        delete tmp;
     }
     m_infos->insert(pDest, m_infos->value(pE->getPos()));
     m_infos->remove(pE->getPos());

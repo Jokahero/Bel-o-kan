@@ -13,6 +13,10 @@ Femelle::Femelle(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pA
     setNbFemelles(getNbFemelles() + 1);
 }
 
+Femelle::~Femelle() {
+    setNbFemelles(getNbFemelles() - 1);
+}
+
 void Femelle::tour() {
     Peuple::tour();
 

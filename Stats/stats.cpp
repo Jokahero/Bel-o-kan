@@ -1,5 +1,7 @@
 #include "stats.h"
 
+#include "widgetstats.h"
+
 #include <QtCore/QVector>
 
 #include <QtCore/QDebug>
@@ -26,4 +28,6 @@ void Stats::fin() {
         qDebug() << "Petits : " << m_listeTours->at(i).nbPetits;
         qDebug() << "--------------------------";
     }
+    WidgetStats* ws = new WidgetStats(m_listeTours);
+    ws->show();
 }

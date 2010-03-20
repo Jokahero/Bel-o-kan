@@ -9,6 +9,10 @@ Petits::Petits(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pAbc
     setNbPetits(getNbPetits() + 1);
 }
 
+Petits::~Petits() {
+    setNbPetits(getNbPetits() - 1);
+}
+
 void Petits::tour() {
     Peuple::tour();
     // Est-il grand ?
