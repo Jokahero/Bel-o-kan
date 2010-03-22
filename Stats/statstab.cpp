@@ -30,8 +30,8 @@ void StatsTab::dessin() {
 }
 
 void StatsTab::resizeEvent(QResizeEvent *pEvent) {
-    dessin();
     QWidget::resizeEvent(pEvent);
+    dessin();
 }
 
 void StatsTab::dessinPopulation() {

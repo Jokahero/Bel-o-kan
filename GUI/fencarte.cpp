@@ -51,6 +51,7 @@ void FenCarte::show(int pHauteur, int pLargeur) {
 }
 
 void FenCarte::finDuMonde(int pNbTours) {
+    m_tourSuivant->setEnabled(false);
     QMessageBox msgBox;
     msgBox.setText(tr("Le peuple a été éliminé en %n tour(s).", "s", pNbTours));
     msgBox.exec();

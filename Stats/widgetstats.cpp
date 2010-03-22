@@ -9,7 +9,6 @@
 
 WidgetStats::WidgetStats(QVector<ParametresMonde::ParamsMonde> *pVect) : m_listeTours(pVect) {
     setAttribute(Qt::WA_DeleteOnClose);
-    resize(640, 480);
     QHBoxLayout *layout = new QHBoxLayout;
     m_tab = new QTabWidget;
     QStringList titres;
@@ -20,6 +19,8 @@ WidgetStats::WidgetStats(QVector<ParametresMonde::ParamsMonde> *pVect) : m_liste
     setLayout(layout);
 
     connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(dessin(int)));
+
+    resize(640, 480);
 }
 
 void WidgetStats::dessin(int pNum) {
