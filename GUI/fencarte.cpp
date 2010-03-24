@@ -1,6 +1,7 @@
 #include "fencarte.h"
 #include "carte.h"
 #include "widgetinfos.h"
+#include "widgetinter.h"
 
 #include <QtGui/QMenuBar>
 #include <QtGui/QMenu>
@@ -10,8 +11,8 @@
 
 FenCarte::FenCarte() {
     setWindowTitle(tr("Bel-O-Kan - Simulation"));
-    QIcon *icone = new QIcon("Ant-icon.png");
-    setWindowIcon(*icone);
+    QIcon icone("Ant-icon.png");
+    setWindowIcon(icone);
 
     m_barreMenu = new QMenuBar(this);
     m_menuPrinc = new QMenu(tr("&Menu"), this);
@@ -31,7 +32,10 @@ FenCarte::FenCarte() {
     setCentralWidget(m_carte);
 
     m_WInfos = new WidgetInfos();
-    addDockWidget(Qt::BottomDockWidgetArea, m_WInfos);
+    addDockWidget(Qt::RightDockWidgetArea, m_WInfos);
+
+    m_WInter = new WidgetInter();
+    addDockWidget(Qt::BottomDockWidgetArea, m_WInter);
 
     connect(m_quitter, SIGNAL(triggered()), this, SIGNAL(signalQuitter()));
     connect(m_tourSuivant, SIGNAL(triggered()), this, SIGNAL(tourSuivant()));
@@ -43,6 +47,7 @@ FenCarte::FenCarte() {
     connect(this, SIGNAL(tourSuivantMonde()), m_WInfos, SLOT(ajoutJour()));
     connect(this, SIGNAL(ajoutBrindilles(int)), m_WInfos, SLOT(ajoutBrindilleStock(int)));
     connect(this, SIGNAL(ajoutNourriture(int)), m_WInfos, SLOT(ajoutNourritureStock(int)));
+    connect(m_WInter, SIGNAL(tourSuivant()), m_tourSuivant, SLOT(trigger()));
 }
 
 void FenCarte::show(int pHauteur, int pLargeur) {

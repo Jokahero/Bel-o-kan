@@ -1,4 +1,5 @@
 #include "widgetinfos.h"
+#include "flowlayout.h"
 
 #include <QtGui/QFormLayout>
 #include <QtGui/QGroupBox>
@@ -47,7 +48,7 @@ WidgetInfos::WidgetInfos() {
 
     QWidget *tmp = new QWidget(this);
 
-    QHBoxLayout *layoutPrincipal = new QHBoxLayout(tmp);
+    FlowLayout *layoutPrincipal = new FlowLayout(tmp);
     layoutPrincipal->addWidget(groupePopulation);
     layoutPrincipal->addWidget(groupeStocks);
     layoutPrincipal->addWidget(groupeCarte);
