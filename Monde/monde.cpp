@@ -17,9 +17,9 @@
 Monde *Monde::_instance = 0;
 
 Monde *Monde::instance() {
-        if (_instance == 0)
-                _instance = new Monde;
-        return _instance;
+    if (_instance == 0)
+        _instance = new Monde;
+    return _instance;
 }
 
 void Monde::destroy() {
@@ -119,6 +119,31 @@ void Monde::tour() {
 
     if (Peuple::getPopulation() <= 0 && m_nbTours > 0)
         fin();
+
+    if (m_elements->size() < m_params.hauteur * m_params.largeur) {
+        int repop = qrand() % 5;
+        Position pos = posAleatoire(m_params.largeur, m_params.hauteur);
+
+        switch (repop) {
+        case 0:
+            m_elements->append(new Brindille(this, pos.getAbcisse(), pos.getOrdonnee()));
+            m_infos->insert(pos, m_elements->size() - 1);
+            emit afficherElement(ParametresMonde::Brindille, pos.getAbcisse(), pos.getOrdonnee());
+            break;
+        case 1:
+            m_elements->append(new Mycelium(this, pos.getAbcisse(), pos.getOrdonnee()));
+            m_infos->insert(pos, m_elements->size() - 1);
+            emit afficherElement(ParametresMonde::Mycelium, pos.getAbcisse(), pos.getOrdonnee());
+            break;
+        case 2:
+            m_elements->append((Mobiles*)new Puceron(this, pos.getAbcisse(), pos.getOrdonnee()));
+            m_infos->insert(pos, m_elements->size() - 1);
+            emit afficherElement(ParametresMonde::Puceron, pos.getAbcisse(), pos.getOrdonnee());
+            break;
+        default:
+            break;
+        }
+    }
 }
 
 void Monde::fin() {
@@ -174,6 +199,8 @@ void Monde::deplacer(Elements *pE, const Position& pDest) {
         case ParametresMonde::Brindille :
             Peuple::setBrindilles(Peuple::getBrindilles() + qobject_cast<Brindille*>(tmp)->getBrindilles());
             emit ajoutBrindilles(qobject_cast<Brindille*>(tmp)->getBrindilles());
+            break;
+        default:
             break;
         }
         delete tmp;

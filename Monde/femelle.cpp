@@ -36,6 +36,8 @@ void Femelle::tour() {
             case ParametresMonde::Brindille:
                 brindilles.append(posAdj.at(i));
                 break;
+            default:
+                break;
             }
         }
     }
