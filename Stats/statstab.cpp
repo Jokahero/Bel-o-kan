@@ -54,7 +54,7 @@ void StatsTab::dessinPopulation() {
     int xMax = m_parent->getListeTours()->size();
 
     // Détermination de la valeur la plus élevée en ordonnées
-    int yMax = 0;
+    int yMax = 1;
     for (int i = 0; i < m_parent->getListeTours()->size(); i++) {
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).nbFemelles);
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).nbMales);
@@ -100,7 +100,7 @@ void StatsTab::dessinRessources() {
     int xMax = m_parent->getListeTours()->size();
 
     // Détermination de la valeur la plus élevée en ordonnées
-    int yMax = 0;
+    int yMax = 1;
     for (int i = 0; i < m_parent->getListeTours()->size(); i++) {
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).brindilles);
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).mycelium);
@@ -145,7 +145,7 @@ void StatsTab::dessinStock() {
     int xMax = m_parent->getListeTours()->size();
 
     // Détermination de la valeur la plus élevée en ordonnées
-    int yMax = 0;
+    int yMax = 1;
     for (int i = 0; i < m_parent->getListeTours()->size(); i++) {
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).nbBrindilles);
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).nbNourriture);
