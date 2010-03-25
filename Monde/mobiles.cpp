@@ -67,6 +67,8 @@ void Mobiles::mort() {
 
 void Mobiles::deplacementAleatoire(int pDistanceMax) {
     QList<Position> posAdj = getPos().getPositionsAdjacentes(pDistanceMax);
+    if (posAdj.size() == 0)
+        return;
     int pos;
     Position tmp;
     do {
