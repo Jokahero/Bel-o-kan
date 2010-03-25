@@ -25,6 +25,6 @@ void Petits::tour() {
         else
             (*getMonde()->getElements())[rang] = new Male(getMonde(), tmp.getAbcisse(), tmp.getOrdonnee());
         getMonde()->evolution(tmp, sexe);
-        this->deleteLater();
+        delete this;
     }
 }

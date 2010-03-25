@@ -12,6 +12,8 @@ WidgetInter::WidgetInter() {
     QWidget *tmp = new QWidget;
     m_tourSuivant = new QPushButton(tr("Tour suivant"), this);
     m_boucle = new QPushButton(tr("Boucle"), this);
+    m_boucle->setCheckable(true);
+    m_boucle->setChecked(false);
     m_historique = new QTextEdit(this);
     m_historique->setReadOnly(true);
 
@@ -33,6 +35,15 @@ WidgetInter::WidgetInter() {
     connect(m_boucle, SIGNAL(clicked()), this, SIGNAL(boucle()));
 }
 
-void WidgetInter::modifierHistorique(QString pEvenement) {
+void WidgetInter::modifierHistorique(const QString& pEvenement) {
     m_historique->setPlainText(m_historique->toPlainText() + pEvenement);
+}
+
+void WidgetInter::triggerBoucle(bool pActif) {
+    m_boucle->setChecked(pActif);
+}
+
+void WidgetInter::finMonde() {
+    m_boucle->setEnabled(false);
+    m_tourSuivant->setEnabled(false);
 }

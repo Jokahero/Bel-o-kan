@@ -25,6 +25,7 @@ private:
     QMenu *m_menuPrinc;
     QAction *m_quitter;
     QAction *m_tourSuivant;
+    QAction *m_tourBoucle;
 
     WidgetInfos *m_WInfos;
     WidgetInter *m_WInter;
@@ -32,6 +33,9 @@ private:
 public slots:
     void show(int pHauteur, int pLargeur);
     void finDuMonde(int pNbTours);
+
+private slots:
+    void boucle();
 
 signals:
     void signalQuitter();

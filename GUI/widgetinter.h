@@ -3,11 +3,10 @@
 
 #include <QtGui/QDockWidget>
 
-class QTextEdit;
 class QPushButton;
+class QTextEdit;
 
-class WidgetInter : public QDockWidget
-{
+class WidgetInter : public QDockWidget {
     Q_OBJECT
 
 public:
@@ -19,7 +18,9 @@ private:
     QTextEdit *m_historique;
 
 public slots:
-    void modifierHistorique(QString pEvenement);
+    void modifierHistorique(const QString& pEvenement);
+    void triggerBoucle(bool pActif);
+    void finMonde();
 
 signals:
     void tourSuivant();
