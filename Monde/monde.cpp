@@ -192,13 +192,17 @@ void Monde::deplacer(Elements *pE, const Position& pDest) {
 
 
         switch (tmp->getType()) {
-        case ParametresMonde::Mycelium :
+        case ParametresMonde::Mycelium:
             Peuple::setNourriture(Peuple::getNourriture() + qobject_cast<Mycelium*>(tmp)->getNourriture());
             emit ajoutNourriture(qobject_cast<Mycelium*>(tmp)->getNourriture());
             break;
-        case ParametresMonde::Brindille :
+        case ParametresMonde::Brindille:
             Peuple::setBrindilles(Peuple::getBrindilles() + qobject_cast<Brindille*>(tmp)->getBrindilles());
             emit ajoutBrindilles(qobject_cast<Brindille*>(tmp)->getBrindilles());
+            break;
+        case ParametresMonde::Puceron:
+            Peuple::setNourriture(Peuple::getNourriture() + ((Puceron*)((Ressources*)tmp))->getNourriture());
+            emit ajoutNourriture(((Puceron*)((Ressources*)tmp))->getNourriture());
             break;
         default:
             break;

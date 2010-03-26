@@ -1,5 +1,7 @@
 #include "male.h"
 
+#include "monde.h"
+
 Male::Male(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pAbcisse, pOrdonnee, ParametresMonde::Male) {
     setNbMales(getNbMales() + 1);
 }
@@ -10,4 +12,71 @@ Male::~Male() {
 
 void Male::tour() {
     Peuple::tour();
+
+    // On vérifie que ce n'est pas un zombie
+    if (isMort())
+        return;
+
+    QList<Position> posAdj = getPos().getPositionsAdjacentes(getVue());
+    QList<Position> nourriture;
+    QList<Position> brindilles;
+    for (int i = 0; i < posAdj.size(); i++) {
+        if (getMonde()->getInfos()->contains(posAdj.at(i))) {
+            switch (getMonde()->getElements()->at(getMonde()->getInfos()->value(posAdj.at(i)))->getType()) {
+            case ParametresMonde::Mycelium:
+                nourriture.append(posAdj.at(i));
+                break;
+            case ParametresMonde::Brindille:
+                brindilles.append(posAdj.at(i));
+                break;
+            case ParametresMonde::Puceron:
+                nourriture.append(posAdj.at(i));
+            default:
+                break;
+            }
+        }
+    }
+
+    // Déterminer un objectif
+
+    // Si il n'y pas a beaucoup de nourriture, on en recherche
+    if (nourriture.size() > 0 && getNourriture() < getPopulation() * 3) {
+        Position ptmp = nourriture.at(0);
+        for (int i = 1; i < nourriture.size(); i++) {
+            if (getPos().distance(ptmp) > getPos().distance(nourriture.at(i)))
+                ptmp = nourriture.at(i);
+            if (getPos().distance(ptmp) == 1)
+                break;
+        }
+        deplacement(ptmp);
+    } else if (brindilles.size() > 0 /* && besoin de brindilles*/) {
+        Position ptmp = brindilles.at(0);
+        for (int i = 1; i < brindilles.size(); i++) {
+            if (getPos().distance(ptmp) > getPos().distance(brindilles.at(i)))
+                ptmp = brindilles.at(i);
+            if (getPos().distance(ptmp) == 1)
+                break;
+        }
+        deplacement(ptmp);
+    } else if (nourriture.size() > 0) {                 // On n'a pas besoin de nourriture, mais on n'a rien de mieux à faire…
+        Position ptmp = nourriture.at(0);
+        for (int i = 1; i < nourriture.size(); i++) {
+            if (getPos().distance(ptmp) > getPos().distance(nourriture.at(i)))
+                ptmp = nourriture.at(i);
+            if (getPos().distance(ptmp) == 1)
+                break;
+        }
+        deplacement(ptmp);
+    } else if (brindilles.size() > 0) {                 // On n'a pas besoin de brindilles, mais on n'a rien de mieux à faire…
+        Position ptmp = brindilles.at(0);
+        for (int i = 1; i < brindilles.size(); i++) {
+            if (getPos().distance(ptmp) > getPos().distance(brindilles.at(i)))
+                ptmp = brindilles.at(i);
+            if (getPos().distance(ptmp) == 1)
+                break;
+        }
+        deplacement(ptmp);
+    } else {        // Sinon, on se déplace aléatoirement
+        deplacementAleatoire(getVue());
+    }
 }

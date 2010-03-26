@@ -4,6 +4,8 @@
 #include "elements.h"
 
 class Ressources : public Elements {
+    Q_OBJECT
+
 public:
     Ressources(Monde* pMonde, int pAbcisse, int pOrdonnee, int pBrindilles, int pNourriture, ParametresMonde::typeElement pType);
 
