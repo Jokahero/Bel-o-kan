@@ -80,6 +80,7 @@ void Peuple::setAge(int pAge) {
 }
 
 void Peuple::reproduction(const Position& pPos) {
+    qDebug() << "Reproduction en " << pPos;
     deplacement(pPos);
     if (getPos() != pPos)
         return;
@@ -104,5 +105,6 @@ void Peuple::reproduction(const Position& pPos) {
         else if (getMonde()->getElements()->at(getMonde()->getInfos()->value(i))->getType() == ParametresMonde::Male)
             male = posAdj.at(i);
     }
+    qDebug() << "Ajout petit en " << disp;
     getMonde()->ajoutPetit(disp);
 }

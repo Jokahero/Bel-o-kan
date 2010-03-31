@@ -1,6 +1,7 @@
 #include "monde.h"
 
 #include "brindille.h"
+#include "construction.h"
 #include "elements.h"
 #include "petits.h"
 #include "femelle.h"
@@ -99,6 +100,13 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
         m_elements->append((Mobiles*)new Puceron(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
         emit afficherElement(ParametresMonde::Puceron, pos.getAbcisse(), pos.getOrdonnee());
+    }
+
+    for (int i = 0; i < pParams.nbConstructions; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Construction(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+        emit afficherElement(ParametresMonde::Construction, pos.getAbcisse(), pos.getOrdonnee());
     }
 
     emit ajoutBrindilles(m_params.nbBrindilles);

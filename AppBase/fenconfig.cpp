@@ -41,11 +41,14 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, Stats* pStats, QWidget*
     m_nbMales->setRange(0, 500);
     m_nbPetits = new QSpinBox(peupleGroupBox);
     m_nbPetits->setRange(0, 500);
+    m_nbConstructions = new QSpinBox(peupleGroupBox);
+    m_nbConstructions->setRange(0, 500);
     m_nbPredateurs = new QSpinBox(peupleGroupBox);
     m_nbPredateurs->setRange(0, 500);
     peuple->addRow(tr("Femelles"), m_nbFemelles);
     peuple->addRow(tr("Mâles"), m_nbMales);
     peuple->addRow(tr("Petits"), m_nbPetits);
+    peuple->addRow(tr("Fourmilières"), m_nbConstructions);
     peuple->addRow(tr("Prédateurs"), m_nbPredateurs);
 
     QGroupBox *resGroupBox = new QGroupBox(tr("Ressources"));
@@ -93,11 +96,13 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, Stats* pStats, QWidget*
     connect(m_nbBrindillesC, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
     connect(m_nbPucerons, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
     connect(m_nbPredateurs, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
+    connect(m_nbConstructions, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
 }
 
 FenConfig::~FenConfig() {
     delete m_largeurCarte;
     delete m_hauteurCarte;
+    delete m_nbConstructions;
     delete m_nbFemelles;
     delete m_nbMales;
     delete m_nbPetits;
@@ -123,6 +128,7 @@ void FenConfig::lancer() {
     p.brindilles = m_nbBrindillesC->value();
     p.nbBrindilles = m_nbBrindilles->value();
     p.nbNourriture = m_nbNourriture->value();
+    p.nbConstructions = m_nbConstructions->value();
     m_stats->tour(p);
     m_fenCarte->show(p.hauteur, p.largeur);
     m_monde->init(p);
@@ -139,6 +145,7 @@ void FenConfig::verifCoherence() {
     nbElements += m_nbMyceliums->value();
     nbElements += m_nbPucerons->value();
     nbElements += m_nbBrindillesC->value();
+    nbElements += m_nbConstructions->value();
 
     m_bbox->button(QDialogButtonBox::Ok)->setEnabled(nbElements <= nbCellules);
 }

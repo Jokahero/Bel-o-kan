@@ -55,6 +55,8 @@ void Male::tour() {
                 reprod.append(tmp.at(j));
     }
 
+    qDebug() << "reprod : " << reprod.size();
+
     // Et les cases contenant des constructions
     QList<Position> constructionsRep;
     for (int i = 0; i < constructions.size(); i++) {
@@ -95,8 +97,8 @@ void Male::tour() {
             for (int i = 1; i < reprod.size() && !trouve; i++) {
                 Position bat = constructionsRep.size();
                 for (int j = 0; j < constructionsRep.size(); j++)
-                    if (getPos().distance(bat) > getPos().distance(constructionsRep.at(i))) {
-                        bat = constructionsRep.at(i);
+                    if (getPos().distance(bat) > getPos().distance(constructionsRep.at(j))) {
+                        bat = constructionsRep.at(j);
                         trouve = true;
                     }
                 if (getPos().distance(ptmp) > getPos().distance(reprod.at(i)) && trouve)

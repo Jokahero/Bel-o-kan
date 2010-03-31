@@ -19,6 +19,7 @@ WidgetInfos::WidgetInfos() {
     m_nbBrindillesCarte = new QLabel(QString::number(0), this);
     m_nbMyceliumCarte = new QLabel(QString::number(0), this);
     m_nbPucerons = new QLabel(QString::number(0), this);
+    m_nbConstructions = new QLabel(QString::number(0), this);
 
     m_jours = new QLabel(QString::number(0), this);
 
@@ -27,7 +28,8 @@ WidgetInfos::WidgetInfos() {
     layoutPopulation->addRow(tr("Nombre de mâles :"), m_nbMales);
     layoutPopulation->addRow(tr("Nombre de femelles :"), m_nbFemelles);
     layoutPopulation->addRow(tr("Nombre de petits :"), m_nbPetits);
-    layoutPopulation->addRow(tr("Nombre de prédateurs:"), m_nbPredateurs);
+    layoutPopulation->addRow(tr("Nombre de fourmilières :"), m_nbConstructions);
+    layoutPopulation->addRow(tr("Nombre de prédateurs :"), m_nbPredateurs);
     groupePopulation->setLayout(layoutPopulation);
 
     QGroupBox *groupeStocks = new QGroupBox(tr("Stocks"), this);
