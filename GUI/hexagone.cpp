@@ -9,9 +9,9 @@ Hexagone::Hexagone() {
     m_Y = 0;
 
     m_mapIcones = new QMap<ParametresMonde::typeElement, QString>;
-    m_mapIcones->insert(ParametresMonde::Brindille, ":/Icônes/fourmiliere.png");
+    m_mapIcones->insert(ParametresMonde::Brindille, ":/Icônes/brindille-icon.png");
     m_mapIcones->insert(ParametresMonde::Construction, ":/Icônes/fourmiliere.png");
-    m_mapIcones->insert(ParametresMonde::Femelle, ":/Icônes/empreinte.png");
+    m_mapIcones->insert(ParametresMonde::Femelle, ":/Icônes/fourmis-iconF.png");
     m_mapIcones->insert(ParametresMonde::Male, ":/Icônes/fourmis-iconM.png");
     m_mapIcones->insert(ParametresMonde::Mycelium, ":/Icônes/mycelium-icon.png");
     m_mapIcones->insert(ParametresMonde::Petits, ":/Icônes/petit-icon.png");
@@ -39,8 +39,13 @@ void Hexagone::setIcon() {
 
 void Hexagone::setIcon(ParametresMonde::typeElement pTypeElement) {
     // Instruction d'ajout d'un icône superposé sur un Hexagone
-    m_icone = new QGraphicsPixmapItem((new QPixmap(m_mapIcones->value(pTypeElement)))->scaled(50,50)); // scaled() redimmensionnement
-    m_icone->setPos(m_X,m_Y+20); // Soit Hexagone(X,Y) → Icône(X,Y+20)
+    if(pTypeElement == ParametresMonde::Predateur) {
+        m_icone = new QGraphicsPixmapItem((new QPixmap(m_mapIcones->value(pTypeElement)))->scaled(50,75));
+        m_icone->setPos(m_X, m_Y+12);
+    } else {
+        m_icone = new QGraphicsPixmapItem((new QPixmap(m_mapIcones->value(pTypeElement)))->scaled(50,50)); // scaled() redimmensionnement
+        m_icone->setPos(m_X,m_Y+20); // Soit Hexagone(X,Y) → Icône(X,Y+20)
+    }
     m_icone->setZValue(1); // Positionnement selon Z par defaut 0 → définition a 1 pour mettre l'icône au premier plan
 }
 
