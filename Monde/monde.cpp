@@ -9,6 +9,7 @@
 #include "mobiles.h"
 #include "mycelium.h"
 #include "position.h"
+#include "predateur.h"
 #include "puceron.h"
 
 #include <QtCore/QCoreApplication>
@@ -107,6 +108,13 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
         m_elements->append(new Construction(this, pos.getAbcisse(), pos.getOrdonnee()));
         m_infos->insert(pos, m_elements->size() - 1);
         emit afficherElement(ParametresMonde::Construction, pos.getAbcisse(), pos.getOrdonnee());
+    }
+
+    for (int i = 0; i < pParams.nbPredateurs; i++) {
+        Position pos = posAleatoire(pParams.largeur, pParams.hauteur);
+        m_elements->append(new Predateur(this, pos.getAbcisse(), pos.getOrdonnee()));
+        m_infos->insert(pos, m_elements->size() - 1);
+        emit afficherElement(ParametresMonde::Predateur, pos.getAbcisse(), pos.getOrdonnee());
     }
 
     emit ajoutBrindilles(m_params.nbBrindilles);
