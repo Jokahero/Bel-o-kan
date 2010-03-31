@@ -13,6 +13,7 @@ WidgetInfos::WidgetInfos() {
     m_nbMales = new QLabel(QString::number(0), this);
     m_nbFemelles = new QLabel(QString::number(0), this);
     m_nbPetits = new QLabel(QString::number(0), this);
+    m_nbPredateurs = new QLabel(QString::number(0), this);
     m_qteBrindillesStock = new QLabel(QString::number(0), this);
     m_qteNourritureStock = new QLabel(QString::number(0), this);
     m_nbBrindillesCarte = new QLabel(QString::number(0), this);
@@ -26,6 +27,7 @@ WidgetInfos::WidgetInfos() {
     layoutPopulation->addRow(tr("Nombre de mâles :"), m_nbMales);
     layoutPopulation->addRow(tr("Nombre de femelles :"), m_nbFemelles);
     layoutPopulation->addRow(tr("Nombre de petits :"), m_nbPetits);
+    layoutPopulation->addRow(tr("Nombre de prédateurs:"), m_nbPredateurs);
     groupePopulation->setLayout(layoutPopulation);
 
     QGroupBox *groupeStocks = new QGroupBox(tr("Stocks"), this);
@@ -71,6 +73,10 @@ void WidgetInfos::setNbPetits(int pNbPetits) {
     m_nbPetits->setText(QString::number(pNbPetits));
 }
 
+void WidgetInfos::setNbPredateurs(int pNbPredateurs) {
+    m_nbPredateurs->setText(QString::number(pNbPredateurs));
+}
+
 void WidgetInfos::setQteBrindillesStock(int pNbBrindilles) {
     m_qteBrindillesStock->setText(QString::number(pNbBrindilles));
 }
@@ -109,6 +115,10 @@ void WidgetInfos::ajoutFemelle(int pNb) {
 
 void WidgetInfos::ajoutPetit(int pNb) {
     m_nbPetits->setText(QString::number(m_nbPetits->text().toInt() + pNb));
+}
+
+void WidgetInfos::ajoutPredateurs(int pNb) {
+    m_nbPetits->setText(QString::number(m_nbPredateurs->text().toInt() + pNb));
 }
 
 void WidgetInfos::ajoutBrindilleStock(int pNb) {
@@ -153,6 +163,10 @@ void WidgetInfos::suppressionPetit() {
     m_nbPetits->setText(QString::number(m_nbPetits->text().toInt() - 1));
 }
 
+void WidgetInfos::suppressionPredateur() {
+    m_nbPredateurs->setText(QString::number(m_nbPredateurs->text().toInt() - 1));
+}
+
 void WidgetInfos::suppressionBrindilleStock() {
     m_qteBrindillesStock->setText(QString::number(m_qteBrindillesStock->text().toInt() - 1));
 }
@@ -188,6 +202,7 @@ void WidgetInfos::ajout(ParametresMonde::typeElement pType) {
     {ParametresMonde::Male, &WidgetInfos::ajoutMale},
     {ParametresMonde::Mycelium, &WidgetInfos::ajoutMyceliumCarte},
     {ParametresMonde::Petits, &WidgetInfos::ajoutPetit},
+    {ParametresMonde::Predateur, &WidgetInfos::ajoutPredateurs},
     {ParametresMonde::Puceron, &WidgetInfos::ajoutPuceron}
 };
     (this->*tab[pType].f)(1);
@@ -204,6 +219,7 @@ void WidgetInfos::suppression(ParametresMonde::typeElement pType) {
     {ParametresMonde::Male, &WidgetInfos::suppressionMale},
     {ParametresMonde::Mycelium, &WidgetInfos::suppressionMyceliumCarte},
     {ParametresMonde::Petits, &WidgetInfos::suppressionPetit},
+    {ParametresMonde::Predateur, &WidgetInfos::suppressionPredateur},
     {ParametresMonde::Puceron, &WidgetInfos::suppressionPuceron}
 };
     (this->*tab[pType].f)();

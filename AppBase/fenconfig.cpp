@@ -41,9 +41,12 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, Stats* pStats, QWidget*
     m_nbMales->setRange(0, 500);
     m_nbPetits = new QSpinBox(peupleGroupBox);
     m_nbPetits->setRange(0, 500);
+    m_nbPredateurs = new QSpinBox(peupleGroupBox);
+    m_nbPredateurs->setRange(0, 500);
     peuple->addRow(tr("Femelles"), m_nbFemelles);
     peuple->addRow(tr("Mâles"), m_nbMales);
     peuple->addRow(tr("Petits"), m_nbPetits);
+    peuple->addRow(tr("Prédateurs"), m_nbPredateurs);
 
     QGroupBox *resGroupBox = new QGroupBox(tr("Ressources"));
     QFormLayout *res= new QFormLayout;
@@ -89,6 +92,7 @@ FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, Stats* pStats, QWidget*
     connect(m_nbMyceliums, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
     connect(m_nbBrindillesC, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
     connect(m_nbPucerons, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
+    connect(m_nbPredateurs, SIGNAL(valueChanged(int)), this, SLOT(verifCoherence()));
 }
 
 FenConfig::~FenConfig() {
@@ -97,6 +101,7 @@ FenConfig::~FenConfig() {
     delete m_nbFemelles;
     delete m_nbMales;
     delete m_nbPetits;
+    delete m_nbPredateurs;
     delete m_nbMyceliums;
     delete m_nbPucerons;
     delete m_nbBrindillesC;
@@ -112,6 +117,7 @@ void FenConfig::lancer() {
     p.nbFemelles = m_nbFemelles->value();
     p.nbMales = m_nbMales->value();
     p.nbPetits = m_nbPetits->value();
+    p.nbPredateurs = m_nbPredateurs->value();
     p.mycelium = m_nbMyceliums->value();
     p.pucerons = m_nbPucerons->value();
     p.brindilles = m_nbBrindillesC->value();
@@ -129,6 +135,7 @@ void FenConfig::verifCoherence() {
     nbElements += m_nbFemelles->value();
     nbElements += m_nbMales->value();
     nbElements += m_nbPetits->value();
+    nbElements += m_nbPredateurs->value();
     nbElements += m_nbMyceliums->value();
     nbElements += m_nbPucerons->value();
     nbElements += m_nbBrindillesC->value();

@@ -9,11 +9,13 @@ Hexagone::Hexagone() {
     m_Y = 0;
 
     m_mapIcones = new QMap<ParametresMonde::typeElement, QString>;
-    m_mapIcones->insert(ParametresMonde::Brindille, ":/Icônes/brindille-icon.png");
-    m_mapIcones->insert(ParametresMonde::Femelle, ":/Icônes/fourmis-iconF.png");
+    m_mapIcones->insert(ParametresMonde::Brindille, ":/Icônes/fourmiliere.png");
+    m_mapIcones->insert(ParametresMonde::Construction, ":/Icônes/fourmiliere.png");
+    m_mapIcones->insert(ParametresMonde::Femelle, ":/Icônes/empreinte.png");
     m_mapIcones->insert(ParametresMonde::Male, ":/Icônes/fourmis-iconM.png");
     m_mapIcones->insert(ParametresMonde::Mycelium, ":/Icônes/mycelium-icon.png");
     m_mapIcones->insert(ParametresMonde::Petits, ":/Icônes/petit-icon.png");
+    m_mapIcones->insert(ParametresMonde::Predateur, ":/Icônes/empreinte.png");
     m_mapIcones->insert(ParametresMonde::Puceron, ":/Icônes/puceron-icon.png");
 }
 

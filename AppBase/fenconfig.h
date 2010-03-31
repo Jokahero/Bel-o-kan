@@ -32,6 +32,7 @@ private:
     QSpinBox* m_nbFemelles;
     QSpinBox* m_nbMales;
     QSpinBox* m_nbPetits;
+    QSpinBox* m_nbPredateurs;
 
     QSpinBox* m_nbMyceliums;
     QSpinBox* m_nbPucerons;

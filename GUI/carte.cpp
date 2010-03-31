@@ -56,7 +56,7 @@ void Carte::construireCarte(int pHauteur, int pLargeur) {
     }
 
     QPen pen(Qt::black, 1, Qt::SolidLine);
-    QBrush brush(Qt::green);
+    QBrush brush(QColor("#cd853f"));
 
     for (int i=0; i < m_listeHexagones->size(); i++) {
         m_listeHexagones->at(i)->construire();
@@ -73,7 +73,6 @@ void Carte::afficherIcone(ParametresMonde::typeElement pTypeElement, int pX, int
 void Carte::supprimerIcone(ParametresMonde::typeElement /*pTE*/, int pX, int pY) {
     pY = m_carte->at(pX)->size() - pY - 1;
     delete m_carte->at(pX)->at(pY)->getIcon();
-    //m_scene->removeItem(m_scene->itemAt(m_carte->at(pX)->at(pY)->getIcon()->pos()));
     m_carte->at(pX)->at(pY)->setIcon();
 }
 

@@ -6,5 +6,7 @@
         <file>brindille-icon.png</file>
         <file>puceron-icon.png</file>
         <file>petit-icon.png</file>
+        <file>fourmiliere.png</file>
+        <file>empreinte.png</file>
     </qresource>
 </RCC>

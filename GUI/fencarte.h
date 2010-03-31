@@ -46,6 +46,7 @@ signals:
     void deplacerElement(ParametresMonde::typeElement, int, int, int, int);
     void ajoutBrindilles(int pQte);
     void ajoutNourriture(int pQte);
+    void afficherInfos(ParametresMonde::typeInfo pTI);
 };
 
 #endif // FENCARTE_H

@@ -3,6 +3,8 @@
 
 #include <QtGui/QDockWidget>
 
+#include "../AppBase/ParamsMonde.h"
+
 class QPushButton;
 class QTextEdit;
 
@@ -18,7 +20,8 @@ private:
     QTextEdit *m_historique;
 
 public slots:
-    void modifierHistorique(const QString& pEvenement);
+    void afficherDeplacement(ParametresMonde::typeElement, int pXOrig, int pYOrig, int pXDest, int pYDest);
+    void modifierHistorique(ParametresMonde::typeInfo pEvenement);
     void triggerBoucle(bool pActif);
     void finMonde();
 

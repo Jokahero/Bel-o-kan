@@ -30,20 +30,6 @@ private:
 public slots:
     void setIcon();
     void setIcon(ParametresMonde::typeElement pTypeElement);
-
-    /* Icones
-       * affichage de l'icone
-       * instruction d'ajout en utilisant m_X et m_Y
-       * → nouvelle fonction
-    */
-
-    /* Map ou tablal ...
-       * → correspondance nom du fichier .png
-       * param → type de l'élément
-       * => enum des types
-    */
-
-    //TODO: modifier tous les icônes avec la crampe
 };
 
 #endif // HEXAGONE_H

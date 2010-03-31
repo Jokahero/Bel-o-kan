@@ -53,6 +53,7 @@ signals:
     void deplacerElement(ParametresMonde::typeElement, int pXOrig, int pYOrig, int pXDest, int pYDest);
     void ajoutBrindilles(int pQte);
     void ajoutNourriture(int pQte);
+    void afficherInfos(ParametresMonde::typeInfo pTI);
 };
 
 #endif // MONDE_H

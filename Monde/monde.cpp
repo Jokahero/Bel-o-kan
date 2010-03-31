@@ -219,10 +219,13 @@ void Monde::deplacer(Elements *pE, const Position& pDest) {
 
 void Monde::evolution(const Position &pPos, int pSexe) {
     emit supprimerElement(ParametresMonde::Petits, pPos.getAbcisse(), pPos.getOrdonnee());
-    if (pSexe == 0)
+    if (pSexe == 0) {
         emit afficherElement(ParametresMonde::Femelle, pPos.getAbcisse(), pPos.getOrdonnee());
-    else
+        emit afficherInfos(ParametresMonde::NouvelleFemelle);
+    } else {
         emit afficherElement(ParametresMonde::Male, pPos.getAbcisse(), pPos.getOrdonnee());
+        emit afficherInfos(ParametresMonde::NouveauMale);
+   }
 }
 
 ParametresMonde::ParamsMonde Monde::getEtat() const {

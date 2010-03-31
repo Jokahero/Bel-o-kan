@@ -58,6 +58,7 @@ int main(int argc, char** argv) {
     QObject::connect(monde, SIGNAL(ajoutNourriture(int)), fenCarte, SIGNAL(ajoutNourriture(int)));
     QObject::connect(monde, SIGNAL(sigTour(ParametresMonde::ParamsMonde)), stats, SLOT(tour(ParametresMonde::ParamsMonde)));
     QObject::connect(monde, SIGNAL(finDuMonde(int)), stats, SLOT(fin()));
+    QObject::connect(monde, SIGNAL(afficherInfos(ParametresMonde::typeInfo)), fenCarte, SIGNAL(afficherInfos(ParametresMonde::typeInfo)));
 
     return a.exec();
 }

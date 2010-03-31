@@ -57,6 +57,8 @@ FenCarte::FenCarte() {
     connect(m_WInter, SIGNAL(boucle()), m_tourBoucle, SLOT(trigger()));
     connect(m_tourBoucle, SIGNAL(toggled(bool)), m_WInter, SLOT(triggerBoucle(bool)));
     connect(m_tourBoucle, SIGNAL(triggered()), this, SLOT(boucle()));
+    connect(this, SIGNAL(afficherInfos(ParametresMonde::typeInfo)), m_WInter, SLOT(modifierHistorique(ParametresMonde::typeInfo)));
+    connect(this, SIGNAL(deplacerElement(ParametresMonde::typeElement,int,int,int,int)), m_WInter, SLOT(afficherDeplacement(ParametresMonde::typeElement,int,int,int,int)));
 }
 
 void FenCarte::show(int pHauteur, int pLargeur) {
