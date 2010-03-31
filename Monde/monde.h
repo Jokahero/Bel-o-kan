@@ -33,6 +33,8 @@ public slots:
 
     void evolution(const Position& pPos, int pSexe);
 
+    void ajoutPetit(const Position& pPos);
+
 private:
     static Monde*_instance;
     Monde();

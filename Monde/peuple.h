@@ -34,6 +34,8 @@ public:
 
     virtual void mort();
 
+    void reproduction(const Position& pPos);
+
 private:
     static int m_brindilles;
     static int m_nourriture;

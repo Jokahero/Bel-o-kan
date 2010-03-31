@@ -239,3 +239,9 @@ ParametresMonde::ParamsMonde Monde::getEtat() const {
     p.pucerons = Ressources::getPuceronsTot();
     return p;
 }
+
+void Monde::ajoutPetit(const Position& pPos) {
+    m_elements->append(new Petits(this, pPos.getAbcisse(), pPos.getOrdonnee()));
+    m_infos->insert(pPos, m_elements->size() - 1);
+    emit afficherElement(ParametresMonde::Petits, pPos.getAbcisse(), pPos.getOrdonnee());
+}

@@ -78,3 +78,31 @@ void Peuple::setNbPetits(int pNbPetits) {
 void Peuple::setAge(int pAge) {
     m_age = pAge;
 }
+
+void Peuple::reproduction(const Position& pPos) {
+    deplacement(pPos);
+    if (getPos() != pPos)
+        return;
+    Position bat;
+    QList<Position> posAdj = getPos().getPositionsAdjacentes();
+    for (int i = 0; i < posAdj.size(); i++) {
+        if (getMonde()->getInfos()->contains(posAdj.at(i))) {
+            if (getMonde()->getElements()->at(getMonde()->getInfos()->value(i))->getType() == ParametresMonde::Construction)
+                bat = posAdj.at(i);
+        }
+    }
+
+    Position disp;
+    Position femelle(-1, -1);
+    Position male(-1, -1);
+    posAdj = bat.getPositionsAdjacentes();
+    for (int i = 0; i < posAdj.size(); i++) {
+        if (!getMonde()->getInfos()->contains(posAdj.at(i)))
+            disp = posAdj.at(i);
+        else if (getMonde()->getElements()->at(getMonde()->getInfos()->value(i))->getType() == ParametresMonde::Femelle)
+            femelle = posAdj.at(i);
+        else if (getMonde()->getElements()->at(getMonde()->getInfos()->value(i))->getType() == ParametresMonde::Male)
+            male = posAdj.at(i);
+    }
+    getMonde()->ajoutPetit(disp);
+}
