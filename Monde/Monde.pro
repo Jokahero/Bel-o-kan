@@ -6,24 +6,26 @@ HEADERS += monde.h \
     mobiles.h \
     ressources.h \
     peuple.h \
-    ressourcesmobiles.h \
+#    ressourcesmobiles.h \
     male.h \
     femelle.h \
     petits.h \
     mycelium.h \
     brindille.h \
-    puceron.h
+    puceron.h \
+    construction.h
 SOURCES += monde.cpp \
     elements.cpp \
     position.cpp \
     mobiles.cpp \
     ressources.cpp \
     peuple.cpp \
-    ressourcesmobiles.cpp \
+#    ressourcesmobiles.cpp \
     male.cpp \
     femelle.cpp \
     petits.cpp \
     mycelium.cpp \
     brindille.cpp \
-    puceron.cpp
+    puceron.cpp \
+    construction.cpp
 DESTDIR = ../

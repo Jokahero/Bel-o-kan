@@ -20,6 +20,7 @@ void Male::tour() {
     QList<Position> posAdj = getPos().getPositionsAdjacentes(getVue());
     QList<Position> nourriture;
     QList<Position> brindilles;
+    QList<Position> femelles;
     for (int i = 0; i < posAdj.size(); i++) {
         if (getMonde()->getInfos()->contains(posAdj.at(i))) {
             switch (getMonde()->getElements()->at(getMonde()->getInfos()->value(posAdj.at(i)))->getType()) {
@@ -31,10 +32,21 @@ void Male::tour() {
                 break;
             case ParametresMonde::Puceron:
                 nourriture.append(posAdj.at(i));
+            case ParametresMonde::Femelle:
+                femelles.append(posAdj.at(i));
             default:
                 break;
             }
         }
+    }
+
+    // On récupère les cases autour des femelles assez proches
+    QList<Position> reprod;
+    for (int i = 0; i < femelles.size(); i++) {
+        QList<Position> tmp = femelles.at(i).getPositionsAdjacentes();
+        for (int j = 0; j < tmp.size(); j++)
+            if (!getMonde()->getInfos()->contains(tmp.at(j)))
+                reprod.append(tmp.at(j));
     }
 
     // Déterminer un objectif
@@ -54,6 +66,15 @@ void Male::tour() {
         for (int i = 1; i < brindilles.size(); i++) {
             if (getPos().distance(ptmp) > getPos().distance(brindilles.at(i)))
                 ptmp = brindilles.at(i);
+            if (getPos().distance(ptmp) == 1)
+                break;
+        }
+        deplacement(ptmp);
+    } else if (reprod.size() > 0 && getBrindilles() > 0) {                   // Reproduction
+        Position ptmp = reprod.at(0);
+        for (int i = 1; i < reprod.size(); i++) {
+            if (getPos().distance(ptmp) > getPos().distance(reprod.at(i)))
+                ptmp = reprod.at(i);
             if (getPos().distance(ptmp) == 1)
                 break;
         }

@@ -120,28 +120,30 @@ void Monde::tour() {
     if (Peuple::getPopulation() <= 0 && m_nbTours > 0)
         fin();
 
-    if (m_elements->size() < m_params.hauteur * m_params.largeur) {
-        int repop = qrand() % 5;
-        Position pos = posAleatoire(m_params.largeur, m_params.hauteur);
+    for (int i = 0; i < Peuple::getPopulation() / 2; i++) {
+        if (m_elements->size() < m_params.hauteur * m_params.largeur) {
+            int repop = qrand() % 5;
+            Position pos = posAleatoire(m_params.largeur, m_params.hauteur);
 
-        switch (repop) {
-        case 0:
-            m_elements->append(new Brindille(this, pos.getAbcisse(), pos.getOrdonnee()));
-            m_infos->insert(pos, m_elements->size() - 1);
-            emit afficherElement(ParametresMonde::Brindille, pos.getAbcisse(), pos.getOrdonnee());
-            break;
-        case 1:
-            m_elements->append(new Mycelium(this, pos.getAbcisse(), pos.getOrdonnee()));
-            m_infos->insert(pos, m_elements->size() - 1);
-            emit afficherElement(ParametresMonde::Mycelium, pos.getAbcisse(), pos.getOrdonnee());
-            break;
-        case 2:
-            m_elements->append((Mobiles*)new Puceron(this, pos.getAbcisse(), pos.getOrdonnee()));
-            m_infos->insert(pos, m_elements->size() - 1);
-            emit afficherElement(ParametresMonde::Puceron, pos.getAbcisse(), pos.getOrdonnee());
-            break;
-        default:
-            break;
+            switch (repop) {
+            case 0:
+                m_elements->append(new Brindille(this, pos.getAbcisse(), pos.getOrdonnee()));
+                m_infos->insert(pos, m_elements->size() - 1);
+                emit afficherElement(ParametresMonde::Brindille, pos.getAbcisse(), pos.getOrdonnee());
+                break;
+            case 1:
+                m_elements->append(new Mycelium(this, pos.getAbcisse(), pos.getOrdonnee()));
+                m_infos->insert(pos, m_elements->size() - 1);
+                emit afficherElement(ParametresMonde::Mycelium, pos.getAbcisse(), pos.getOrdonnee());
+                break;
+            case 2:
+                m_elements->append((Mobiles*)new Puceron(this, pos.getAbcisse(), pos.getOrdonnee()));
+                m_infos->insert(pos, m_elements->size() - 1);
+                emit afficherElement(ParametresMonde::Puceron, pos.getAbcisse(), pos.getOrdonnee());
+                break;
+            default:
+                break;
+            }
         }
     }
 }
@@ -193,18 +195,19 @@ void Monde::deplacer(Elements *pE, const Position& pDest) {
 
         switch (tmp->getType()) {
         case ParametresMonde::Mycelium:
-            Peuple::setNourriture(Peuple::getNourriture() + qobject_cast<Mycelium*>(tmp)->getNourriture());
-            emit ajoutNourriture(qobject_cast<Mycelium*>(tmp)->getNourriture());
+            Peuple::setNourriture(Peuple::getNourriture() + dynamic_cast<Mycelium*>(tmp)->getNourriture());
+            emit ajoutNourriture(dynamic_cast<Mycelium*>(tmp)->getNourriture());
             break;
         case ParametresMonde::Brindille:
-            Peuple::setBrindilles(Peuple::getBrindilles() + qobject_cast<Brindille*>(tmp)->getBrindilles());
-            emit ajoutBrindilles(qobject_cast<Brindille*>(tmp)->getBrindilles());
+            Peuple::setBrindilles(Peuple::getBrindilles() + dynamic_cast<Brindille*>(tmp)->getBrindilles());
+            emit ajoutBrindilles(dynamic_cast<Brindille*>(tmp)->getBrindilles());
             break;
         case ParametresMonde::Puceron:
-            Peuple::setNourriture(Peuple::getNourriture() + ((Puceron*)((Ressources*)tmp))->getNourriture());
-            emit ajoutNourriture(((Puceron*)((Ressources*)tmp))->getNourriture());
+            Peuple::setNourriture(Peuple::getNourriture() + dynamic_cast<Puceron*>(tmp)->getNourriture());
+            emit ajoutNourriture(dynamic_cast<Puceron*>(tmp)->getNourriture());
             break;
         default:
+            // Regarder si il y a une femelle/homme à côté
             break;
         }
         delete tmp;

@@ -91,6 +91,10 @@ void WidgetInfos::setNbPucerons(int pNbPucerons) {
     m_nbPucerons->setText(QString::number(pNbPucerons));
 }
 
+void WidgetInfos::setNbConstructions(int pQteConstructions) {
+    m_nbConstructions->setText(QString::number(pQteConstructions));
+}
+
 void WidgetInfos::setJours(int pJours) {
     m_jours->setText(QString::number(pJours));
 }
@@ -125,6 +129,10 @@ void WidgetInfos::ajoutMyceliumCarte(int pNb) {
 
 void WidgetInfos::ajoutPuceron(int pNb) {
     m_nbPucerons->setText(QString::number(m_nbPucerons->text().toInt() + pNb));
+}
+
+void WidgetInfos::ajoutConstruction(int pNb) {
+    m_nbConstructions->setText(QString::number(m_nbConstructions->text().toInt() + pNb));
 }
 
 void WidgetInfos::ajoutJour(int pNb) {
@@ -165,12 +173,17 @@ void WidgetInfos::suppressionPuceron() {
     m_nbPucerons->setText(QString::number(m_nbPucerons->text().toInt() - 1));
 }
 
+void WidgetInfos::suppressionConstruction() {
+    m_nbConstructions->setText(QString::number(m_nbConstructions->text().toInt() - 1));
+}
+
 
 void WidgetInfos::ajout(ParametresMonde::typeElement pType) {
     static struct { ParametresMonde::typeElement t;
         void (WidgetInfos::*f)(int);
     } tab[] = {
     {ParametresMonde::Brindille, &WidgetInfos::ajoutBrindilleCarte},
+    {ParametresMonde::Construction, &WidgetInfos::ajoutConstruction},
     {ParametresMonde::Femelle, &WidgetInfos::ajoutFemelle},
     {ParametresMonde::Male, &WidgetInfos::ajoutMale},
     {ParametresMonde::Mycelium, &WidgetInfos::ajoutMyceliumCarte},
@@ -186,6 +199,7 @@ void WidgetInfos::suppression(ParametresMonde::typeElement pType) {
         void (WidgetInfos::*f)();
     } tab[] = {
     {ParametresMonde::Brindille, &WidgetInfos::suppressionBrindilleCarte},
+    {ParametresMonde::Construction, &WidgetInfos::suppressionConstruction},
     {ParametresMonde::Femelle, &WidgetInfos::suppressionFemelle},
     {ParametresMonde::Male, &WidgetInfos::suppressionMale},
     {ParametresMonde::Mycelium, &WidgetInfos::suppressionMyceliumCarte},
