@@ -7,7 +7,7 @@ template <typename T> class QList;
 
 class Position {
 public:
-    Position(int pAbcisse = 0, int pOrdonnee = 0);
+    Position(int pAbcisse = -1, int pOrdonnee = -1);
     
     inline int getAbcisse() const {return m_abcisse;};
     void setAbcisse(int pAbcisse);

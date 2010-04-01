@@ -76,7 +76,7 @@ void Femelle::tour() {
                 break;
         }
         deplacement(ptmp);
-    } else if (reprod.size() > 0 && getNourriture() > getPopulation() * 2) {                   // Reproduction
+    } else if (reprod.size() > 0 && getNourriture() > getPopulation() * 2 && getMonde()->getInfos()->size() < (getMonde()->getParams().hauteur * getMonde()->getParams().largeur)) {                   // Reproduction
         Position ptmp = reprod.at(0);
         for (int i = 0; i < reprod.size() && getPos().distance(ptmp) > 1; i++)
             if (getPos().distance(reprod.at(i)) < getPos().distance(ptmp))

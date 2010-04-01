@@ -22,7 +22,6 @@ Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::type
 }
 
 Peuple::~Peuple() {
-    qDebug() << "~Peuple";
     setPopulation(getPopulation() - 1);
 }
 
@@ -86,6 +85,9 @@ void Peuple::reproduction(ParametresMonde::typeElement pTE, const Position& pPos
     if (getPos() != pPos)
         return;
 
+    if (getMonde()->getInfos()->size() >= getMonde()->getParams().largeur * getMonde()->getParams().hauteur)
+        return;
+
     ParametresMonde::typeElement type;
     if (pTE == ParametresMonde::Femelle)
         type = ParametresMonde::Male;
@@ -98,7 +100,7 @@ void Peuple::reproduction(ParametresMonde::typeElement pTE, const Position& pPos
     bool petitTrouve = false;
     bool distanceOk = false;
     QList<Position> posAdj = pPos.getPositionsAdjacentes();
-    for (int i = 0; i < posAdj.size() && (!partTrouve || !petitTrouve) && !distanceOk; i ++) {
+    for (int i = 0; i < posAdj.size() && !distanceOk; i ++) {
         if (getMonde()->getInfos()->contains(posAdj.at(i))) {
             if (getMonde()->getElements()->at(getMonde()->getInfos()->value(posAdj.at(i)))->getType() == type) {
                 partenaire = posAdj.at(i);
@@ -112,6 +114,9 @@ void Peuple::reproduction(ParametresMonde::typeElement pTE, const Position& pPos
             if (petit.distance(partenaire) == 1)
                 distanceOk = true;
     }
+
+    if (!distanceOk)
+        return;
 
     if (!getMonde()->getElements()->at(getMonde()->getInfos()->value(partenaire))->isBouge())
         getMonde()->ajoutPetit(petit);

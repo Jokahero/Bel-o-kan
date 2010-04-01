@@ -130,6 +130,7 @@ void Monde::tour() {
     for (int i = 0; i < m_elements->size(); i++)
         m_elements->at(i)->setBouge(false);
     m_nbTours++;
+
     for (int i = 0; i < m_elements->size() && m_nbTours > 0; i++) {
             m_elements->at(i)->tour();
             qApp->processEvents();
@@ -149,17 +150,17 @@ void Monde::tour() {
 
             switch (repop) {
             case 0:
-                m_elements->append(new Brindille(this, pos.getAbcisse(), pos.getOrdonnee()));
+                m_elements->push_back(new Brindille(this, pos.getAbcisse(), pos.getOrdonnee()));
                 m_infos->insert(pos, m_elements->size() - 1);
                 emit afficherElement(ParametresMonde::Brindille, pos.getAbcisse(), pos.getOrdonnee());
                 break;
             case 1:
-                m_elements->append(new Mycelium(this, pos.getAbcisse(), pos.getOrdonnee()));
+                m_elements->push_back(new Mycelium(this, pos.getAbcisse(), pos.getOrdonnee()));
                 m_infos->insert(pos, m_elements->size() - 1);
                 emit afficherElement(ParametresMonde::Mycelium, pos.getAbcisse(), pos.getOrdonnee());
                 break;
             case 2:
-                m_elements->append((Mobiles*)new Puceron(this, pos.getAbcisse(), pos.getOrdonnee()));
+                m_elements->push_back((Mobiles*)new Puceron(this, pos.getAbcisse(), pos.getOrdonnee()));
                 m_infos->insert(pos, m_elements->size() - 1);
                 emit afficherElement(ParametresMonde::Puceron, pos.getAbcisse(), pos.getOrdonnee());
                 break;
