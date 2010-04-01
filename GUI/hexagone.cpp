@@ -17,6 +17,7 @@ Hexagone::Hexagone() {
     m_mapIcones->insert(ParametresMonde::Petits, ":/Icônes/petit-icon.png");
     m_mapIcones->insert(ParametresMonde::Predateur, ":/Icônes/empreinte.png");
     m_mapIcones->insert(ParametresMonde::Puceron, ":/Icônes/puceron-icon.png");
+    setIcon();
 }
 
 Hexagone::Hexagone(int pX, int pY) : QPolygon(6) {

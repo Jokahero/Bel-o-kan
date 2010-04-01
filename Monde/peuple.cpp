@@ -22,6 +22,7 @@ Peuple::Peuple(Monde* pMonde, int pAbcisse, int pOrdonnee, ParametresMonde::type
 }
 
 Peuple::~Peuple() {
+    qDebug() << "~Peuple";
     setPopulation(getPopulation() - 1);
 }
 
@@ -34,6 +35,7 @@ void Peuple::setNourriture(int pNourriture) {
 }
 
 void Peuple::tour() {
+    Elements::tour();
     // Consommation de nourriture
     if (getNourriture() > 0) {
         setNourriture(getNourriture() - 1);
@@ -79,32 +81,38 @@ void Peuple::setAge(int pAge) {
     m_age = pAge;
 }
 
-void Peuple::reproduction(const Position& pPos) {
-    qDebug() << "Reproduction en " << pPos;
+void Peuple::reproduction(ParametresMonde::typeElement pTE, const Position& pPos) {
     deplacement(pPos);
     if (getPos() != pPos)
         return;
-    Position bat;
-    QList<Position> posAdj = getPos().getPositionsAdjacentes();
-    for (int i = 0; i < posAdj.size(); i++) {
+
+    ParametresMonde::typeElement type;
+    if (pTE == ParametresMonde::Femelle)
+        type = ParametresMonde::Male;
+    else
+        type = ParametresMonde::Femelle;
+
+    Position partenaire;
+    bool partTrouve = false;
+    Position petit;
+    bool petitTrouve = false;
+    bool distanceOk = false;
+    QList<Position> posAdj = pPos.getPositionsAdjacentes();
+    for (int i = 0; i < posAdj.size() && (!partTrouve || !petitTrouve) && !distanceOk; i ++) {
         if (getMonde()->getInfos()->contains(posAdj.at(i))) {
-            if (getMonde()->getElements()->at(getMonde()->getInfos()->value(i))->getType() == ParametresMonde::Construction)
-                bat = posAdj.at(i);
+            if (getMonde()->getElements()->at(getMonde()->getInfos()->value(posAdj.at(i)))->getType() == type) {
+                partenaire = posAdj.at(i);
+                partTrouve = true;
+            }
+        } else {
+            petit = posAdj.at(i);
+            petitTrouve = true;
         }
+        if (petitTrouve && partTrouve)
+            if (petit.distance(partenaire) == 1)
+                distanceOk = true;
     }
 
-    Position disp;
-    Position femelle(-1, -1);
-    Position male(-1, -1);
-    posAdj = bat.getPositionsAdjacentes();
-    for (int i = 0; i < posAdj.size(); i++) {
-        if (!getMonde()->getInfos()->contains(posAdj.at(i)))
-            disp = posAdj.at(i);
-        else if (getMonde()->getElements()->at(getMonde()->getInfos()->value(i))->getType() == ParametresMonde::Femelle)
-            femelle = posAdj.at(i);
-        else if (getMonde()->getElements()->at(getMonde()->getInfos()->value(i))->getType() == ParametresMonde::Male)
-            male = posAdj.at(i);
-    }
-    qDebug() << "Ajout petit en " << disp;
-    getMonde()->ajoutPetit(disp);
+    if (!getMonde()->getElements()->at(getMonde()->getInfos()->value(partenaire))->isBouge())
+        getMonde()->ajoutPetit(petit);
 }

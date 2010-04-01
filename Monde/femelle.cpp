@@ -27,6 +27,7 @@ void Femelle::tour() {
     QList<Position> posAdj = getPos().getPositionsAdjacentes(getVue());
     QList<Position> nourriture;
     QList<Position> brindilles;
+    QList<Position> males;
     for (int i = 0; i < posAdj.size(); i++) {
         if (getMonde()->getInfos()->contains(posAdj.at(i))) {
             switch (getMonde()->getElements()->at(getMonde()->getInfos()->value(posAdj.at(i)))->getType()) {
@@ -36,10 +37,22 @@ void Femelle::tour() {
             case ParametresMonde::Brindille:
                 brindilles.append(posAdj.at(i));
                 break;
+            case ParametresMonde::Male:
+                males.append(posAdj.at(i));
+                break;
             default:
                 break;
             }
         }
+    }
+
+    // On récupère les cases autour des femelles assez proches
+    QList<Position> reprod;
+    for (int i = 0; i < males.size(); i++) {
+        QList<Position> tmp = males.at(i).getPositionsAdjacentes();
+        for (int j = 0; j < tmp.size(); j++)
+            if (!getMonde()->getInfos()->contains(tmp.at(j)))
+                reprod.append(tmp.at(j));
     }
 
     // Déterminer un objectif
@@ -54,7 +67,7 @@ void Femelle::tour() {
                 break;
         }
         deplacement(ptmp);
-    } else if (brindilles.size() > 0 /* && besoin de brindilles*/) {
+    } else if (brindilles.size() > 0 && getBrindilles() < 2) {
         Position ptmp = brindilles.at(0);
         for (int i = 1; i < brindilles.size(); i++) {
             if (getPos().distance(ptmp) > getPos().distance(brindilles.at(i)))
@@ -63,6 +76,12 @@ void Femelle::tour() {
                 break;
         }
         deplacement(ptmp);
+    } else if (reprod.size() > 0 && getNourriture() > getPopulation() * 2) {                   // Reproduction
+        Position ptmp = reprod.at(0);
+        for (int i = 0; i < reprod.size() && getPos().distance(ptmp) > 1; i++)
+            if (getPos().distance(reprod.at(i)) < getPos().distance(ptmp))
+                ptmp = reprod.at(i);
+        reproduction(ParametresMonde::Femelle, ptmp);
     } else if (nourriture.size() > 0) {                 // On n'a pas besoin de nourriture, mais on n'a rien de mieux à faire…
         Position ptmp = nourriture.at(0);
         for (int i = 1; i < nourriture.size(); i++) {

@@ -34,7 +34,7 @@ public:
 
     virtual void mort();
 
-    void reproduction(const Position& pPos);
+    void reproduction(ParametresMonde::typeElement pTE, const Position& pPos);
 
 private:
     static int m_brindilles;

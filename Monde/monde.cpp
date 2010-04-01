@@ -125,9 +125,15 @@ void Monde::init(const ParametresMonde::ParamsMonde &pParams) {
 }
 
 void Monde::tour() {
+    qDebug() << "\n\n\n";
+    qDebug() << "Début tour " << m_nbTours << ", pop : " << Peuple::getPopulation();
+    for (int i = 0; i < m_elements->size(); i++)
+        m_elements->at(i)->setBouge(false);
     m_nbTours++;
-    for (int i = 0; i < m_elements->size() && m_nbTours > 0; i++)
-        m_elements->at(i)->tour();
+    for (int i = 0; i < m_elements->size() && m_nbTours > 0; i++) {
+            m_elements->at(i)->tour();
+            qApp->processEvents();
+        }
 
     bringOutYourDeads();
 
@@ -137,7 +143,7 @@ void Monde::tour() {
         fin();
 
     for (int i = 0; i < Peuple::getPopulation() / 2; i++) {
-        if (m_elements->size() < m_params.hauteur * m_params.largeur) {
+        if (m_infos->size() < m_params.hauteur * m_params.largeur) {
             int repop = qrand() % 5;
             Position pos = posAleatoire(m_params.largeur, m_params.hauteur);
 
@@ -162,6 +168,7 @@ void Monde::tour() {
             }
         }
     }
+    qDebug() << "Fin tour " << m_nbTours << ", pop : " << Peuple::getPopulation();
 }
 
 void Monde::fin() {
@@ -260,7 +267,10 @@ ParametresMonde::ParamsMonde Monde::getEtat() const {
 }
 
 void Monde::ajoutPetit(const Position& pPos) {
-    m_elements->append(new Petits(this, pPos.getAbcisse(), pPos.getOrdonnee()));
+    qDebug() << "Ajout d'un petit en " << pPos;
+    qDebug() << "Pop : " << Peuple::getPopulation();
+    m_elements->push_back(new Petits(this, pPos.getAbcisse(), pPos.getOrdonnee()));
     m_infos->insert(pPos, m_elements->size() - 1);
     emit afficherElement(ParametresMonde::Petits, pPos.getAbcisse(), pPos.getOrdonnee());
+    qDebug() << "Pop : " << Peuple::getPopulation();
 }

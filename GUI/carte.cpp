@@ -72,7 +72,12 @@ void Carte::afficherIcone(ParametresMonde::typeElement pTypeElement, int pX, int
 
 void Carte::supprimerIcone(ParametresMonde::typeElement /*pTE*/, int pX, int pY) {
     pY = m_carte->at(pX)->size() - pY - 1;
-    delete m_carte->at(pX)->at(pY)->getIcon();
+    if (pX >= m_carte->size())
+        return;
+    if (pY >= m_carte->at(pX)->size())
+        return;
+    if (m_carte->at(pX)->at(pY)->getIcon() != NULL)
+        delete m_carte->at(pX)->at(pY)->getIcon();
     m_carte->at(pX)->at(pY)->setIcon();
 }
 

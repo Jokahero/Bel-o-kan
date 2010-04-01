@@ -23,13 +23,17 @@ public:
 
     inline ParametresMonde::typeElement getType() const {return m_type;}
 
-    virtual void tour() = 0;
+    virtual void tour() {setBouge(true);}
+
+    inline bool isBouge() const {return m_bouge;}
+    void setBouge(bool pBouge);
 
 private:
     bool m_mort;
     Position m_pos;
     Monde* m_monde;
     ParametresMonde::typeElement m_type;
+    bool m_bouge;
 
 signals:
     void ajoutBrindilles(int pQte);

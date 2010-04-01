@@ -120,7 +120,7 @@ void WidgetInfos::ajoutPetit(int pNb) {
 }
 
 void WidgetInfos::ajoutPredateurs(int pNb) {
-    m_nbPetits->setText(QString::number(m_nbPredateurs->text().toInt() + pNb));
+    m_nbPredateurs->setText(QString::number(m_nbPredateurs->text().toInt() + pNb));
 }
 
 void WidgetInfos::ajoutBrindilleStock(int pNb) {

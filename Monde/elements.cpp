@@ -23,5 +23,11 @@ Position Elements::getPos() const {
 }
 
 void Elements::setMort(bool pMort) {
+    if (pMort)
+        qDebug() << "Un élément est mort en " << getPos();
     m_mort = pMort;
+}
+
+void Elements::setBouge(bool pBouge) {
+    m_bouge = pBouge;
 }

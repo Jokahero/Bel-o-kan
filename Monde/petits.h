@@ -11,6 +11,8 @@ public:
     ~Petits();
 
     virtual void tour();
+
+    virtual void mort();
 };
 
 #endif // PETITS_H

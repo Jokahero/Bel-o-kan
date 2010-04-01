@@ -10,13 +10,14 @@ Petits::Petits(Monde* pMonde, int pAbcisse, int pOrdonnee) : Peuple(pMonde, pAbc
 }
 
 Petits::~Petits() {
-    setNbPetits(getNbPetits() - 1);
+    //setNbPetits(getNbPetits() - 1);
 }
 
 void Petits::tour() {
     Peuple::tour();
     // Est-il grand ?
     if (getAge() >= Constantes::seuilAge) {
+        qDebug() << "Un petit grandit en " << getPos();
         Position tmp = getPos();
         int rang = getMonde()->getInfos()->value(tmp);
         int sexe = qrand() % 2;
@@ -25,6 +26,13 @@ void Petits::tour() {
         else
             (*getMonde()->getElements())[rang] = new Male(getMonde(), tmp.getAbcisse(), tmp.getOrdonnee());
         getMonde()->evolution(tmp, sexe);
-        delete this;
+        //this->deleteLater();
+        setNbPetits(getNbPetits() - 1);
+        setPopulation(getPopulation() - 1);
     }
+}
+
+void Petits::mort() {
+    Peuple::mort();
+    setNbPetits(getNbPetits() - 1);
 }
