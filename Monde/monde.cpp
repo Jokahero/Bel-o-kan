@@ -172,6 +172,7 @@ void Monde::tour() {
 }
 
 void Monde::fin() {
+    emit sigTour(getEtat());
     emit finDuMonde(m_nbTours);
     m_nbTours = -1;
 }

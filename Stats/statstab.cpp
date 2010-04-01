@@ -61,7 +61,7 @@ void StatsTab::dessinPopulation() {
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).nbPetits);
     }
 
-    int pasX = l / xMax;
+    int pasX = l / (xMax - 1);
     int pasY = h / yMax;
 
     // Dessin de la légende
@@ -107,7 +107,7 @@ void StatsTab::dessinRessources() {
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).pucerons);
     }
 
-    int pasX = l / xMax;
+    int pasX = l / (xMax - 1);
     int pasY = h / yMax;
 
     // Dessin de la légende
@@ -151,7 +151,7 @@ void StatsTab::dessinStock() {
         yMax = qMax(yMax, m_parent->getListeTours()->at(i).nbNourriture);
     }
 
-    int pasX = l / xMax;
+    int pasX = l / (xMax - 1);
     int pasY = h / yMax;
 
     // Dessin de la légende
