@@ -4,11 +4,11 @@
 #include "widgetinter.h"
 
 #include <QtCore/QCoreApplication>
-#include <QtGui/QMenuBar>
-#include <QtGui/QMenu>
-#include <QtGui/QAction>
 #include <QtGui/QIcon>
-#include <QtGui/QMessageBox>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
 
 FenCarte::FenCarte() {
     setWindowTitle(tr("Bel-O-Kan - Simulation"));

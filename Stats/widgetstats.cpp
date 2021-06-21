@@ -4,8 +4,8 @@
 
 #include <QtCore/QStringList>
 #include <QtCore/QVector>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QTabWidget>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QTabWidget>
 
 WidgetStats::WidgetStats(QVector<ParametresMonde::ParamsMonde> *pVect) : m_listeTours(pVect) {
     setAttribute(Qt::WA_DeleteOnClose);

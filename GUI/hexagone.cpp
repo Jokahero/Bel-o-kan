@@ -1,7 +1,7 @@
 #include "hexagone.h"
 #include "math.h"
 
-#include <QtGui/QGraphicsPixmapItem>
+#include <QtWidgets/QGraphicsPixmapItem>
 #include <QtCore/QPoint>
 
 Hexagone::Hexagone() {

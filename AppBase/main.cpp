@@ -8,7 +8,7 @@
 #include <QtCore/QTextCodec>
 #include <QtCore/QTranslator>
 #include <QtGlobal>
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 #include <time.h>
 
 int main(int argc, char** argv) {
@@ -21,9 +21,7 @@ int main(int argc, char** argv) {
     QCoreApplication::setApplicationName("Bel-O-Kan");
 
     // Réglage de l'encodage
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
     // Application de la traduction
     QString locale = QLocale::system().name().section('_', 0, 0);

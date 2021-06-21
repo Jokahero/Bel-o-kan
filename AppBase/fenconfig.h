@@ -1,7 +1,7 @@
 #ifndef FENCONFIG_H
 #define FENCONFIG_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 class FenCarte;
 class Monde;

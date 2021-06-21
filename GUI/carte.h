@@ -1,7 +1,7 @@
 #ifndef CARTE_H
 #define CARTE_H
 
-#include <QtGui/QGraphicsView>
+#include <QtWidgets/QGraphicsView>
 
 #include "../AppBase/ParamsMonde.h"
 

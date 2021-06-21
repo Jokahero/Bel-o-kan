@@ -1,7 +1,7 @@
 #ifndef WIDGETINTER_H
 #define WIDGETINTER_H
 
-#include <QtGui/QDockWidget>
+#include <QtWidgets/QDockWidget>
 
 #include "../AppBase/ParamsMonde.h"
 

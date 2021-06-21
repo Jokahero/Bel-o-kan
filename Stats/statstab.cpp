@@ -2,10 +2,10 @@
 
 #include "widgetstats.h"
 
-#include <QtGui/QGraphicsScene>
-#include <QtGui/QGraphicsTextItem>
-#include <QtGui/QGraphicsView>
-#include <QtGui/QHBoxLayout>
+#include <QtWidgets/QGraphicsScene>
+#include <QtWidgets/QGraphicsTextItem>
+#include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QHBoxLayout>
 
 StatsTab::StatsTab(WidgetStats* pParent, int pPos) : m_parent(pParent), m_pos(pPos) {
     QHBoxLayout *layout = new QHBoxLayout;

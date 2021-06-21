@@ -7,3 +7,4 @@ HEADERS += stats.h \
 SOURCES += stats.cpp \
     widgetstats.cpp \
     statstab.cpp
+QT += widgets

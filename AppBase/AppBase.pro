@@ -10,3 +10,4 @@ LIBS += -L.. \
     -lMonde \
     -lGUI \
     -lStats
+QT += widgets

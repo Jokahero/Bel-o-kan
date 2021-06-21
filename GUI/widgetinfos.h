@@ -1,7 +1,7 @@
 #ifndef WIDGETINFOS_H
 #define WIDGETINFOS_H
 
-#include <QtGui/QDockWidget>
+#include <QtWidgets/QDockWidget>
 
 #include "../AppBase/ParamsMonde.h"
 

@@ -1,11 +1,11 @@
 #include "carte.h"
 #include "hexagone.h"
 
-#include <QtGui/QGraphicsScene>
-#include <QtGui/QGraphicsPixmapItem>
-#include <QtGui/QPixmap>
 #include <QtCore/QPoint>
+#include <QtGui/QPixmap>
 #include <QtGui/QPolygon>
+#include <QtWidgets/QGraphicsPixmapItem>
+#include <QtWidgets/QGraphicsScene>
 
 Carte::Carte() {
     m_scene = new QGraphicsScene();

@@ -6,12 +6,12 @@
 #include "../Stats/stats.h"
 
 #include <QtCore/QCoreApplication>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFormLayout>
-#include <QtGui/QGroupBox>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QVBoxLayout>
 
 FenConfig::FenConfig(FenCarte* pFenCarte, Monde* pMonde, Stats* pStats, QWidget* pParent) : QWidget(pParent), m_fenCarte(pFenCarte), m_monde(pMonde), m_stats(pStats) {
     setAttribute(Qt::WA_DeleteOnClose);
