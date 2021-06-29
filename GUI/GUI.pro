@@ -14,3 +14,4 @@ SOURCES += hexagone.cpp \
     widgetinter.cpp
 DESTDIR = ../
 RESOURCES += Images.qrc
+QT += gui widgets

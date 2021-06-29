@@ -1,11 +1,11 @@
 #include "widgetinfos.h"
 #include "flowlayout.h"
 
-#include <QtGui/QFormLayout>
-#include <QtGui/QGroupBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QWidget>
+#include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QWidget>
 
 WidgetInfos::WidgetInfos() {
     setWindowTitle(tr("Informations"));

@@ -1,7 +1,7 @@
 #ifndef WIDGETSTATS_H
 #define WIDGETSTATS_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 #include "../AppBase/ParamsMonde.h"
 
 class QTabWidget;

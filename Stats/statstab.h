@@ -1,7 +1,7 @@
 #ifndef STATSTAB_H
 #define STATSTAB_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 class QGraphicsScene;
 class QGraphicsView;

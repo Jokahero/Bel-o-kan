@@ -1,8 +1,8 @@
 #ifndef FLOWLAYOUT_H
 #define FLOWLAYOUT_H
 
-#include <QtGui/QLayout>
-#include <QtGui/QStyle>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QStyle>
 
 /*! \brief Layout expanding both horizontal and vertical depending on space available
 */

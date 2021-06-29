@@ -1,6 +1,6 @@
 #include "flowlayout.h"
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 /*!
   \param parent Parent widget
